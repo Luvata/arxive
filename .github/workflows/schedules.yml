@@ -1,0 +1,34 @@
+name: Fetch arXiv rss
+
+on:
+  schedule:
+    - cron: '5 0 * * *'  # Run this workflow every day at 00:00 UTC
+
+jobs:
+  fetch-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        ref: 'gh-pages'  # Assuming that your GitHub Pages are served from gh-pages branch
+
+    - name: Fetch the XML data
+      run: |
+        curl https://export.arxiv.org/rss/cs.CV > "$(date +'%Y-%m-%d')-cs-cv.xml"
+        curl https://export.arxiv.org/rss/cs.AI > "$(date +'%Y-%m-%d')-cs-ai.xml"
+        curl https://export.arxiv.org/rss/cs.CL > "$(date +'%Y-%m-%d')-cs-cl.xml"
+        curl https://export.arxiv.org/rss/cs.LG > "$(date +'%Y-%m-%d')-cs-lg.xml"
+
+    - name: Configure git
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+
+    - name: Commit and push
+      run: |
+        git add .
+        git commit -m "Updated arXiv cs.CV XML data for $(date +'%Y-%m-%d')"
+        git push
+
