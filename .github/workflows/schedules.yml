@@ -1,8 +1,9 @@
 name: Fetch arXiv rss
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '7 11 * * *'  # Run this workflow every day at 00:00 UTC
+    - cron: '5 0 * * *'  # Run this workflow every day at 00:00 UTC
 
 jobs:
   fetch-and-push:
@@ -26,4 +27,3 @@ jobs:
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Action"
         git diff --quiet || (git add . ; git commit -m "Updated arxiv data" ; git push)
-
