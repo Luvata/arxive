@@ -11,9 +11,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      uses: actions/checkout@v3
 
     - name: Fetch the XML data
       run: |
@@ -22,7 +20,7 @@ jobs:
         curl https://export.arxiv.org/rss/cs.CL > "$(date +'%Y-%m-%d')-cs-cl.xml"
         curl https://export.arxiv.org/rss/cs.LG > "$(date +'%Y-%m-%d')-cs-lg.xml"
 
-    - name: Commit and push if it changed
+    - name: Commit and push
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Action"
