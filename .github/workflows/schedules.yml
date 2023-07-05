@@ -12,13 +12,15 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      fetch-depth: 1
+      
 
     - name: Fetch the XML data
       run: |
-        curl https://export.arxiv.org/rss/cs.CV > "$(date +'%Y-%m-%d')-cs-cv.xml"
-        curl https://export.arxiv.org/rss/cs.AI > "$(date +'%Y-%m-%d')-cs-ai.xml"
-        curl https://export.arxiv.org/rss/cs.CL > "$(date +'%Y-%m-%d')-cs-cl.xml"
-        curl https://export.arxiv.org/rss/cs.LG > "$(date +'%Y-%m-%d')-cs-lg.xml"
+        curl https://export.arxiv.org/rss/cs.CV > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-cv.xml"
+        curl https://export.arxiv.org/rss/cs.AI > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-ai.xml"
+        curl https://export.arxiv.org/rss/cs.CL > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-cl.xml"
+        curl https://export.arxiv.org/rss/cs.LG > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-lg.xml"
 
     - name: Commit and push
       run: |
