@@ -3,7 +3,7 @@ name: Fetch arXiv rss
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5 0 * * *'  # Run this workflow every day at 00:00 UTC
+    - cron: '5 0 * * *'  # Run this workflow every day at 00:05 UTC
 
 jobs:
   fetch-and-push:
@@ -19,6 +19,16 @@ jobs:
         curl https://export.arxiv.org/rss/cs.AI > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-ai.xml"
         curl https://export.arxiv.org/rss/cs.CL > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-cl.xml"
         curl https://export.arxiv.org/rss/cs.LG > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-lg.xml"
+
+    - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+    - name: Run converter.py script
+      working-directory: {{ github.workspace }}
+      run: |
+        python converter.py
 
     - name: Commit and push
       run: |
