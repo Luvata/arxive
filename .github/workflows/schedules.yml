@@ -21,7 +21,7 @@ jobs:
         curl https://export.arxiv.org/rss/cs.LG > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-lg.xml"
 
     - name: Run converter.py script
-      working-directory: {{ github.workspace }}
+      working-directory: ${{ github.workspace }}
       run: |
         python converter.py
 
