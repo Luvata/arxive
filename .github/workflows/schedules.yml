@@ -20,11 +20,6 @@ jobs:
         curl https://export.arxiv.org/rss/cs.CL > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-cl.xml"
         curl https://export.arxiv.org/rss/cs.LG > "${{ github.workspace }}/$(date +'%Y-%m-%d')-cs-lg.xml"
 
-    - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.8
-
     - name: Run converter.py script
       working-directory: {{ github.workspace }}
       run: |
