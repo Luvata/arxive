@@ -24,6 +24,7 @@ jobs:
       working-directory: ${{ github.workspace }}
       run: |
         python converter.py
+        python generate_index.py
 
     - name: Commit and push
       run: |
