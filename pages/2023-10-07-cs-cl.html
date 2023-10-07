@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2023-10-07-cs-cl</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        background-color: #f2f2f2;
+    }
+    .container {
+        width: 60%;
+        max-width: 900px;
+        min-width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+        font-size: 0.9em;
+    }
+    h1 {
+        color: #333;
+        font-size: 1.6em;
+    }
+    .article {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+    .article a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    .article a:hover {
+        color: #0056b3;
+    }
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            font-size: 0.8em;
+        }
+        h1 {
+            font-size: 1.4em;
+        }
+    }
+    </style>
+    </head>
+    <body>
+    <div class="container">
+    <div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03031">How Prevalent is Gender Bias in ChatGPT? -- Exploring German and English ChatGPT Responses. (arXiv:2310.03031v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Urchs_S/0/1/0/all/0/1">Stefanie Urchs</a>, <a href="http://arxiv.org/find/cs/1/au:+Thurner_V/0/1/0/all/0/1">Veronika Thurner</a>, <a href="http://arxiv.org/find/cs/1/au:+Assenmacher_M/0/1/0/all/0/1">Matthias A&#xdf;enmacher</a>, <a href="http://arxiv.org/find/cs/1/au:+Heumann_C/0/1/0/all/0/1">Christian Heumann</a>, <a href="http://arxiv.org/find/cs/1/au:+Thiemichen_S/0/1/0/all/0/1">Stephanie Thiemichen</a></p>
+<p>With the introduction of ChatGPT, OpenAI made large language models (LLM)
+accessible to users with limited IT expertise. However, users with no
+background in natural language processing (NLP) might lack a proper
+understanding of LLMs. Thus the awareness of their inherent limitations, and
+therefore will take the systems' output at face value. In this paper, we
+systematically analyse prompts and the generated responses to identify possible
+problematic issues with a special focus on gender biases, which users need to
+be aware of when processing the system's output. We explore how ChatGPT reacts
+in English and German if prompted to answer from a female, male, or neutral
+perspective. In an in-depth investigation, we examine selected prompts and
+analyse to what extent responses differ if the system is prompted several times
+in an identical way. On this basis, we show that ChatGPT is indeed useful for
+helping non-IT users draft texts for their daily work. However, it is
+absolutely crucial to thoroughly check the system's responses for biases as
+well as for syntactic and grammatical mistakes.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03051">How FaR Are Large Language Models From Agents with Theory-of-Mind?. (arXiv:2310.03051v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Zhou_P/0/1/0/all/0/1">Pei Zhou</a>, <a href="http://arxiv.org/find/cs/1/au:+Madaan_A/0/1/0/all/0/1">Aman Madaan</a>, <a href="http://arxiv.org/find/cs/1/au:+Potharaju_S/0/1/0/all/0/1">Srividya Pranavi Potharaju</a>, <a href="http://arxiv.org/find/cs/1/au:+Gupta_A/0/1/0/all/0/1">Aditya Gupta</a>, <a href="http://arxiv.org/find/cs/1/au:+McKee_K/0/1/0/all/0/1">Kevin R. McKee</a>, <a href="http://arxiv.org/find/cs/1/au:+Holtzman_A/0/1/0/all/0/1">Ari Holtzman</a>, <a href="http://arxiv.org/find/cs/1/au:+Pujara_J/0/1/0/all/0/1">Jay Pujara</a>, <a href="http://arxiv.org/find/cs/1/au:+Ren_X/0/1/0/all/0/1">Xiang Ren</a>, <a href="http://arxiv.org/find/cs/1/au:+Mishra_S/0/1/0/all/0/1">Swaroop Mishra</a>, <a href="http://arxiv.org/find/cs/1/au:+Nematzadeh_A/0/1/0/all/0/1">Aida Nematzadeh</a>, <a href="http://arxiv.org/find/cs/1/au:+Upadhyay_S/0/1/0/all/0/1">Shyam Upadhyay</a>, <a href="http://arxiv.org/find/cs/1/au:+Faruqui_M/0/1/0/all/0/1">Manaal Faruqui</a></p>
+<p>"Thinking is for Doing." Humans can infer other people's mental states from
+observations--an ability called Theory-of-Mind (ToM)--and subsequently act
+pragmatically on those inferences. Existing question answering benchmarks such
+as ToMi ask models questions to make inferences about beliefs of characters in
+a story, but do not test whether models can then use these inferences to guide
+their actions. We propose a new evaluation paradigm for large language models
+(LLMs): Thinking for Doing (T4D), which requires models to connect inferences
+about others' mental states to actions in social scenarios. Experiments on T4D
+demonstrate that LLMs such as GPT-4 and PaLM 2 seemingly excel at tracking
+characters' beliefs in stories, but they struggle to translate this capability
+into strategic action. Our analysis reveals the core challenge for LLMs lies in
+identifying the implicit inferences about mental states without being
+explicitly asked about as in ToMi, that lead to choosing the correct action in
+T4D. To bridge this gap, we introduce a zero-shot prompting framework, Foresee
+and Reflect (FaR), which provides a reasoning structure that encourages LLMs to
+anticipate future challenges and reason about potential actions. FaR boosts
+GPT-4's performance from 50% to 71% on T4D, outperforming other prompting
+methods such as Chain-of-Thought and Self-Ask. Moreover, FaR generalizes to
+diverse out-of-distribution story structures and scenarios that also require
+ToM inferences to choose an action, consistently outperforming other methods
+including few-shot in-context learning.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03084">Discovering Knowledge-Critical Subnetworks in Pretrained Language Models. (arXiv:2310.03084v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Bayazit_D/0/1/0/all/0/1">Deniz Bayazit</a>, <a href="http://arxiv.org/find/cs/1/au:+Foroutan_N/0/1/0/all/0/1">Negar Foroutan</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_Z/0/1/0/all/0/1">Zeming Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Weiss_G/0/1/0/all/0/1">Gail Weiss</a>, <a href="http://arxiv.org/find/cs/1/au:+Bosselut_A/0/1/0/all/0/1">Antoine Bosselut</a></p>
+<p>Pretrained language models (LMs) encode implicit representations of knowledge
+in their parameters. However, localizing these representations and
+disentangling them from each other remains an open problem. In this work, we
+investigate whether pretrained language models contain various
+knowledge-critical subnetworks: particular sparse computational subgraphs
+responsible for encoding specific knowledge the model has memorized. We propose
+a multi-objective differentiable weight masking scheme to discover these
+subnetworks and show that we can use them to precisely remove specific
+knowledge from models while minimizing adverse effects on the behavior of the
+original language model. We demonstrate our method on multiple GPT2 variants,
+uncovering highly sparse subnetworks (98%+) that are solely responsible for
+specific collections of relational knowledge. When these subnetworks are
+removed, the remaining network maintains most of its initial capacity (modeling
+language and other memorized relational knowledge) but struggles to express the
+removed knowledge, and suffers performance drops on examples needing this
+removed knowledge on downstream tasks after finetuning.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03094">Large Language Model Cascades with Mixture of Thoughts Representations for Cost-efficient Reasoning. (arXiv:2310.03094v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Yue_M/0/1/0/all/0/1">Murong Yue</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhao_J/0/1/0/all/0/1">Jie Zhao</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_M/0/1/0/all/0/1">Min Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Du_L/0/1/0/all/0/1">Liang Du</a>, <a href="http://arxiv.org/find/cs/1/au:+Yao_Z/0/1/0/all/0/1">Ziyu Yao</a></p>
+<p>Large language models (LLMs) such as GPT-4 have exhibited remarkable
+performance in a variety of tasks, but this strong performance often comes with
+the high expense of using paid API services. In this paper, we are motivated to
+study building an LLM cascade to save the cost of using LLMs, particularly for
+performing reasoning (e.g., mathematical, causal) tasks. Our cascade pipeline
+follows the intuition that simpler questions can be addressed by a weaker but
+more affordable LLM, whereas only the challenging questions necessitate the
+stronger and more expensive LLM. To realize this decision-making, we consider
+the "answer consistency" of the weaker LLM as a signal of the question
+difficulty and propose several methods for the answer sampling and consistency
+checking, including one leveraging a mixture of two thought representations
+(i.e., Chain-of-Thought and Program-of-Thought). Through experiments on six
+reasoning benchmark datasets, with GPT-3.5-turbo and GPT-4 being the weaker and
+stronger LLMs, respectively, we demonstrate that our proposed LLM cascades can
+achieve performance comparable to using solely the stronger LLM but require
+only 40% of its cost.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03128">MetaTool Benchmark: Deciding Whether to Use Tools and Which to Use. (arXiv:2310.03128v1 [cs.SE])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Huang_Y/0/1/0/all/0/1">Yue Huang</a>, <a href="http://arxiv.org/find/cs/1/au:+Shi_J/0/1/0/all/0/1">Jiawen Shi</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_Y/0/1/0/all/0/1">Yuan Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Fan_C/0/1/0/all/0/1">Chenrui Fan</a>, <a href="http://arxiv.org/find/cs/1/au:+Wu_S/0/1/0/all/0/1">Siyuan Wu</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_Q/0/1/0/all/0/1">Qihui Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_Y/0/1/0/all/0/1">Yixin Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhou_P/0/1/0/all/0/1">Pan Zhou</a>, <a href="http://arxiv.org/find/cs/1/au:+Wan_Y/0/1/0/all/0/1">Yao Wan</a>, <a href="http://arxiv.org/find/cs/1/au:+Gong_N/0/1/0/all/0/1">Neil Zhenqiang Gong</a>, <a href="http://arxiv.org/find/cs/1/au:+Sun_L/0/1/0/all/0/1">Lichao Sun</a></p>
+<p>Large language models (LLMs) have garnered significant attention due to their
+impressive natural language processing (NLP) capabilities. Recently, many
+studies have focused on the tool utilization ability of LLMs. They primarily
+investigated how LLMs effectively collaborate with given specific tools.
+However, in scenarios where LLMs serve as intelligent agents, as seen in
+applications like AutoGPT and MetaGPT, LLMs are expected to engage in intricate
+decision-making processes that involve deciding whether to employ a tool and
+selecting the most suitable tool(s) from a collection of available tools to
+fulfill user requests. Therefore, in this paper, we introduce MetaTool, a
+benchmark designed to evaluate whether LLMs have tool usage awareness and can
+correctly choose tools. Specifically, we create a dataset called ToolE within
+the benchmark. This dataset contains various types of user queries in the form
+of prompts that trigger LLMs to use tools, including both single-tool and
+multi-tool scenarios. Subsequently, we set the tasks for both tool usage
+awareness and tool selection. We define four subtasks from different
+perspectives in tool selection, including tool selection with similar choices,
+tool selection in specific scenarios, tool selection with possible reliability
+issues, and multi-tool selection. We conduct experiments involving nine popular
+LLMs and find that the majority of them still struggle to effectively select
+tools, highlighting the existing gaps between LLMs and genuine intelligent
+agents. However, through the error analysis, we found there is still
+significant room for improvement. Finally, we conclude with insights for tool
+developers that follow ChatGPT to provide detailed descriptions that can
+enhance the tool selection performance of LLMs.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03173">$\mathcal{B}$-Coder: Value-Based Deep Reinforcement Learning for Program Synthesis. (arXiv:2310.03173v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Yu_Z/0/1/0/all/0/1">Zishun Yu</a>, <a href="http://arxiv.org/find/cs/1/au:+Tao_Y/0/1/0/all/0/1">Yunzhe Tao</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_L/0/1/0/all/0/1">Liyu Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Sun_T/0/1/0/all/0/1">Tao Sun</a>, <a href="http://arxiv.org/find/cs/1/au:+Yang_H/0/1/0/all/0/1">Hongxia Yang</a></p>
+<p>Program synthesis aims to create accurate, executable code from natural
+language descriptions. This field has leveraged the power of reinforcement
+learning (RL) in conjunction with large language models (LLMs), significantly
+enhancing code generation capabilities. This integration focuses on directly
+optimizing functional correctness, transcending conventional supervised losses.
+While current literature predominantly favors policy-based algorithms,
+attributes of program synthesis suggest a natural compatibility with
+value-based methods. This stems from rich collection of off-policy programs
+developed by human programmers, and the straightforward verification of
+generated programs through automated unit testing (i.e. easily obtainable
+rewards in RL language). Diverging from the predominant use of policy-based
+algorithms, our work explores the applicability of value-based approaches,
+leading to the development of our $\mathcal{B}$-Coder (pronounced Bellman
+coder). Yet, training value-based methods presents challenges due to the
+enormous search space inherent to program synthesis. To this end, we propose an
+initialization protocol for RL agents utilizing pre-trained LMs and a
+conservative Bellman operator to reduce training complexities. Moreover, we
+demonstrate how to leverage the learned value functions as a dual strategy to
+post-process generated programs. Our empirical evaluations demonstrated
+$\mathcal{B}$-Coder's capability in achieving state-of-the-art performance
+compared with policy-based methods. Remarkably, this achievement is reached
+with minimal reward engineering effort, highlighting the effectiveness of
+value-based RL, independent of reward designs.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03182">Robust and Interpretable Medical Image Classifiers via Concept Bottleneck Models. (arXiv:2310.03182v1 [cs.CV])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Yan_A/0/1/0/all/0/1">An Yan</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_Y/0/1/0/all/0/1">Yu Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhong_Y/0/1/0/all/0/1">Yiwu Zhong</a>, <a href="http://arxiv.org/find/cs/1/au:+He_Z/0/1/0/all/0/1">Zexue He</a>, <a href="http://arxiv.org/find/cs/1/au:+Karypis_P/0/1/0/all/0/1">Petros Karypis</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_Z/0/1/0/all/0/1">Zihan Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Dong_C/0/1/0/all/0/1">Chengyu Dong</a>, <a href="http://arxiv.org/find/cs/1/au:+Gentili_A/0/1/0/all/0/1">Amilcare Gentili</a>, <a href="http://arxiv.org/find/cs/1/au:+Hsu_C/0/1/0/all/0/1">Chun-Nan Hsu</a>, <a href="http://arxiv.org/find/cs/1/au:+Shang_J/0/1/0/all/0/1">Jingbo Shang</a>, <a href="http://arxiv.org/find/cs/1/au:+McAuley_J/0/1/0/all/0/1">Julian McAuley</a></p>
+<p>Medical image classification is a critical problem for healthcare, with the
+potential to alleviate the workload of doctors and facilitate diagnoses of
+patients. However, two challenges arise when deploying deep learning models to
+real-world healthcare applications. First, neural models tend to learn spurious
+correlations instead of desired features, which could fall short when
+generalizing to new domains (e.g., patients with different ages). Second, these
+black-box models lack interpretability. When making diagnostic predictions, it
+is important to understand why a model makes a decision for trustworthy and
+safety considerations. In this paper, to address these two limitations, we
+propose a new paradigm to build robust and interpretable medical image
+classifiers with natural language concepts. Specifically, we first query
+clinical concepts from GPT-4, then transform latent image features into
+explicit concepts with a vision-language model. We systematically evaluate our
+method on eight medical image classification datasets to verify its
+effectiveness. On challenging datasets with strong confounding factors, our
+method can mitigate spurious correlations thus substantially outperform
+standard visual encoders and other baselines. Finally, we show how
+classification with a small number of concepts brings a level of
+interpretability for understanding model decisions through case studies in real
+medical data.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03184">Retrieval-augmented Generation to Improve Math Question-Answering: Trade-offs Between Groundedness and Human Preference. (arXiv:2310.03184v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Levonian_Z/0/1/0/all/0/1">Zachary Levonian</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_C/0/1/0/all/0/1">Chenglu Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhu_W/0/1/0/all/0/1">Wangda Zhu</a>, <a href="http://arxiv.org/find/cs/1/au:+Gade_A/0/1/0/all/0/1">Anoushka Gade</a>, <a href="http://arxiv.org/find/cs/1/au:+Henkel_O/0/1/0/all/0/1">Owen Henkel</a>, <a href="http://arxiv.org/find/cs/1/au:+Postle_M/0/1/0/all/0/1">Millie-Ellen Postle</a>, <a href="http://arxiv.org/find/cs/1/au:+Xing_W/0/1/0/all/0/1">Wanli Xing</a></p>
+<p>For middle-school math students, interactive question-answering (QA) with
+tutors is an effective way to learn. The flexibility and emergent capabilities
+of generative large language models (LLMs) has led to a surge of interest in
+automating portions of the tutoring process - including interactive QA to
+support conceptual discussion of mathematical concepts. However, LLM responses
+to math questions can be incorrect or mismatched to the educational context -
+such as being misaligned with a school's curriculum. One potential solution is
+retrieval-augmented generation (RAG), which involves incorporating a vetted
+external knowledge source in the LLM prompt to increase response quality. In
+this paper, we designed prompts that retrieve and use content from a
+high-quality open-source math textbook to generate responses to real student
+questions. We evaluate the efficacy of this RAG system for middle-school
+algebra and geometry QA by administering a multi-condition survey, finding that
+humans prefer responses generated using RAG, but not when responses are too
+grounded in the textbook content. We argue that while RAG is able to improve
+response quality, designers of math QA systems must consider trade-offs between
+generating responses preferred by students and responses closely matched to
+specific educational resources.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03193">The Rise of Open Science: Tracking the Evolution and Perceived Value of Data and Methods Link-Sharing Practices. (arXiv:2310.03193v1 [cs.DL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Cao_H/0/1/0/all/0/1">Hancheng Cao</a>, <a href="http://arxiv.org/find/cs/1/au:+Dodge_J/0/1/0/all/0/1">Jesse Dodge</a>, <a href="http://arxiv.org/find/cs/1/au:+Lo_K/0/1/0/all/0/1">Kyle Lo</a>, <a href="http://arxiv.org/find/cs/1/au:+McFarland_D/0/1/0/all/0/1">Daniel A. McFarland</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_L/0/1/0/all/0/1">Lucy Lu Wang</a></p>
+<p>In recent years, funding agencies and journals increasingly advocate for open
+science practices (e.g. data and method sharing) to improve the transparency,
+access, and reproducibility of science. However, quantifying these practices at
+scale has proven difficult. In this work, we leverage a large-scale dataset of
+1.1M papers from arXiv that are representative of the fields of physics, math,
+and computer science to analyze the adoption of data and method link-sharing
+practices over time and their impact on article reception. To identify links to
+data and methods, we train a neural text classification model to automatically
+classify URL types based on contextual mentions in papers. We find evidence
+that the practice of link-sharing to methods and data is spreading as more
+papers include such URLs over time. Reproducibility efforts may also be
+spreading because the same links are being increasingly reused across papers
+(especially in computer science); and these links are increasingly concentrated
+within fewer web domains (e.g. Github) over time. Lastly, articles that share
+data and method links receive increased recognition in terms of citation count,
+with a stronger effect when the shared links are active (rather than defunct).
+Together, these findings demonstrate the increased spread and perceived value
+of data and method sharing practices in open science.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03210">Can Language Models Employ the Socratic Method? Experiments with Code Debugging. (arXiv:2310.03210v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Al_Hossami_E/0/1/0/all/0/1">Erfan Al-Hossami</a>, <a href="http://arxiv.org/find/cs/1/au:+Bunescu_R/0/1/0/all/0/1">Razvan Bunescu</a>, <a href="http://arxiv.org/find/cs/1/au:+Smith_J/0/1/0/all/0/1">Justin Smith</a>, <a href="http://arxiv.org/find/cs/1/au:+Teehan_R/0/1/0/all/0/1">Ryan Teehan</a></p>
+<p>When employing the Socratic method of teaching, instructors guide students
+toward solving a problem on their own rather than providing the solution
+directly. While this strategy can substantially improve learning outcomes, it
+is usually time-consuming and cognitively demanding. Automated Socratic
+conversational agents can augment human instruction and provide the necessary
+scale, however their development is hampered by the lack of suitable data for
+training and evaluation. In this paper, we introduce a manually created dataset
+of multi-turn Socratic advice that is aimed at helping a novice programmer fix
+buggy solutions to simple computational problems. The dataset is then used for
+benchmarking the Socratic debugging abilities of a number of language models,
+ranging from fine-tuning the instruction-based text-to-text transformer Flan-T5
+to zero-shot and chain of thought prompting of the much larger GPT-4. The code
+and datasets are made freely available for research at the link below.
+https://github.com/taisazero/socratic-debugging-benchmark
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03211">On the Performance of Multimodal Language Models. (arXiv:2310.03211v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Garg_U/0/1/0/all/0/1">Utsav Garg</a>, <a href="http://arxiv.org/find/cs/1/au:+Bas_E/0/1/0/all/0/1">Erhan Bas</a></p>
+<p>Instruction-tuned large language models (LLMs) have demonstrated promising
+zero-shot generalization capabilities across various downstream tasks. Recent
+research has introduced multimodal capabilities to LLMs by integrating
+independently pretrained vision encoders through model grafting. These
+multimodal variants undergo instruction tuning, similar to LLMs, enabling
+effective zero-shot generalization for multimodal tasks. This study conducts a
+comparative analysis of different multimodal instruction tuning approaches and
+evaluates their performance across a range of tasks, including complex
+reasoning, conversation, image captioning, multiple-choice questions (MCQs),
+and binary classification. Through rigorous benchmarking and ablation
+experiments, we reveal key insights for guiding architectural choices when
+incorporating multimodal capabilities into LLMs. However, current approaches
+have limitations; they do not sufficiently address the need for a diverse
+multimodal instruction dataset, which is crucial for enhancing task
+generalization. Additionally, they overlook issues related to truthfulness and
+factuality when generating responses. These findings illuminate current
+methodological constraints in adapting language models for image comprehension
+and provide valuable guidance for researchers and practitioners seeking to
+harness multimodal versions of LLMs.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03214">FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation. (arXiv:2310.03214v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Vu_T/0/1/0/all/0/1">Tu Vu</a>, <a href="http://arxiv.org/find/cs/1/au:+Iyyer_M/0/1/0/all/0/1">Mohit Iyyer</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_X/0/1/0/all/0/1">Xuezhi Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Constant_N/0/1/0/all/0/1">Noah Constant</a>, <a href="http://arxiv.org/find/cs/1/au:+Wei_J/0/1/0/all/0/1">Jerry Wei</a>, <a href="http://arxiv.org/find/cs/1/au:+Wei_J/0/1/0/all/0/1">Jason Wei</a>, <a href="http://arxiv.org/find/cs/1/au:+Tar_C/0/1/0/all/0/1">Chris Tar</a>, <a href="http://arxiv.org/find/cs/1/au:+Sung_Y/0/1/0/all/0/1">Yun-Hsuan Sung</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhou_D/0/1/0/all/0/1">Denny Zhou</a>, <a href="http://arxiv.org/find/cs/1/au:+Le_Q/0/1/0/all/0/1">Quoc Le</a>, <a href="http://arxiv.org/find/cs/1/au:+Luong_T/0/1/0/all/0/1">Thang Luong</a></p>
+<p>Most large language models (LLMs) are trained once and never updated; thus,
+they lack the ability to dynamically adapt to our ever-changing world. In this
+work, we perform a detailed study of the factuality of LLM-generated text in
+the context of answering questions that test current world knowledge.
+Specifically, we introduce FreshQA, a novel dynamic QA benchmark encompassing a
+diverse range of question and answer types, including questions that require
+fast-changing world knowledge as well as questions with false premises that
+need to be debunked. We benchmark a diverse array of both closed and
+open-source LLMs under a two-mode evaluation procedure that allows us to
+measure both correctness and hallucination. Through human evaluations involving
+more than 50K judgments, we shed light on limitations of these models and
+demonstrate significant room for improvement: for instance, all models
+(regardless of model size) struggle on questions that involve fast-changing
+knowledge and false premises. Motivated by these results, we present
+FreshPrompt, a simple few-shot prompting method that substantially boosts the
+performance of an LLM on FreshQA by incorporating relevant and up-to-date
+information retrieved from a search engine into the prompt. Our experiments
+show that FreshPrompt outperforms both competing search engine-augmented
+prompting methods such as Self-Ask (Press et al., 2022) as well as commercial
+systems such as Perplexity.AI. Further analysis of FreshPrompt reveals that
+both the number of retrieved evidences and their order play a key role in
+influencing the correctness of LLM-generated answers. Additionally, instructing
+the LLM to generate concise and direct answers helps reduce hallucination
+compared to encouraging more verbose answers. To facilitate future work, we
+release FreshQA at github.com/freshllms/freshqa and commit to updating it at
+regular intervals.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03232">Deep Representations of First-person Pronouns for Prediction of Depression Symptom Severity. (arXiv:2310.03232v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Ren_X/0/1/0/all/0/1">Xinyang Ren</a>, <a href="http://arxiv.org/find/cs/1/au:+Burkhardt_H/0/1/0/all/0/1">Hannah A Burkhardt</a>, <a href="http://arxiv.org/find/cs/1/au:+Arean_P/0/1/0/all/0/1">Patricia A Are&#xe1;n</a>, <a href="http://arxiv.org/find/cs/1/au:+Hull_T/0/1/0/all/0/1">Thomas D Hull</a>, <a href="http://arxiv.org/find/cs/1/au:+Cohen_T/0/1/0/all/0/1">Trevor Cohen</a></p>
+<p>Prior work has shown that analyzing the use of first-person singular pronouns
+can provide insight into individuals' mental status, especially depression
+symptom severity. These findings were generated by counting frequencies of
+first-person singular pronouns in text data. However, counting doesn't capture
+how these pronouns are used. Recent advances in neural language modeling have
+leveraged methods generating contextual embeddings. In this study, we sought to
+utilize the embeddings of first-person pronouns obtained from contextualized
+language representation models to capture ways these pronouns are used, to
+analyze mental status. De-identified text messages sent during online
+psychotherapy with weekly assessment of depression severity were used for
+evaluation. Results indicate the advantage of contextualized first-person
+pronoun embeddings over standard classification token embeddings and
+frequency-based pronoun analysis results in predicting depression symptom
+severity. This suggests contextual representations of first-person pronouns can
+enhance the predictive utility of language used by people with depression
+symptoms.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03249">Can Large Language Models be Good Path Planners? A Benchmark and Investigation on Spatial-temporal Reasoning. (arXiv:2310.03249v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Aghzal_M/0/1/0/all/0/1">Mohamed Aghzal</a>, <a href="http://arxiv.org/find/cs/1/au:+Plaku_E/0/1/0/all/0/1">Erion Plaku</a>, <a href="http://arxiv.org/find/cs/1/au:+Yao_Z/0/1/0/all/0/1">Ziyu Yao</a></p>
+<p>Large language models (LLMs) have achieved remarkable success across a wide
+spectrum of tasks; however, they still face limitations in scenarios that
+demand long-term planning and spatial reasoning. To facilitate this line of
+research, in this work, we propose a new benchmark, termed $\textbf{P}$ath
+$\textbf{P}$lanning from $\textbf{N}$atural $\textbf{L}$anguage
+($\textbf{PPNL}$). Our benchmark evaluates LLMs' spatial-temporal reasoning by
+formulating ''path planning'' tasks that require an LLM to navigate to target
+locations while avoiding obstacles and adhering to constraints. Leveraging this
+benchmark, we systematically investigate LLMs including GPT-4 via different
+few-shot prompting methodologies and BART and T5 of various sizes via
+fine-tuning. Our experimental results show the promise of few-shot GPT-4 in
+spatial reasoning, when it is prompted to reason and act interleavedly,
+although it still fails to make long-term temporal reasoning. In contrast,
+while fine-tuned LLMs achieved impressive results on in-distribution reasoning
+tasks, they struggled to generalize to larger environments or environments with
+more obstacles.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03262">Unlock Predictable Scaling from Emergent Abilities. (arXiv:2310.03262v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Hu_S/0/1/0/all/0/1">Shengding Hu</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_X/0/1/0/all/0/1">Xin Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Han_X/0/1/0/all/0/1">Xu Han</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_X/0/1/0/all/0/1">Xinrong Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+He_C/0/1/0/all/0/1">Chaoqun He</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhao_W/0/1/0/all/0/1">Weilin Zhao</a>, <a href="http://arxiv.org/find/cs/1/au:+Lin_Y/0/1/0/all/0/1">Yankai Lin</a>, <a href="http://arxiv.org/find/cs/1/au:+Ding_N/0/1/0/all/0/1">Ning Ding</a>, <a href="http://arxiv.org/find/cs/1/au:+Ou_Z/0/1/0/all/0/1">Zebin Ou</a>, <a href="http://arxiv.org/find/cs/1/au:+Zeng_G/0/1/0/all/0/1">Guoyang Zeng</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_Z/0/1/0/all/0/1">Zhiyuan Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Sun_M/0/1/0/all/0/1">Maosong Sun</a></p>
+<p>The scientific scale-up of large language models (LLMs) necessitates a
+comprehensive understanding of their scaling properties. However, the existing
+literature on the scaling properties only yields an incomplete answer:
+optimization loss decreases predictably as the model size increases, in line
+with established scaling law; yet no scaling law for task has been established
+and the task performances are far from predictable during scaling. Task
+performances typically show minor gains on small models until they improve
+dramatically once models exceed a size threshold, exemplifying the ``emergent
+abilities''. In this study, we discover that small models, although they
+exhibit minor performance, demonstrate critical and consistent task performance
+improvements that are not captured by conventional evaluation strategies due to
+insufficient measurement resolution. To measure such improvements, we introduce
+PassUntil, an evaluation strategy through massive sampling in the decoding
+phase. We conduct quantitative investigations into the scaling law of task
+performance. Firstly, a strict task scaling law is identified, enhancing the
+predictability of task performances. Remarkably, we are able to predict the
+performance of the 2.4B model on code generation with merely 0.05\% deviation
+before training starts. Secondly, underpinned by PassUntil, we observe concrete
+evidence of emergent abilities and ascertain that they are not in conflict with
+the continuity of performance improvement. Their semblance to break-through is
+that their scaling curve cannot be fitted by standard scaling law function. We
+then introduce a mathematical definition for the emergent abilities. Through
+the definition, we refute a prevalent ``multi-step reasoning hypothesis''
+regarding the genesis of emergent abilities and propose a new hypothesis with a
+satisfying fit to the observed scaling curve.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03269">InstructProtein: Aligning Human and Protein Language via Knowledge Instruction. (arXiv:2310.03269v1 [q-bio.BM])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/q-bio/1/au:+Wang_Z/0/1/0/all/0/1">Zeyuan Wang</a>, <a href="http://arxiv.org/find/q-bio/1/au:+Zhang_Q/0/1/0/all/0/1">Qiang Zhang</a>, <a href="http://arxiv.org/find/q-bio/1/au:+Ding_K/0/1/0/all/0/1">Keyan Ding</a>, <a href="http://arxiv.org/find/q-bio/1/au:+Qin_M/0/1/0/all/0/1">Ming Qin</a>, <a href="http://arxiv.org/find/q-bio/1/au:+Zhuang_X/0/1/0/all/0/1">Xiang Zhuang</a>, <a href="http://arxiv.org/find/q-bio/1/au:+Li_X/0/1/0/all/0/1">Xiaotong Li</a>, <a href="http://arxiv.org/find/q-bio/1/au:+Chen_H/0/1/0/all/0/1">Huajun Chen</a></p>
+<p>Large Language Models (LLMs) have revolutionized the field of natural
+language processing, but they fall short in comprehending biological sequences
+such as proteins. To address this challenge, we propose InstructProtein, an
+innovative LLM that possesses bidirectional generation capabilities in both
+human and protein languages: (i) taking a protein sequence as input to predict
+its textual function description and (ii) using natural language to prompt
+protein sequence generation. To achieve this, we first pre-train an LLM on both
+protein and natural language corpora, enabling it to comprehend individual
+languages. Then supervised instruction tuning is employed to facilitate the
+alignment of these two distinct languages. Herein, we introduce a knowledge
+graph-based instruction generation framework to construct a high-quality
+instruction dataset, addressing annotation imbalance and instruction deficits
+in existing protein-text corpus. In particular, the instructions inherit the
+structural relations between proteins and function annotations in knowledge
+graphs, which empowers our model to engage in the causal modeling of protein
+functions, akin to the chain-of-thought processes in natural languages.
+Extensive experiments on bidirectional protein-text generation tasks show that
+InstructProtein outperforms state-of-the-art LLMs by large margins. Moreover,
+InstructProtein serves as a pioneering step towards text-based protein function
+prediction and sequence design, effectively bridging the gap between protein
+and human language understanding.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03283">A Formalism and Approach for Improving Robustness of Large Language Models Using Risk-Adjusted Confidence Scores. (arXiv:2310.03283v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Shen_K/0/1/0/all/0/1">Ke Shen</a>, <a href="http://arxiv.org/find/cs/1/au:+Kejriwal_M/0/1/0/all/0/1">Mayank Kejriwal</a></p>
+<p>Large Language Models (LLMs), such as ChatGPT, have achieved impressive
+milestones in natural language processing (NLP). Despite their impressive
+performance, the models are known to pose important risks. As these models are
+deployed in real-world applications, a systematic understanding of different
+risks posed by these models on tasks such as natural language inference (NLI),
+is much needed. In this paper, we define and formalize two distinct types of
+risk: decision risk and composite risk. We also propose a risk-centric
+evaluation framework, and four novel metrics, for assessing LLMs on these risks
+in both in-domain and out-of-domain settings. Finally, we propose a
+risk-adjusted calibration method called DwD for helping LLMs minimize these
+risks in an overall NLI architecture. Detailed experiments, using four NLI
+benchmarks, three baselines and two LLMs, including ChatGPT, show both the
+practical utility of the evaluation framework, and the efficacy of DwD in
+reducing decision and composite risk. For instance, when using DwD, an
+underlying LLM is able to address an extra 20.1% of low-risk inference tasks
+(but which the LLM erroneously deems high-risk without risk adjustment) and
+skip a further 19.8% of high-risk tasks, which would have been answered
+incorrectly.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03293">A New Dialogue Response Generation Agent for Large Language Models by Asking Questions to Detect User&#x27;s Intentions. (arXiv:2310.03293v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Wu_S/0/1/0/all/0/1">Siwei Wu</a>, <a href="http://arxiv.org/find/cs/1/au:+Shen_X/0/1/0/all/0/1">Xiangqing Shen</a>, <a href="http://arxiv.org/find/cs/1/au:+Xia_R/0/1/0/all/0/1">Rui Xia</a></p>
+<p>Large Language Models (LLMs), such as ChatGPT, have recently been applied to
+various NLP tasks due to its open-domain generation capabilities. However,
+there are two issues with applying LLMs to dialogue tasks. 1. During the
+dialogue process, users may have implicit intentions that might be overlooked
+by LLMs. Consequently, generated responses couldn't align with the user's
+intentions. 2. It is unlikely for LLMs to encompass all fields comprehensively.
+In certain specific domains, their knowledge may be incomplete, and LLMs cannot
+update the latest knowledge in real-time. To tackle these issues, we propose a
+framework~\emph{using LLM to \textbf{E}nhance dialogue response generation by
+asking questions to \textbf{D}etect user's \textbf{I}mplicit
+in\textbf{T}entions} (\textbf{EDIT}). Firstly, EDIT generates open questions
+related to the dialogue context as the potential user's intention; Then, EDIT
+answers those questions by interacting with LLMs and searching in
+domain-specific knowledge bases respectively, and use LLMs to choose the proper
+answers to questions as extra knowledge; Finally, EDIT enhances response
+generation by explicitly integrating those extra knowledge. Besides, previous
+question generation works only focus on asking questions with answers in
+context. In order to ask open questions, we construct a Context-Open-Question
+(COQ) dataset. On two task-oriented dialogue tasks (Wizard of Wikipedia and
+Holl-E), EDIT outperformed other LLMs.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03304">Learning Personalized Story Evaluation. (arXiv:2310.03304v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Wang_D/0/1/0/all/0/1">Danqing Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Yang_K/0/1/0/all/0/1">Kevin Yang</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhu_H/0/1/0/all/0/1">Hanlin Zhu</a>, <a href="http://arxiv.org/find/cs/1/au:+Yang_X/0/1/0/all/0/1">Xiaomeng Yang</a>, <a href="http://arxiv.org/find/cs/1/au:+Cohen_A/0/1/0/all/0/1">Andrew Cohen</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_L/0/1/0/all/0/1">Lei Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Tian_Y/0/1/0/all/0/1">Yuandong Tian</a></p>
+<p>While large language models (LLMs) have shown impressive results for more
+objective tasks such as QA and retrieval, it remains nontrivial to evaluate
+their performance on open-ended text generation for reasons including (1) data
+contamination; (2) multi-dimensional evaluation criteria; and (3)
+subjectiveness stemming from reviewers' personal preferences. To address such
+issues, we propose to model personalization in an uncontaminated open-ended
+generation assessment. We create two new datasets Per-MPST and Per-DOC for
+personalized story evaluation, by re-purposing existing datasets with proper
+anonymization and new personalized labels. We further develop a personalized
+story evaluation model PERSE to infer reviewer preferences and provide a
+personalized evaluation. Specifically, given a few exemplary reviews from a
+particular reviewer, PERSE predicts either a detailed review or fine-grained
+comparison in several aspects (such as interestingness and surprise) for that
+reviewer on a new text input. Experimental results show that PERSE outperforms
+GPT-4 by 15.8% on Kendall correlation of story ratings, and by 13.7% on
+pairwise preference prediction accuracy. Both datasets and code will be
+released at https://github.com/dqwang122/PerSE.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03309">Concise and Organized Perception Facilitates Large Language Models for Deductive Reasoning. (arXiv:2310.03309v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Yan_S/0/1/0/all/0/1">Shaotian Yan</a>, <a href="http://arxiv.org/find/cs/1/au:+Shen_C/0/1/0/all/0/1">Chen Shen</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_J/0/1/0/all/0/1">Junjie Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Ye_J/0/1/0/all/0/1">Jieping Ye</a></p>
+<p>Exploiting large language models (LLMs) to tackle deductive reasoning has
+garnered growing attention. It still remains highly challenging to achieve
+satisfactory results in complex deductive problems, characterized by plenty of
+premises (i.e., facts or rules) entailing intricate relationships among
+entities and requiring multi-hop reasoning. One intuitive solution is to
+decompose the original task into smaller sub-tasks, and then chain the multiple
+casual reasoning steps together in a forward (e.g., Selection-Inference) or
+backward (e.g., LAMBADA) direction. However, these techniques inevitably
+necessitate a large number of overall stages, leading to computationally
+expensive operations and a higher possibility of making misleading steps. In
+addition to stage-by-stage decomposition, we draw inspiration from another
+aspect of human problem-solving. Humans tend to distill the most relevant
+information and organize their thoughts systematically (e.g., creating mind
+maps), which assists them in answering questions or drawing conclusions
+precisely and quickly. In light of this, we propose a novel reasoning approach
+named Concise and Organized Perception (COP). COP carefully analyzes the given
+statements to efficiently identify the most pertinent information while
+eliminating redundancy. It then prompts the LLMs in a more organized form that
+adapts to the model's inference process. By perceiving concise and organized
+proofs, the deductive reasoning abilities of LLMs can be better elicited, and
+the risk of acquiring errors caused by excessive reasoning stages is mitigated.
+Furthermore, our approach can be combined with the aforementioned ones to
+further boost their performance. Extensive experimental results on three
+popular deductive benchmarks (i.e., ProofWriter, PrOntoQA and PrOntoQA-OOD)
+show that COP significantly outperforms previous state-of-the-art methods.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03328">Reformulating Domain Adaptation of Large Language Models as Adapt-Retrieve-Revise. (arXiv:2310.03328v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+wan_Z/0/1/0/all/0/1">Zhen wan</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_Y/0/1/0/all/0/1">Yating Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_Y/0/1/0/all/0/1">Yexiang Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Cheng_F/0/1/0/all/0/1">Fei Cheng</a>, <a href="http://arxiv.org/find/cs/1/au:+Kurohashi_S/0/1/0/all/0/1">Sadao Kurohashi</a></p>
+<p>While large language models (LLMs) like GPT-4 have recently demonstrated
+astonishing zero-shot capabilities in general domain tasks, they often generate
+content with hallucinations in specific domains such as Chinese law, hindering
+their application in these areas. This is typically due to the absence of
+training data that encompasses such a specific domain, preventing GPT-4 from
+acquiring in-domain knowledge. A pressing challenge is that it's not plausible
+to continue training LLMs of such scale on in-domain data.
+</p>
+<p>This paper introduces a simple and effective domain adaptation framework for
+GPT-4 by reformulating generation as an \textbf{adapt-retrieve-revise} process.
+The initial step is to \textbf{adapt} an affordable 7B LLM to the target domain
+by continuing learning on in-domain data. When solving a task, we leverage the
+adapted LLM to generate a draft answer given a task query. Then, the draft
+answer will be used to \textbf{retrieve} supporting evidence candidates from an
+external in-domain knowledge base. Finally, the draft answer and retrieved
+evidence are concatenated into a whole prompt to let GPT-4 assess the evidence
+and \textbf{revise} the draft answer to generate the final answer.
+</p>
+<p>Our proposal combines the advantages of the efficiency of adapting a smaller
+7B model with the evidence-assessing capability of GPT-4 and effectively
+prevents GPT-4 from generating hallucinatory content. In the zero-shot setting
+of four Chinese legal tasks, our method improves accuracy by 33.3\% compared to
+the direct generation by GPT-4. When compared to two stronger retrieval-based
+baselines, our method outperforms them by 15.4\% and 23.9\%. Our code will be
+released
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03368">Evaluating Hallucinations in Chinese Large Language Models. (arXiv:2310.03368v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Cheng_Q/0/1/0/all/0/1">Qinyuan Cheng</a>, <a href="http://arxiv.org/find/cs/1/au:+Sun_T/0/1/0/all/0/1">Tianxiang Sun</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_W/0/1/0/all/0/1">Wenwei Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_S/0/1/0/all/0/1">Siyin Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_X/0/1/0/all/0/1">Xiangyang Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_M/0/1/0/all/0/1">Mozhi Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+He_J/0/1/0/all/0/1">Junliang He</a>, <a href="http://arxiv.org/find/cs/1/au:+Huang_M/0/1/0/all/0/1">Mianqiu Huang</a>, <a href="http://arxiv.org/find/cs/1/au:+Yin_Z/0/1/0/all/0/1">Zhangyue Yin</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_K/0/1/0/all/0/1">Kai Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Qiu_X/0/1/0/all/0/1">Xipeng Qiu</a></p>
+<p>In this paper, we establish a benchmark named HalluQA (Chinese Hallucination
+Question-Answering) to measure the hallucination phenomenon in Chinese large
+language models. HalluQA contains 450 meticulously designed adversarial
+questions, spanning multiple domains, and takes into account Chinese historical
+culture, customs, and social phenomena. During the construction of HalluQA, we
+consider two types of hallucinations: imitative falsehoods and factual errors,
+and we construct adversarial samples based on GLM-130B and ChatGPT. For
+evaluation, we design an automated evaluation method using GPT-4 to judge
+whether a model output is hallucinated. We conduct extensive experiments on 24
+large language models, including ERNIE-Bot, Baichuan2, ChatGLM, Qwen, SparkDesk
+and etc. Out of the 24 models, 18 achieved non-hallucination rates lower than
+50%. This indicates that HalluQA is highly challenging. We analyze the primary
+types of hallucinations in different types of models and their causes.
+Additionally, we discuss which types of hallucinations should be prioritized
+for different types of models.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03376">Procedural Text Mining with Large Language Models. (arXiv:2310.03376v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Rula_A/0/1/0/all/0/1">Anisa Rula</a>, <a href="http://arxiv.org/find/cs/1/au:+DSouza_J/0/1/0/all/0/1">Jennifer D&#x27;Souza</a></p>
+<p>Recent advancements in the field of Natural Language Processing, particularly
+the development of large-scale language models that are pretrained on vast
+amounts of knowledge, are creating novel opportunities within the realm of
+Knowledge Engineering. In this paper, we investigate the usage of large
+language models (LLMs) in both zero-shot and in-context learning settings to
+tackle the problem of extracting procedures from unstructured PDF text in an
+incremental question-answering fashion. In particular, we leverage the current
+state-of-the-art GPT-4 (Generative Pre-trained Transformer 4) model,
+accompanied by two variations of in-context learning that involve an ontology
+with definitions of procedures and steps and a limited number of samples of
+few-shot learning. The findings highlight both the promise of this approach and
+the value of the in-context learning customisations. These modifications have
+the potential to significantly address the challenge of obtaining sufficient
+training data, a hurdle often encountered in deep learning-based Natural
+Language Processing techniques for procedure extraction.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03414">LLM Based Multi-Document Summarization Exploiting Main-Event Biased Monotone Submodular Content Extraction. (arXiv:2310.03414v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Kurisinkel_L/0/1/0/all/0/1">Litton J Kurisinkel</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_N/0/1/0/all/0/1">Nancy F. Chen</a></p>
+<p>Multi-document summarization is a challenging task due to its inherent
+subjective bias, highlighted by the low inter-annotator ROUGE-1 score of 0.4
+among DUC-2004 reference summaries. In this work, we aim to enhance the
+objectivity of news summarization by focusing on the main event of a group of
+related news documents and presenting it coherently with sufficient context.
+Our primary objective is to succinctly report the main event, ensuring that the
+summary remains objective and informative. To achieve this, we employ an
+extract-rewrite approach that incorporates a main-event biased
+monotone-submodular function for content selection. This enables us to extract
+the most crucial information related to the main event from the document
+cluster. To ensure coherence, we utilize a fine-tuned Language Model (LLM) for
+rewriting the extracted content into a coherent text. The evaluation using
+objective metrics and human evaluators confirms the effectiveness of our
+approach, as it surpasses potential baselines, demonstrating excellence in both
+content coverage, coherence, and informativeness.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03424">Neural Language Model Pruning for Automatic Speech Recognition. (arXiv:2310.03424v1 [cs.LG])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Emili_L/0/1/0/all/0/1">Leonardo Emili</a>, <a href="http://arxiv.org/find/cs/1/au:+Fraga_Silva_T/0/1/0/all/0/1">Thiago Fraga-Silva</a>, <a href="http://arxiv.org/find/cs/1/au:+Pusateri_E/0/1/0/all/0/1">Ernest Pusateri</a>, <a href="http://arxiv.org/find/cs/1/au:+Nussbaum_Thom_M/0/1/0/all/0/1">Markus Nu&#xdf;baum-Thom</a>, <a href="http://arxiv.org/find/cs/1/au:+Oualil_Y/0/1/0/all/0/1">Youssef Oualil</a></p>
+<p>We study model pruning methods applied to Transformer-based neural network
+language models for automatic speech recognition. We explore three aspects of
+the pruning frame work, namely criterion, method and scheduler, analyzing their
+contribution in terms of accuracy and inference speed. To the best of our
+knowledge, such in-depth analyses on large-scale recognition systems has not
+been reported in the literature. In addition, we propose a variant of low-rank
+approximation suitable for incrementally compressing models, and delivering
+multiple models with varied target sizes. Among other results, we show that a)
+data-driven pruning outperforms magnitude-driven in several scenarios; b)
+incremental pruning achieves higher accuracy compared to one-shot pruning,
+especially when targeting smaller sizes; and c) low-rank approximation presents
+the best trade-off between size reduction and inference speed-up for moderate
+compression.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03443">The North System for Formosa Speech Recognition Challenge 2023. (arXiv:2310.03443v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Chen_L/0/1/0/all/0/1">Li-Wei Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Cheng_K/0/1/0/all/0/1">Kai-Chen Cheng</a>, <a href="http://arxiv.org/find/cs/1/au:+Lee_H/0/1/0/all/0/1">Hung-Shin Lee</a></p>
+<p>This report provides a concise overview of the proposed North system, which
+aims to achieve automatic word/syllable recognition for Taiwanese Hakka
+(Sixian). The report outlines three key components of the system: the
+acquisition, composition, and utilization of the training data; the
+architecture of the model; and the hardware specifications and operational
+statistics. The demonstration of the system can be found at
+https://asrvm.iis.sinica.edu.tw/hakka_sixian.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03473">Controllable Multi-document Summarization: Coverage &amp; Coherence Intuitive Policy with Large Language Model Based Rewards. (arXiv:2310.03473v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Kurisinkel_L/0/1/0/all/0/1">Litton J Kurisinkel</a>, <a href="http://arxiv.org/find/cs/1/au:+chen_N/0/1/0/all/0/1">Nancy F chen</a></p>
+<p>Memory-efficient large language models are good at refining text input for
+better readability. However, controllability is a matter of concern when it
+comes to text generation tasks with long inputs, such as multi-document
+summarization. In this work, we investigate for a generic controllable approach
+for multi-document summarization that leverages the capabilities of LLMs to
+refine the text. In particular, we train a controllable content extraction
+scheme to extract the text that will be refined by an LLM. The scheme is
+designed with a novel coverage and coherence intuitive policy, which is duly
+rewarded by a passively trained LLM. Our approach yields competitive results in
+the evaluation using ROUGE metrics and outperforms potential baselines in
+coherence, as per human evaluation.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03477">Tik-to-Tok: Translating Language Models One Token at a Time: An Embedding Initialization Strategy for Efficient Language Adaptation. (arXiv:2310.03477v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Remy_F/0/1/0/all/0/1">Fran&#xe7;ois Remy</a>, <a href="http://arxiv.org/find/cs/1/au:+Delobelle_P/0/1/0/all/0/1">Pieter Delobelle</a>, <a href="http://arxiv.org/find/cs/1/au:+Berendt_B/0/1/0/all/0/1">Bettina Berendt</a>, <a href="http://arxiv.org/find/cs/1/au:+Demuynck_K/0/1/0/all/0/1">Kris Demuynck</a>, <a href="http://arxiv.org/find/cs/1/au:+Demeester_T/0/1/0/all/0/1">Thomas Demeester</a></p>
+<p>Training monolingual language models for low and mid-resource languages is
+made challenging by limited and often inadequate pretraining data. In this
+study, we propose a novel model conversion strategy to address this issue,
+adapting high-resources monolingual language models to a new target language.
+By generalizing over a word translation dictionary encompassing both the source
+and target languages, we map tokens from the target tokenizer to semantically
+similar tokens from the source language tokenizer. This one-to-many token
+mapping improves tremendously the initialization of the embedding table for the
+target language. We conduct experiments to convert high-resource models to mid-
+and low-resource languages, namely Dutch and Frisian. These converted models
+achieve a new state-of-the-art performance on these languages across all sorts
+of downstream tasks. By reducing significantly the amount of data and time
+required for training state-of-the-art models, our novel model conversion
+strategy has the potential to benefit many languages worldwide.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03518">Towards Robust and Generalizable Training: An Empirical Study of Noisy Slot Filling for Input Perturbations. (arXiv:2310.03518v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Liu_J/0/1/0/all/0/1">Jiachi Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_L/0/1/0/all/0/1">Liwen Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Dong_G/0/1/0/all/0/1">Guanting Dong</a>, <a href="http://arxiv.org/find/cs/1/au:+Song_X/0/1/0/all/0/1">Xiaoshuai Song</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_Z/0/1/0/all/0/1">Zechen Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_Z/0/1/0/all/0/1">Zhengyang Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Lei_S/0/1/0/all/0/1">Shanglin Lei</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhao_J/0/1/0/all/0/1">Jinzheng Zhao</a>, <a href="http://arxiv.org/find/cs/1/au:+He_K/0/1/0/all/0/1">Keqing He</a>, <a href="http://arxiv.org/find/cs/1/au:+Xiao_B/0/1/0/all/0/1">Bo Xiao</a>, <a href="http://arxiv.org/find/cs/1/au:+Xu_W/0/1/0/all/0/1">Weiran Xu</a></p>
+<p>In real dialogue scenarios, as there are unknown input noises in the
+utterances, existing supervised slot filling models often perform poorly in
+practical applications. Even though there are some studies on noise-robust
+models, these works are only evaluated on rule-based synthetic datasets, which
+is limiting, making it difficult to promote the research of noise-robust
+methods. In this paper, we introduce a noise robustness evaluation dataset
+named Noise-SF for slot filling task. The proposed dataset contains five types
+of human-annotated noise, and all those noises are exactly existed in real
+extensive robust-training methods of slot filling into the proposed framework.
+By conducting exhaustive empirical evaluation experiments on Noise-SF, we find
+that baseline models have poor performance in robustness evaluation, and the
+proposed framework can effectively improve the robustness of models. Based on
+the empirical experimental results, we make some forward-looking suggestions to
+fuel the research in this direction. Our dataset Noise-SF will be released at
+https://github.com/dongguanting/Noise-SF.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03560">Redefining Digital Health Interfaces with Large Language Models. (arXiv:2310.03560v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Imrie_F/0/1/0/all/0/1">Fergus Imrie</a>, <a href="http://arxiv.org/find/cs/1/au:+Rauba_P/0/1/0/all/0/1">Paulius Rauba</a>, <a href="http://arxiv.org/find/cs/1/au:+Schaar_M/0/1/0/all/0/1">Mihaela van der Schaar</a></p>
+<p>Digital health tools have the potential to significantly improve the delivery
+of healthcare services. However, their use remains comparatively limited due,
+in part, to challenges surrounding usability and trust. Recently, Large
+Language Models (LLMs) have emerged as general-purpose models with the ability
+to process complex information and produce human-quality text, presenting a
+wealth of potential applications in healthcare. Directly applying LLMs in
+clinical settings is not straightforward, with LLMs susceptible to providing
+inconsistent or nonsensical answers. We demonstrate how LLMs can utilize
+external tools to provide a novel interface between clinicians and digital
+technologies. This enhances the utility and practical impact of digital
+healthcare tools and AI models while addressing current issues with using LLM
+in clinical settings such as hallucinations. We illustrate our approach with
+examples from cardiovascular disease and diabetes risk prediction, highlighting
+the benefit compared to traditional interfaces for digital tools.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03635">CLEVRER-Humans: Describing Physical and Causal Events the Human Way. (arXiv:2310.03635v1 [cs.AI])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Mao_J/0/1/0/all/0/1">Jiayuan Mao</a>, <a href="http://arxiv.org/find/cs/1/au:+Yang_X/0/1/0/all/0/1">Xuelin Yang</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_X/0/1/0/all/0/1">Xikun Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Goodman_N/0/1/0/all/0/1">Noah D. Goodman</a>, <a href="http://arxiv.org/find/cs/1/au:+Wu_J/0/1/0/all/0/1">Jiajun Wu</a></p>
+<p>Building machines that can reason about physical events and their causal
+relationships is crucial for flexible interaction with the physical world.
+However, most existing physical and causal reasoning benchmarks are exclusively
+based on synthetically generated events and synthetic natural language
+descriptions of causal relationships. This design brings up two issues. First,
+there is a lack of diversity in both event types and natural language
+descriptions; second, causal relationships based on manually-defined heuristics
+are different from human judgments. To address both shortcomings, we present
+the CLEVRER-Humans benchmark, a video reasoning dataset for causal judgment of
+physical events with human labels. We employ two techniques to improve data
+collection efficiency: first, a novel iterative event cloze task to elicit a
+new representation of events in videos, which we term Causal Event Graphs
+(CEGs); second, a data augmentation technique based on neural language
+generative models. We convert the collected CEGs into questions and answers to
+be consistent with prior work. Finally, we study a collection of baseline
+approaches for CLEVRER-Humans question-answering, highlighting the great
+challenges set forth by our benchmark.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03639">Evaluating Self-Supervised Speech Representations for Indigenous American Languages. (arXiv:2310.03639v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Chen_C/0/1/0/all/0/1">Chih-Chen Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_W/0/1/0/all/0/1">William Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Zevallos_R/0/1/0/all/0/1">Rodolfo Zevallos</a>, <a href="http://arxiv.org/find/cs/1/au:+Ortega_J/0/1/0/all/0/1">John Ortega</a></p>
+<p>The application of self-supervision to speech representation learning has
+garnered significant interest in recent years, due to its scalability to large
+amounts of unlabeled data. However, much progress, both in terms of
+pre-training and downstream evaluation, has remained concentrated in
+monolingual models that only consider English. Few models consider other
+languages, and even fewer consider indigenous ones. In our submission to the
+New Language Track of the ASRU 2023 ML-SUPERB Challenge, we present an ASR
+corpus for Quechua, an indigenous South American Language. We benchmark the
+efficacy of large SSL models on Quechua, along with 6 other indigenous
+languages such as Guarani and Bribri, on low-resource ASR. Our results show
+surprisingly strong performance by state-of-the-art SSL models, showing the
+potential generalizability of large-scale models to real-world data.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03646">TRAM: Bridging Trust Regions and Sharpness Aware Minimization. (arXiv:2310.03646v1 [cs.LG])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Sherborne_T/0/1/0/all/0/1">Tom Sherborne</a>, <a href="http://arxiv.org/find/cs/1/au:+Saphra_N/0/1/0/all/0/1">Naomi Saphra</a>, <a href="http://arxiv.org/find/cs/1/au:+Dasigi_P/0/1/0/all/0/1">Pradeep Dasigi</a>, <a href="http://arxiv.org/find/cs/1/au:+Peng_H/0/1/0/all/0/1">Hao Peng</a></p>
+<p>By reducing the curvature of the loss surface in the parameter space,
+Sharpness-aware minimization (SAM) yields widespread robustness improvement
+under domain transfer. Instead of focusing on parameters, however, this work
+considers the transferability of representations as the optimization target for
+out-of-domain generalization in a fine-tuning setup. To encourage the retention
+of transferable representations, we consider trust region-based fine-tuning
+methods, which exploit task-specific skills without forgetting task-agnostic
+representations from pre-training. We unify parameter- and representation-space
+smoothing approaches by using trust region bounds to inform SAM-style
+regularizers on both of these optimization surfaces. We propose Trust Region
+Aware Minimization (TRAM), a fine-tuning algorithm that optimizes for flat
+minima and smooth, informative representations without forgetting pre-trained
+structure. We find that TRAM outperforms both sharpness-aware and trust
+region-based optimization methods on cross-domain language modeling and
+cross-lingual transfer, where robustness to domain transfer and representation
+generality are critical for success. TRAM establishes a new standard in
+training generalizable models with minimal additional computation.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03666">MapperGPT: Large Language Models for Linking and Mapping Entities. (arXiv:2310.03666v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Matentzoglu_N/0/1/0/all/0/1">Nicolas Matentzoglu</a>, <a href="http://arxiv.org/find/cs/1/au:+Caufield_J/0/1/0/all/0/1">J. Harry Caufield</a>, <a href="http://arxiv.org/find/cs/1/au:+Hegde_H/0/1/0/all/0/1">Harshad B. Hegde</a>, <a href="http://arxiv.org/find/cs/1/au:+Reese_J/0/1/0/all/0/1">Justin T. Reese</a>, <a href="http://arxiv.org/find/cs/1/au:+Moxon_S/0/1/0/all/0/1">Sierra Moxon</a>, <a href="http://arxiv.org/find/cs/1/au:+Kim_H/0/1/0/all/0/1">Hyeongsik Kim</a>, <a href="http://arxiv.org/find/cs/1/au:+Harris_N/0/1/0/all/0/1">Nomi L. Harris</a>, <a href="http://arxiv.org/find/cs/1/au:+Haendel_M/0/1/0/all/0/1">Melissa A Haendel</a>, <a href="http://arxiv.org/find/cs/1/au:+Mungall_C/0/1/0/all/0/1">Christopher J. Mungall</a></p>
+<p>Aligning terminological resources, including ontologies, controlled
+vocabularies, taxonomies, and value sets is a critical part of data integration
+in many domains such as healthcare, chemistry, and biomedical research. Entity
+mapping is the process of determining correspondences between entities across
+these resources, such as gene identifiers, disease concepts, or chemical entity
+identifiers. Many tools have been developed to compute such mappings based on
+common structural features and lexical information such as labels and synonyms.
+Lexical approaches in particular often provide very high recall, but low
+precision, due to lexical ambiguity. As a consequence of this, mapping efforts
+often resort to a labor intensive manual mapping refinement through a human
+curator.
+</p>
+<p>Large Language Models (LLMs), such as the ones employed by ChatGPT, have
+generalizable abilities to perform a wide range of tasks, including
+question-answering and information extraction. Here we present MapperGPT, an
+approach that uses LLMs to review and refine mapping relationships as a
+post-processing step, in concert with existing high-recall methods that are
+based on lexical and structural heuristics.
+</p>
+<p>We evaluated MapperGPT on a series of alignment tasks from different domains,
+including anatomy, developmental biology, and renal diseases. We devised a
+collection of tasks that are designed to be particularly challenging for
+lexical methods. We show that when used in combination with high-recall
+methods, MapperGPT can provide a substantial improvement in accuracy, beating
+state-of-the-art (SOTA) methods such as LogMap.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03668">GoLLIE: Annotation Guidelines improve Zero-Shot Information-Extraction. (arXiv:2310.03668v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Sainz_O/0/1/0/all/0/1">Oscar Sainz</a>, <a href="http://arxiv.org/find/cs/1/au:+Garcia_Ferrero_I/0/1/0/all/0/1">Iker Garc&#xed;a-Ferrero</a>, <a href="http://arxiv.org/find/cs/1/au:+Agerri_R/0/1/0/all/0/1">Rodrigo Agerri</a>, <a href="http://arxiv.org/find/cs/1/au:+Lacalle_O/0/1/0/all/0/1">Oier Lopez de Lacalle</a>, <a href="http://arxiv.org/find/cs/1/au:+Rigau_G/0/1/0/all/0/1">German Rigau</a>, <a href="http://arxiv.org/find/cs/1/au:+Agirre_E/0/1/0/all/0/1">Eneko Agirre</a></p>
+<p>Large Language Models (LLMs) combined with instruction tuning have made
+significant progress when generalizing to unseen tasks. However, they have been
+less successful in Information Extraction (IE), lagging behind task-specific
+models. Typically, IE tasks are characterized by complex annotation guidelines
+which describe the task and give examples to humans. Previous attempts to
+leverage such information have failed, even with the largest models, as they
+are not able to follow the guidelines out-of-the-box. In this paper we propose
+GoLLIE (Guideline-following Large Language Model for IE), a model able to
+improve zero-shot results on unseen IE tasks by virtue of being fine-tuned to
+comply with annotation guidelines. Comprehensive evaluation empirically
+demonstrates that GoLLIE is able to generalize to and follow unseen guidelines,
+outperforming previous attempts at zero-shot information extraction. The
+ablation study shows that detailed guidelines is key for good results.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03686">DecoderLens: Layerwise Interpretation of Encoder-Decoder Transformers. (arXiv:2310.03686v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Langedijk_A/0/1/0/all/0/1">Anna Langedijk</a>, <a href="http://arxiv.org/find/cs/1/au:+Mohebbi_H/0/1/0/all/0/1">Hosein Mohebbi</a>, <a href="http://arxiv.org/find/cs/1/au:+Sarti_G/0/1/0/all/0/1">Gabriele Sarti</a>, <a href="http://arxiv.org/find/cs/1/au:+Zuidema_W/0/1/0/all/0/1">Willem Zuidema</a>, <a href="http://arxiv.org/find/cs/1/au:+Jumelet_J/0/1/0/all/0/1">Jaap Jumelet</a></p>
+<p>In recent years, many interpretability methods have been proposed to help
+interpret the internal states of Transformer-models, at different levels of
+precision and complexity. Here, to analyze encoder-decoder Transformers, we
+propose a simple, new method: DecoderLens. Inspired by the LogitLens (for
+decoder-only Transformers), this method involves allowing the decoder to
+cross-attend representations of intermediate encoder layers instead of using
+the final encoder output, as is normally done in encoder-decoder models. The
+method thus maps previously uninterpretable vector representations to
+human-interpretable sequences of words or symbols. We report results from the
+DecoderLens applied to models trained on question answering, logical reasoning,
+speech recognition and machine translation. The DecoderLens reveals several
+specific subtasks that are solved at low or intermediate layers, shedding new
+light on the information flow inside the encoder component of this important
+class of models.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03693">Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!. (arXiv:2310.03693v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Qi_X/0/1/0/all/0/1">Xiangyu Qi</a>, <a href="http://arxiv.org/find/cs/1/au:+Zeng_Y/0/1/0/all/0/1">Yi Zeng</a>, <a href="http://arxiv.org/find/cs/1/au:+Xie_T/0/1/0/all/0/1">Tinghao Xie</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_P/0/1/0/all/0/1">Pin-Yu Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Jia_R/0/1/0/all/0/1">Ruoxi Jia</a>, <a href="http://arxiv.org/find/cs/1/au:+Mittal_P/0/1/0/all/0/1">Prateek Mittal</a>, <a href="http://arxiv.org/find/cs/1/au:+Henderson_P/0/1/0/all/0/1">Peter Henderson</a></p>
+<p>Optimizing large language models (LLMs) for downstream use cases often
+involves the customization of pre-trained LLMs through further fine-tuning.
+Meta's open release of Llama models and OpenAI's APIs for fine-tuning GPT-3.5
+Turbo on custom datasets also encourage this practice. But, what are the safety
+costs associated with such custom fine-tuning? We note that while existing
+safety alignment infrastructures can restrict harmful behaviors of LLMs at
+inference time, they do not cover safety risks when fine-tuning privileges are
+extended to end-users. Our red teaming studies find that the safety alignment
+of LLMs can be compromised by fine-tuning with only a few adversarially
+designed training examples. For instance, we jailbreak GPT-3.5 Turbo's safety
+guardrails by fine-tuning it on only 10 such examples at a cost of less than
+$0.20 via OpenAI's APIs, making the model responsive to nearly any harmful
+instructions. Disconcertingly, our research also reveals that, even without
+malicious intent, simply fine-tuning with benign and commonly used datasets can
+also inadvertently degrade the safety alignment of LLMs, though to a lesser
+extent. These findings suggest that fine-tuning aligned LLMs introduces new
+safety risks that current safety infrastructures fall short of addressing --
+even if a model's initial safety alignment is impeccable, it is not necessarily
+to be maintained after custom fine-tuning. We outline and critically analyze
+potential mitigations and advocate for further research efforts toward
+reinforcing safety protocols for the custom fine-tuning of aligned LLMs.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03710">Agent Instructs Large Language Models to be General Zero-Shot Reasoners. (arXiv:2310.03710v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Crispino_N/0/1/0/all/0/1">Nicholas Crispino</a>, <a href="http://arxiv.org/find/cs/1/au:+Montgomery_K/0/1/0/all/0/1">Kyle Montgomery</a>, <a href="http://arxiv.org/find/cs/1/au:+Zeng_F/0/1/0/all/0/1">Fankun Zeng</a>, <a href="http://arxiv.org/find/cs/1/au:+Song_D/0/1/0/all/0/1">Dawn Song</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_C/0/1/0/all/0/1">Chenguang Wang</a></p>
+<p>We introduce a method to improve the zero-shot reasoning abilities of large
+language models on general language understanding tasks. Specifically, we build
+an autonomous agent to instruct the reasoning process of large language models.
+We show this approach further unleashes the zero-shot reasoning abilities of
+large language models to more tasks. We study the performance of our method on
+a wide set of datasets spanning generation, classification, and reasoning. We
+show that our method generalizes to most tasks and obtains state-of-the-art
+zero-shot performance on 20 of the 29 datasets that we evaluate. For instance,
+our method boosts the performance of state-of-the-art large language models by
+a large margin, including Vicuna-13b (13.3%), Llama-2-70b-chat (23.2%), and
+GPT-3.5 Turbo (17.0%). Compared to zero-shot chain of thought, our improvement
+in reasoning is striking, with an average increase of 10.5%. With our method,
+Llama-2-70b-chat outperforms zero-shot GPT-3.5 Turbo by 10.2%.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03714">DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines. (arXiv:2310.03714v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Khattab_O/0/1/0/all/0/1">Omar Khattab</a>, <a href="http://arxiv.org/find/cs/1/au:+Singhvi_A/0/1/0/all/0/1">Arnav Singhvi</a>, <a href="http://arxiv.org/find/cs/1/au:+Maheshwari_P/0/1/0/all/0/1">Paridhi Maheshwari</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_Z/0/1/0/all/0/1">Zhiyuan Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Santhanam_K/0/1/0/all/0/1">Keshav Santhanam</a>, <a href="http://arxiv.org/find/cs/1/au:+Vardhamanan_S/0/1/0/all/0/1">Sri Vardhamanan</a>, <a href="http://arxiv.org/find/cs/1/au:+Haq_S/0/1/0/all/0/1">Saiful Haq</a>, <a href="http://arxiv.org/find/cs/1/au:+Sharma_A/0/1/0/all/0/1">Ashutosh Sharma</a>, <a href="http://arxiv.org/find/cs/1/au:+Joshi_T/0/1/0/all/0/1">Thomas T. Joshi</a>, <a href="http://arxiv.org/find/cs/1/au:+Moazam_H/0/1/0/all/0/1">Hanna Moazam</a>, <a href="http://arxiv.org/find/cs/1/au:+Miller_H/0/1/0/all/0/1">Heather Miller</a>, <a href="http://arxiv.org/find/cs/1/au:+Zaharia_M/0/1/0/all/0/1">Matei Zaharia</a>, <a href="http://arxiv.org/find/cs/1/au:+Potts_C/0/1/0/all/0/1">Christopher Potts</a></p>
+<p>The ML community is rapidly exploring techniques for prompting language
+models (LMs) and for stacking them into pipelines that solve complex tasks.
+Unfortunately, existing LM pipelines are typically implemented using hard-coded
+"prompt templates", i.e. lengthy strings discovered via trial and error. Toward
+a more systematic approach for developing and optimizing LM pipelines, we
+introduce DSPy, a programming model that abstracts LM pipelines as text
+transformation graphs, i.e. imperative computational graphs where LMs are
+invoked through declarative modules. DSPy modules are parameterized, meaning
+they can learn (by creating and collecting demonstrations) how to apply
+compositions of prompting, finetuning, augmentation, and reasoning techniques.
+We design a compiler that will optimize any DSPy pipeline to maximize a given
+metric. We conduct two case studies, showing that succinct DSPy programs can
+express and optimize sophisticated LM pipelines that reason about math word
+problems, tackle multi-hop retrieval, answer complex questions, and control
+agent loops. Within minutes of compiling, a few lines of DSPy allow GPT-3.5 and
+llama2-13b-chat to self-bootstrap pipelines that outperform standard few-shot
+prompting (generally by over 25% and 65%, respectively) and pipelines with
+expert-created demonstrations (by up to 5-46% and 16-40%, respectively). On top
+of that, DSPy programs compiled to open and relatively small LMs like
+770M-parameter T5 and llama2-13b-chat are competitive with approaches that rely
+on expert-written prompt chains for proprietary GPT-3.5. DSPy is available at
+https://github.com/stanfordnlp/dspy
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03716">A Long Way to Go: Investigating Length Correlations in RLHF. (arXiv:2310.03716v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Singhal_P/0/1/0/all/0/1">Prasann Singhal</a>, <a href="http://arxiv.org/find/cs/1/au:+Goyal_T/0/1/0/all/0/1">Tanya Goyal</a>, <a href="http://arxiv.org/find/cs/1/au:+Xu_J/0/1/0/all/0/1">Jiacheng Xu</a>, <a href="http://arxiv.org/find/cs/1/au:+Durrett_G/0/1/0/all/0/1">Greg Durrett</a></p>
+<p>Great successes have been reported using Reinforcement Learning from Human
+Feedback (RLHF) to align large language models. Open-source preference datasets
+and reward models have enabled wider experimentation beyond generic chat
+settings, particularly to make systems more "helpful" for tasks like web
+question answering, summarization, and multi-turn dialogue. When optimizing for
+helpfulness, RLHF has been consistently observed to drive models to produce
+longer outputs. This paper demonstrates that optimizing for response length is
+a significant factor behind RLHF's reported improvements in these settings.
+First, we study the relationship between reward and length for reward models
+trained on three open-source preference datasets for helpfulness. Here, length
+correlates strongly with reward, and improvements in reward score are driven in
+large part by shifting the distribution over output lengths. We then explore
+interventions during both RL and reward model learning to see if we can achieve
+the same downstream improvements as RLHF without increasing length. While our
+interventions mitigate length increases, they aren't uniformly effective across
+settings. Furthermore, we find that even running RLHF with a reward based
+solely on length can reproduce most of the downstream improvements over the
+initial policy model, showing that reward models in these settings have a long
+way to go.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03724">Modular Speech-to-Text Translation for Zero-Shot Cross-Modal Transfer. (arXiv:2310.03724v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Duquenne_P/0/1/0/all/0/1">Paul-Ambroise Duquenne</a>, <a href="http://arxiv.org/find/cs/1/au:+Schwenk_H/0/1/0/all/0/1">Holger Schwenk</a>, <a href="http://arxiv.org/find/cs/1/au:+Sagot_B/0/1/0/all/0/1">Beno&#xee;t Sagot</a></p>
+<p>Recent research has shown that independently trained encoders and decoders,
+combined through a shared fixed-size representation, can achieve competitive
+performance in speech-to-text translation. In this work, we show that this type
+of approach can be further improved with multilingual training. We observe
+significant improvements in zero-shot cross-modal speech translation, even
+outperforming a supervised approach based on XLSR for several languages.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.03731">MathCoder: Seamless Code Integration in LLMs for Enhanced Mathematical Reasoning. (arXiv:2310.03731v1 [cs.CL])</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Wang_K/0/1/0/all/0/1">Ke Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Ren_H/0/1/0/all/0/1">Houxing Ren</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhou_A/0/1/0/all/0/1">Aojun Zhou</a>, <a href="http://arxiv.org/find/cs/1/au:+Lu_Z/0/1/0/all/0/1">Zimu Lu</a>, <a href="http://arxiv.org/find/cs/1/au:+Luo_S/0/1/0/all/0/1">Sichun Luo</a>, <a href="http://arxiv.org/find/cs/1/au:+Shi_W/0/1/0/all/0/1">Weikang Shi</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_R/0/1/0/all/0/1">Renrui Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Song_L/0/1/0/all/0/1">Linqi Song</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhan_M/0/1/0/all/0/1">Mingjie Zhan</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_H/0/1/0/all/0/1">Hongsheng Li</a></p>
+<p>The recently released GPT-4 Code Interpreter has demonstrated remarkable
+proficiency in solving challenging math problems, primarily attributed to its
+ability to seamlessly reason with natural language, generate code, execute
+code, and continue reasoning based on the execution output. In this paper, we
+present a method to fine-tune open-source language models, enabling them to use
+code for modeling and deriving math equations and, consequently, enhancing
+their mathematical reasoning abilities. We propose a method of generating novel
+and high-quality datasets with math problems and their code-based solutions,
+referred to as MathCodeInstruct. Each solution interleaves natural language,
+code, and execution results. We also introduce a customized supervised
+fine-tuning and inference approach. This approach yields the MathCoder models,
+a family of models capable of generating code-based solutions for solving
+challenging math problems. Impressively, the MathCoder models achieve
+state-of-the-art scores among open-source LLMs on the MATH (45.2%) and GSM8K
+(83.9%) datasets, substantially outperforming other open-source alternatives.
+Notably, the MathCoder model not only surpasses ChatGPT-3.5 and PaLM-2 on GSM8K
+and MATH but also outperforms GPT-4 on the competition-level MATH dataset. The
+dataset and models will be released at https://github.com/mathllm/MathCoder.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/1912.05957">Text as Environment: A Deep Reinforcement Learning Text Readability Assessment Model. (arXiv:1912.05957v3 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Mohammadi_H/0/1/0/all/0/1">Hamid Mohammadi</a>, <a href="http://arxiv.org/find/cs/1/au:+Khasteh_S/0/1/0/all/0/1">Seyed Hossein Khasteh</a></p>
+<p>Evaluating the readability of a text can significantly facilitate the precise
+expression of information in written form. The formulation of text readability
+assessment involves the identification of meaningful properties of the text
+regardless of its length. Sophisticated features and models are used to
+evaluate the comprehensibility of texts accurately. Despite this, the problem
+of assessing texts' readability efficiently remains relatively untouched. The
+efficiency of state-of-the-art text readability assessment models can be
+further improved using deep reinforcement learning models. Using a hard
+attention-based active inference technique, the proposed approach makes
+efficient use of input text and computational resources. Through the use of
+semi-supervised signals, the reinforcement learning model uses the minimum
+amount of text in order to determine text's readability. A comparison of the
+model on Weebit and Cambridge Exams with state-of-the-art models, such as the
+BERT text readability model, shows that it is capable of achieving
+state-of-the-art accuracy with a significantly smaller amount of input text
+than other models.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2109.04939">Modeling Human Sentence Processing with Left-Corner Recurrent Neural Network Grammars. (arXiv:2109.04939v3 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Yoshida_R/0/1/0/all/0/1">Ryo Yoshida</a>, <a href="http://arxiv.org/find/cs/1/au:+Noji_H/0/1/0/all/0/1">Hiroshi Noji</a>, <a href="http://arxiv.org/find/cs/1/au:+Oseki_Y/0/1/0/all/0/1">Yohei Oseki</a></p>
+<p>In computational linguistics, it has been shown that hierarchical structures
+make language models (LMs) more human-like. However, the previous literature
+has been agnostic about a parsing strategy of the hierarchical models. In this
+paper, we investigated whether hierarchical structures make LMs more
+human-like, and if so, which parsing strategy is most cognitively plausible. In
+order to address this question, we evaluated three LMs against human reading
+times in Japanese with head-final left-branching structures: Long Short-Term
+Memory (LSTM) as a sequential model and Recurrent Neural Network Grammars
+(RNNGs) with top-down and left-corner parsing strategies as hierarchical
+models. Our computational modeling demonstrated that left-corner RNNGs
+outperformed top-down RNNGs and LSTM, suggesting that hierarchical and
+left-corner architectures are more cognitively plausible than top-down or
+sequential architectures. In addition, the relationships between the cognitive
+plausibility and (i) perplexity, (ii) parsing, and (iii) beam size will also be
+discussed.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2110.14883">Colossal-AI: A Unified Deep Learning System For Large-Scale Parallel Training. (arXiv:2110.14883v3 [cs.LG] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Li_S/0/1/0/all/0/1">Shenggui Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_H/0/1/0/all/0/1">Hongxin Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Bian_Z/0/1/0/all/0/1">Zhengda Bian</a>, <a href="http://arxiv.org/find/cs/1/au:+Fang_J/0/1/0/all/0/1">Jiarui Fang</a>, <a href="http://arxiv.org/find/cs/1/au:+Huang_H/0/1/0/all/0/1">Haichen Huang</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_Y/0/1/0/all/0/1">Yuliang Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_B/0/1/0/all/0/1">Boxiang Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+You_Y/0/1/0/all/0/1">Yang You</a></p>
+<p>The success of Transformer models has pushed the deep learning model scale to
+billions of parameters. Due to the limited memory resource of a single GPU,
+However, the best practice for choosing the optimal parallel strategy is still
+lacking, since it requires domain expertise in both deep learning and parallel
+computing.
+</p>
+<p>The Colossal-AI system addressed the above challenge by introducing a unified
+interface to scale your sequential code of model training to distributed
+environments. It supports parallel training methods such as data, pipeline,
+tensor, and sequence parallelism, as well as heterogeneous training methods
+integrated with zero redundancy optimizer. Compared to the baseline system,
+Colossal-AI can achieve up to 2.76 times training speedup on large-scale
+models.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2206.05895">Latent Diffusion Energy-Based Model for Interpretable Text Modeling. (arXiv:2206.05895v4 [cs.LG] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Yu_P/0/1/0/all/0/1">Peiyu Yu</a>, <a href="http://arxiv.org/find/cs/1/au:+Xie_S/0/1/0/all/0/1">Sirui Xie</a>, <a href="http://arxiv.org/find/cs/1/au:+Ma_X/0/1/0/all/0/1">Xiaojian Ma</a>, <a href="http://arxiv.org/find/cs/1/au:+Jia_B/0/1/0/all/0/1">Baoxiong Jia</a>, <a href="http://arxiv.org/find/cs/1/au:+Pang_B/0/1/0/all/0/1">Bo Pang</a>, <a href="http://arxiv.org/find/cs/1/au:+Gao_R/0/1/0/all/0/1">Ruiqi Gao</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhu_Y/0/1/0/all/0/1">Yixin Zhu</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhu_S/0/1/0/all/0/1">Song-Chun Zhu</a>, <a href="http://arxiv.org/find/cs/1/au:+Wu_Y/0/1/0/all/0/1">Ying Nian Wu</a></p>
+<p>Latent space Energy-Based Models (EBMs), also known as energy-based priors,
+have drawn growing interests in generative modeling. Fueled by its flexibility
+in the formulation and strong modeling power of the latent space, recent works
+built upon it have made interesting attempts aiming at the interpretability of
+text modeling. However, latent space EBMs also inherit some flaws from EBMs in
+data space; the degenerate MCMC sampling quality in practice can lead to poor
+generation quality and instability in training, especially on data with complex
+latent structures. Inspired by the recent efforts that leverage diffusion
+recovery likelihood learning as a cure for the sampling issue, we introduce a
+novel symbiosis between the diffusion models and latent space EBMs in a
+variational learning framework, coined as the latent diffusion energy-based
+model. We develop a geometric clustering-based regularization jointly with the
+information bottleneck to further improve the quality of the learned latent
+space. Experiments on several challenging tasks demonstrate the superior
+performance of our model on interpretable text modeling over strong
+counterparts.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2211.00635">Two-stage LLM Fine-tuning with Less Specialization and More Generalization. (arXiv:2211.00635v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Wang_Y/0/1/0/all/0/1">Yihan Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Si_S/0/1/0/all/0/1">Si Si</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_D/0/1/0/all/0/1">Daliang Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Lukasik_M/0/1/0/all/0/1">Michal Lukasik</a>, <a href="http://arxiv.org/find/cs/1/au:+Yu_F/0/1/0/all/0/1">Felix Yu</a>, <a href="http://arxiv.org/find/cs/1/au:+Hsieh_C/0/1/0/all/0/1">Cho-Jui Hsieh</a>, <a href="http://arxiv.org/find/cs/1/au:+Dhillon_I/0/1/0/all/0/1">Inderjit S Dhillon</a>, <a href="http://arxiv.org/find/cs/1/au:+Kumar_S/0/1/0/all/0/1">Sanjiv Kumar</a></p>
+<p>Pretrained large language models (LLMs) are general purpose problem solvers
+applicable to a diverse set of tasks with prompts. They can be further improved
+towards a specific task by fine-tuning on a specialized dataset. However,
+fine-tuning usually makes the model narrowly specialized on this dataset with
+reduced general in-context learning performances, which is undesirable whenever
+the fine-tuned model needs to handle additional tasks where no fine-tuning data
+is available. In this work, we first demonstrate that fine-tuning on a single
+task indeed decreases LLMs' general in-context learning performance. We
+discover one important cause of such forgetting, format specialization, where
+the model overfits to the format of the fine-tuned task. We further show that
+format specialization happens at the very beginning of fine-tuning. To solve
+this problem, we propose Prompt Tuning with MOdel Tuning (ProMoT), a simple yet
+effective two-stage fine-tuning framework that reduces format specialization
+and improves generalization. ProMoT offloads task-specific format learning into
+additional and removable parameters by first doing prompt tuning and then
+fine-tuning the model itself with this soft prompt attached. With experiments
+on several fine-tuning tasks and 8 in-context evaluation tasks, we show that
+ProMoT achieves comparable performance on fine-tuned tasks to standard
+fine-tuning, but with much less loss of in-context learning performances across
+a board range of out-of-domain evaluation tasks. More importantly, ProMoT can
+even enhance generalization on in-context learning tasks that are semantically
+related to the fine-tuned task, e.g. ProMoT on En-Fr translation significantly
+improves performance on other language pairs, and ProMoT on NLI improves
+performance on summarization. Experiments also show that ProMoT can improve the
+generalization performance of multi-task training.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2301.09350">Large-scale investigation of weakly-supervised deep learning for the fine-grained semantic indexing of biomedical literature. (arXiv:2301.09350v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Nentidis_A/0/1/0/all/0/1">Anastasios Nentidis</a>, <a href="http://arxiv.org/find/cs/1/au:+Chatzopoulos_T/0/1/0/all/0/1">Thomas Chatzopoulos</a>, <a href="http://arxiv.org/find/cs/1/au:+Krithara_A/0/1/0/all/0/1">Anastasia Krithara</a>, <a href="http://arxiv.org/find/cs/1/au:+Tsoumakas_G/0/1/0/all/0/1">Grigorios Tsoumakas</a>, <a href="http://arxiv.org/find/cs/1/au:+Paliouras_G/0/1/0/all/0/1">Georgios Paliouras</a></p>
+<p>Objective: Semantic indexing of biomedical literature is usually done at the
+level of MeSH descriptors with several related but distinct biomedical concepts
+often grouped together and treated as a single topic. This study proposes a new
+method for the automated refinement of subject annotations at the level of MeSH
+concepts. Methods: Lacking labelled data, we rely on weak supervision based on
+concept occurrence in the abstract of an article, which is also enhanced by
+dictionary-based heuristics. In addition, we investigate deep learning
+approaches, making design choices to tackle the particular challenges of this
+task. The new method is evaluated on a large-scale retrospective scenario,
+based on concepts that have been promoted to descriptors. Results: In our
+experiments concept occurrence was the strongest heuristic achieving a macro-F1
+score of about 0.63 across several labels. The proposed method improved it
+further by more than 4pp. Conclusion: The results suggest that concept
+occurrence is a strong heuristic for refining the coarse-grained labels at the
+level of MeSH concepts and the proposed method improves it further.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2302.04054">Towards Inferential Reproducibility of Machine Learning Research. (arXiv:2302.04054v6 [cs.LG] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Hagmann_M/0/1/0/all/0/1">Michael Hagmann</a>, <a href="http://arxiv.org/find/cs/1/au:+Meier_P/0/1/0/all/0/1">Philipp Meier</a>, <a href="http://arxiv.org/find/cs/1/au:+Riezler_S/0/1/0/all/0/1">Stefan Riezler</a></p>
+<p>Reliability of machine learning evaluation -- the consistency of observed
+evaluation scores across replicated model training runs -- is affected by
+several sources of nondeterminism which can be regarded as measurement noise.
+Current tendencies to remove noise in order to enforce reproducibility of
+research results neglect inherent nondeterminism at the implementation level
+and disregard crucial interaction effects between algorithmic noise factors and
+data properties. This limits the scope of conclusions that can be drawn from
+such experiments. Instead of removing noise, we propose to incorporate several
+sources of variance, including their interaction with data properties, into an
+analysis of significance and reliability of machine learning evaluation, with
+the aim to draw inferences beyond particular instances of trained models. We
+show how to use linear mixed effects models (LMEMs) to analyze performance
+evaluation scores, and to conduct statistical inference with a generalized
+likelihood ratio test (GLRT). This allows us to incorporate arbitrary sources
+of noise like meta-parameter variations into statistical significance testing,
+and to assess performance differences conditional on data properties.
+Furthermore, a variance component analysis (VCA) enables the analysis of the
+contribution of noise sources to overall variance and the computation of a
+reliability coefficient by the ratio of substantial to total variance.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2303.14655">GOAL: A Challenging Knowledge-grounded Video Captioning Benchmark for Real-time Soccer Commentary Generation. (arXiv:2303.14655v2 [cs.CV] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Qi_J/0/1/0/all/0/1">Ji Qi</a>, <a href="http://arxiv.org/find/cs/1/au:+Yu_J/0/1/0/all/0/1">Jifan Yu</a>, <a href="http://arxiv.org/find/cs/1/au:+Tu_T/0/1/0/all/0/1">Teng Tu</a>, <a href="http://arxiv.org/find/cs/1/au:+Gao_K/0/1/0/all/0/1">Kunyu Gao</a>, <a href="http://arxiv.org/find/cs/1/au:+Xu_Y/0/1/0/all/0/1">Yifan Xu</a>, <a href="http://arxiv.org/find/cs/1/au:+Guan_X/0/1/0/all/0/1">Xinyu Guan</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_X/0/1/0/all/0/1">Xiaozhi Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Dong_Y/0/1/0/all/0/1">Yuxiao Dong</a>, <a href="http://arxiv.org/find/cs/1/au:+Xu_B/0/1/0/all/0/1">Bin Xu</a>, <a href="http://arxiv.org/find/cs/1/au:+Hou_L/0/1/0/all/0/1">Lei Hou</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_J/0/1/0/all/0/1">Juanzi Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Tang_J/0/1/0/all/0/1">Jie Tang</a>, <a href="http://arxiv.org/find/cs/1/au:+Guo_W/0/1/0/all/0/1">Weidong Guo</a>, <a href="http://arxiv.org/find/cs/1/au:+Liu_H/0/1/0/all/0/1">Hui Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Xu_Y/0/1/0/all/0/1">Yu Xu</a></p>
+<p>Despite the recent emergence of video captioning models, how to generate
+vivid, fine-grained video descriptions based on the background knowledge (i.e.,
+long and informative commentary about the domain-specific scenes with
+appropriate reasoning) is still far from being solved, which however has great
+applications such as automatic sports narrative. In this paper, we present
+GOAL, a benchmark of over 8.9k soccer video clips, 22k sentences, and 42k
+knowledge triples for proposing a challenging new task setting as
+Knowledge-grounded Video Captioning (KGVC). Moreover, we conduct experimental
+adaption of existing methods to show the difficulty and potential directions
+for solving this valuable and applicable task. Our data and code are available
+at https://github.com/THU-KEG/goal.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2304.05128">Teaching Large Language Models to Self-Debug. (arXiv:2304.05128v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Chen_X/0/1/0/all/0/1">Xinyun Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Lin_M/0/1/0/all/0/1">Maxwell Lin</a>, <a href="http://arxiv.org/find/cs/1/au:+Scharli_N/0/1/0/all/0/1">Nathanael Sch&#xe4;rli</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhou_D/0/1/0/all/0/1">Denny Zhou</a></p>
+<p>Large language models (LLMs) have achieved impressive performance on code
+generation. However, for complex programming tasks, generating the correct
+solution in one go becomes challenging, thus some prior works have designed
+program repair approaches to improve code generation performance. In this work,
+we propose Self-Debugging, which teaches a large language model to debug its
+predicted program via few-shot demonstrations. In particular, we demonstrate
+that Self-Debugging can teach the large language model to perform rubber duck
+debugging; i.e., without any human feedback on the code correctness or error
+messages, the model is able to identify its mistakes by investigating the
+execution results and explaining the generated code in natural language.
+Self-Debugging achieves the state-of-the-art performance on several code
+generation benchmarks, including the Spider dataset for text-to-SQL generation,
+TransCoder for C++-to-Python translation, and MBPP for text-to-Python
+generation. On the Spider benchmark where there are no unit tests to verify the
+correctness of predictions, Self-Debugging with code explanation consistently
+improves the baseline by 2-3%, and improves the prediction accuracy on problems
+of the hardest level by 9%. On TransCoder and MBPP where unit tests are
+available, Self-Debugging improves the baseline accuracy by up to 12%.
+Meanwhile, by leveraging feedback messages and reusing failed predictions,
+Self-Debugging notably improves sample efficiency, and can match or outperform
+baseline models that generate more than 10x candidate programs.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2304.08247">MedAlpaca -- An Open-Source Collection of Medical Conversational AI Models and Training Data. (arXiv:2304.08247v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Han_T/0/1/0/all/0/1">Tianyu Han</a>, <a href="http://arxiv.org/find/cs/1/au:+Adams_L/0/1/0/all/0/1">Lisa C. Adams</a>, <a href="http://arxiv.org/find/cs/1/au:+Papaioannou_J/0/1/0/all/0/1">Jens-Michalis Papaioannou</a>, <a href="http://arxiv.org/find/cs/1/au:+Grundmann_P/0/1/0/all/0/1">Paul Grundmann</a>, <a href="http://arxiv.org/find/cs/1/au:+Oberhauser_T/0/1/0/all/0/1">Tom Oberhauser</a>, <a href="http://arxiv.org/find/cs/1/au:+Loser_A/0/1/0/all/0/1">Alexander L&#xf6;ser</a>, <a href="http://arxiv.org/find/cs/1/au:+Truhn_D/0/1/0/all/0/1">Daniel Truhn</a>, <a href="http://arxiv.org/find/cs/1/au:+Bressem_K/0/1/0/all/0/1">Keno K. Bressem</a></p>
+<p>As large language models (LLMs) like OpenAI's GPT series continue to make
+strides, we witness the emergence of artificial intelligence applications in an
+ever-expanding range of fields. In medicine, these LLMs hold considerable
+promise for improving medical workflows, diagnostics, patient care, and
+education. Yet, there is an urgent need for open-source models that can be
+deployed on-premises to safeguard patient privacy. In our work, we present an
+innovative dataset consisting of over 160,000 entries, specifically crafted to
+fine-tune LLMs for effective medical applications. We investigate the impact of
+fine-tuning these datasets on publicly accessible pre-trained LLMs, and
+subsequently, we juxtapose the performance of pre-trained-only models against
+the fine-tuned models concerning the examinations that future medical doctors
+must pass to achieve certification.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2305.12766">Explaining Emergent In-Context Learning as Kernel Regression. (arXiv:2305.12766v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Han_C/0/1/0/all/0/1">Chi Han</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_Z/0/1/0/all/0/1">Ziqi Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhao_H/0/1/0/all/0/1">Han Zhao</a>, <a href="http://arxiv.org/find/cs/1/au:+Ji_H/0/1/0/all/0/1">Heng Ji</a></p>
+<p>Large language models (LLMs) have initiated a paradigm shift in transfer
+learning. In contrast to the classic pretraining-then-finetuning procedure, in
+order to use LLMs for downstream prediction tasks, one only needs to provide a
+few demonstrations, known as in-context examples, without adding more or
+updating existing model parameters. This in-context learning (ICL) capability
+of LLMs is intriguing, and it is not yet fully understood how pretrained LLMs
+acquire such capabilities. In this paper, we investigate the reason why a
+transformer-based language model can accomplish in-context learning after
+pre-training on a general language corpus by proposing one hypothesis that LLMs
+can simulate kernel regression with internal representations when faced with
+in-context examples. More concretely, we first prove that Bayesian inference on
+in-context prompts can be asymptotically understood as kernel regression $\hat
+y = \sum_i y_i K(x, x_i)/\sum_i K(x, x_i)$ as the number of in-context
+demonstrations grows. Then, we empirically investigate the in-context behaviors
+of language models. We find that during ICL, the attention and hidden features
+in LLMs match the behaviors of a kernel regression. Finally, our theory
+provides insights into multiple phenomena observed in the ICL field: why
+retrieving demonstrative samples similar to test samples can help, why ICL
+performance is sensitive to the output formats, and why ICL accuracy benefits
+from selecting in-distribution and representative samples.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2305.13673">Physics of Language Models: Part 1, Context-Free Grammar. (arXiv:2305.13673v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Allen_Zhu_Z/0/1/0/all/0/1">Zeyuan Allen-Zhu</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_Y/0/1/0/all/0/1">Yuanzhi Li</a></p>
+<p>We design controlled experiments to study HOW generative language models,
+like GPT, learn context-free grammars (CFGs) -- diverse language systems with a
+tree-like structure capturing many aspects of natural languages, programs, and
+logics. CFGs are as hard as pushdown automata, and can be ambiguous so that
+verifying if a string satisfies the rules requires dynamic programming. We
+construct synthetic data and demonstrate that even for difficult (long and
+ambiguous) CFGs, pre-trained transformers can learn to generate sentences with
+near-perfect accuracy and impressive diversity.
+</p>
+<p>More importantly, we delve into the physical principles behind how
+transformers learns CFGs. We discover that the hidden states within the
+transformer implicitly and precisely encode the CFG structure (such as putting
+tree node information exactly on the subtree boundary), and learn to form
+"boundary to boundary" attentions resembling dynamic programming. We also cover
+some extension of CFGs as well as the robustness aspect of transformers against
+grammar mistakes. Overall, our research provides a comprehensive and empirical
+understanding of how transformers learn CFGs, and reveals the physical
+mechanisms utilized by transformers to capture the structure and rules of
+languages.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2305.13716">BA-SOT: Boundary-Aware Serialized Output Training for Multi-Talker ASR. (arXiv:2305.13716v3 [cs.SD] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Liang_Y/0/1/0/all/0/1">Yuhao Liang</a>, <a href="http://arxiv.org/find/cs/1/au:+Yu_F/0/1/0/all/0/1">Fan Yu</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_Y/0/1/0/all/0/1">Yangze Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Guo_P/0/1/0/all/0/1">Pengcheng Guo</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_S/0/1/0/all/0/1">Shiliang Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_Q/0/1/0/all/0/1">Qian Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Xie_L/0/1/0/all/0/1">Lei Xie</a></p>
+<p>The recently proposed serialized output training (SOT) simplifies
+multi-talker automatic speech recognition (ASR) by generating speaker
+transcriptions separated by a special token. However, frequent speaker changes
+can make speaker change prediction difficult. To address this, we propose
+boundary-aware serialized output training (BA-SOT), which explicitly
+incorporates boundary knowledge into the decoder via a speaker change detection
+task and boundary constraint loss. We also introduce a two-stage connectionist
+temporal classification (CTC) strategy that incorporates token-level SOT CTC to
+restore temporal context information. Besides typical character error rate
+(CER), we introduce utterance-dependent character error rate (UD-CER) to
+further measure the precision of speaker change prediction. Compared to
+original SOT, BA-SOT reduces CER/UD-CER by 5.1%/14.0%, and leveraging a
+pre-trained ASR model for BA-SOT model initialization further reduces
+CER/UD-CER by 8.4%/19.9%.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2305.15070">Annotation Imputation to Individualize Predictions: Initial Studies on Distribution Dynamics and Model Predictions. (arXiv:2305.15070v3 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Lowmanstone_L/0/1/0/all/0/1">London Lowmanstone</a>, <a href="http://arxiv.org/find/cs/1/au:+Wan_R/0/1/0/all/0/1">Ruyuan Wan</a>, <a href="http://arxiv.org/find/cs/1/au:+Owan_R/0/1/0/all/0/1">Risako Owan</a>, <a href="http://arxiv.org/find/cs/1/au:+Kim_J/0/1/0/all/0/1">Jaehyung Kim</a>, <a href="http://arxiv.org/find/cs/1/au:+Kang_D/0/1/0/all/0/1">Dongyeop Kang</a></p>
+<p>Annotating data via crowdsourcing is time-consuming and expensive. Due to
+these costs, dataset creators often have each annotator label only a small
+subset of the data. This leads to sparse datasets with examples that are marked
+by few annotators. The downside of this process is that if an annotator doesn't
+get to label a particular example, their perspective on it is missed. This is
+especially concerning for subjective NLP datasets where there is no single
+correct label: people may have different valid opinions. Thus, we propose using
+imputation methods to generate the opinions of all annotators for all examples,
+creating a dataset that does not leave out any annotator's view. We then train
+and prompt models, using data from the imputed dataset, to make predictions
+about the distribution of responses and individual annotations.
+</p>
+<p>In our analysis of the results, we found that the choice of imputation method
+significantly impacts soft label changes and distribution. While the imputation
+introduces noise in the prediction of the original dataset, it has shown
+potential in enhancing shots for prompts, particularly for low-response-rate
+annotators. We have made all of our code and data publicly available.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2305.17455">CrossGET: Cross-Guided Ensemble of Tokens for Accelerating Vision-Language Transformers. (arXiv:2305.17455v2 [cs.CV] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Shi_D/0/1/0/all/0/1">Dachuan Shi</a>, <a href="http://arxiv.org/find/cs/1/au:+Tao_C/0/1/0/all/0/1">Chaofan Tao</a>, <a href="http://arxiv.org/find/cs/1/au:+Rao_A/0/1/0/all/0/1">Anyi Rao</a>, <a href="http://arxiv.org/find/cs/1/au:+Yang_Z/0/1/0/all/0/1">Zhendong Yang</a>, <a href="http://arxiv.org/find/cs/1/au:+Yuan_C/0/1/0/all/0/1">Chun Yuan</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_J/0/1/0/all/0/1">Jiaqi Wang</a></p>
+<p>Recent vision-language models have achieved tremendous progress far beyond
+what we ever expected. However, their computational costs are also dramatically
+growing with rapid development, especially for the large models. It makes model
+acceleration exceedingly critical in a scenario of limited resources. Although
+extensively studied for unimodal models, the acceleration for multimodal
+models, especially the vision-language Transformers, is relatively
+under-explored. To pursue more efficient and accessible vision-language
+Transformers, this paper introduces \textbf{Cross}-\textbf{G}uided
+\textbf{E}nsemble of \textbf{T}okens (\textbf{\emph{CrossGET}}), a universal
+acceleration framework for vision-language Transformers. This framework
+adaptively combines tokens through real-time, cross-modal guidance, thereby
+achieving substantial acceleration while keeping high performance.
+\textit{CrossGET} has two key innovations: 1) \textit{Cross-Guided Matching and
+Ensemble}. \textit{CrossGET} incorporates cross-modal guided token matching and
+ensemble to exploit cross-modal information effectively, only introducing
+cross-modal tokens with negligible extra parameters. 2) \textit{Complete-Graph
+Soft Matching}. In contrast to the existing bipartite soft matching approach,
+\textit{CrossGET} introduces a complete-graph soft matching policy to achieve
+more reliable token-matching results while maintaining parallelizability and
+high efficiency. Extensive experiments are conducted on various vision-language
+tasks, including image-text retrieval, visual reasoning, image captioning, and
+visual question answering. Performance on both classic multimodal architectures
+and emerging multimodal LLMs demonstrate the effectiveness and versatility of
+the proposed \textit{CrossGET} framework. The code will be at
+\url{https://github.com/sdc17/CrossGET}.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2306.01879">Revisiting the Role of Language Priors in Vision-Language Models. (arXiv:2306.01879v2 [cs.CV] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Lin_Z/0/1/0/all/0/1">Zhiqiu Lin</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_X/0/1/0/all/0/1">Xinyue Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Pathak_D/0/1/0/all/0/1">Deepak Pathak</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_P/0/1/0/all/0/1">Pengchuan Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Ramanan_D/0/1/0/all/0/1">Deva Ramanan</a></p>
+<p>Vision-language models (VLMs) are impactful in part because they can be
+applied to a variety of visual understanding tasks in a zero-shot fashion,
+without any fine-tuning. We study $\textit{generative VLMs}$ that are trained
+for next-word generation given an image. We explore their zero-shot performance
+on the illustrative task of image-text retrieval across 8 popular
+vision-language benchmarks. Our first observation is that they can be
+repurposed for discriminative tasks (such as image-text retrieval) by simply
+computing the match score of generating a particular text string given an
+image. We call this probabilistic score the $\textit{Visual Generative
+Pre-Training Score}$ (VisualGPTScore). While the VisualGPTScore produces
+near-perfect accuracy on some retrieval benchmarks, it yields poor accuracy on
+others. We analyze this behavior through a probabilistic lens, pointing out
+that some benchmarks inadvertently capture unnatural language distributions by
+creating adversarial but unlikely text captions. In fact, we demonstrate that
+even a "blind" language model that ignores any image evidence can sometimes
+outperform all prior art, reminiscent of similar challenges faced by the
+visual-question answering (VQA) community many years ago. We derive a
+probabilistic post-processing scheme that controls for the amount of linguistic
+bias in generative VLMs at test time without having to retrain or fine-tune the
+model. We show that the VisualGPTScore, when appropriately debiased, is a
+strong zero-shot baseline for vision-language understanding, oftentimes
+producing state-of-the-art accuracy.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2306.07629">SqueezeLLM: Dense-and-Sparse Quantization. (arXiv:2306.07629v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Kim_S/0/1/0/all/0/1">Sehoon Kim</a>, <a href="http://arxiv.org/find/cs/1/au:+Hooper_C/0/1/0/all/0/1">Coleman Hooper</a>, <a href="http://arxiv.org/find/cs/1/au:+Gholami_A/0/1/0/all/0/1">Amir Gholami</a>, <a href="http://arxiv.org/find/cs/1/au:+Dong_Z/0/1/0/all/0/1">Zhen Dong</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_X/0/1/0/all/0/1">Xiuyu Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Shen_S/0/1/0/all/0/1">Sheng Shen</a>, <a href="http://arxiv.org/find/cs/1/au:+Mahoney_M/0/1/0/all/0/1">Michael W. Mahoney</a>, <a href="http://arxiv.org/find/cs/1/au:+Keutzer_K/0/1/0/all/0/1">Kurt Keutzer</a></p>
+<p>Generative Large Language Models (LLMs) have demonstrated remarkable results
+for a wide range of tasks. However, deploying these models for inference has
+been a significant challenge due to their unprecedented resource requirements.
+This has forced existing deployment frameworks to use multi-GPU inference
+pipelines, which are often complex and costly, or to use smaller and less
+performant models. In this work, we demonstrate that the main bottleneck for
+generative inference with LLMs is memory bandwidth, rather than compute,
+specifically for single batch inference. While quantization has emerged as a
+promising solution by representing model weights with reduced precision,
+previous efforts have often resulted in notable performance degradation. To
+address this, we introduce SqueezeLLM, a post-training quantization framework
+that not only enables lossless compression to ultra-low precisions of up to
+3-bit, but also achieves higher quantization performance under the same memory
+constraint. Our framework incorporates two novel ideas: (i) sensitivity-based
+non-uniform quantization, which searches for the optimal bit precision
+assignment based on second-order information; and (ii) the Dense-and-Sparse
+decomposition that stores outliers and sensitive weight values in an efficient
+sparse format. When applied to the LLaMA models, our 3-bit quantization
+significantly reduces the perplexity gap from the FP16 baseline by up to 2.1x
+as compared to the state-of-the-art methods with the same memory requirement.
+Furthermore, when deployed on an A6000 GPU, our quantized models achieve up to
+2.3x speedup compared to the baseline. Our code is open-sourced and available
+online.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2307.06435">A Comprehensive Overview of Large Language Models. (arXiv:2307.06435v4 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Naveed_H/0/1/0/all/0/1">Humza Naveed</a>, <a href="http://arxiv.org/find/cs/1/au:+Khan_A/0/1/0/all/0/1">Asad Ullah Khan</a>, <a href="http://arxiv.org/find/cs/1/au:+Qiu_S/0/1/0/all/0/1">Shi Qiu</a>, <a href="http://arxiv.org/find/cs/1/au:+Saqib_M/0/1/0/all/0/1">Muhammad Saqib</a>, <a href="http://arxiv.org/find/cs/1/au:+Anwar_S/0/1/0/all/0/1">Saeed Anwar</a>, <a href="http://arxiv.org/find/cs/1/au:+Usman_M/0/1/0/all/0/1">Muhammad Usman</a>, <a href="http://arxiv.org/find/cs/1/au:+Akhtar_N/0/1/0/all/0/1">Naveed Akhtar</a>, <a href="http://arxiv.org/find/cs/1/au:+Barnes_N/0/1/0/all/0/1">Nick Barnes</a>, <a href="http://arxiv.org/find/cs/1/au:+Mian_A/0/1/0/all/0/1">Ajmal Mian</a></p>
+<p>Large Language Models (LLMs) have recently demonstrated remarkable
+capabilities in natural language processing tasks and beyond. This success of
+LLMs has led to a large influx of research contributions in this direction.
+These works encompass diverse topics such as architectural innovations of the
+underlying neural networks, context length improvements, model alignment,
+training datasets, benchmarking, efficiency and more. With the rapid
+development of techniques and regular breakthroughs in LLM research, it has
+become considerably challenging to perceive the bigger picture of the advances
+in this direction. Considering the rapidly emerging plethora of literature on
+LLMs, it is imperative that the research community is able to benefit from a
+concise yet comprehensive overview of the recent developments in this field.
+This article provides that overview to the research community. It not only
+focuses on a systematic treatment of the existing literature on a broad range
+of LLM related concept, but also pays special attention to providing
+comprehensive summaries with extensive details about the individual existing
+models, datasets and major insights. We also pay heed to aligning our overview
+with the emerging outlook of this research direction by accounting for the
+other recently materializing reviews of the broader research direction of LLMs.
+Our self-contained comprehensive overview of LLMs discusses relevant background
+concepts along with covering the advanced topics at the frontier of this
+research direction. This review article is intended to not only provide a
+systematic survey, but also a quick comprehensive reference for the researchers
+and practitioners to draw insights from extensive informative summaries of the
+existing works to advance the LLM research direction.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2308.00436">SelfCheck: Using LLMs to Zero-Shot Check Their Own Step-by-Step Reasoning. (arXiv:2308.00436v3 [cs.AI] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Miao_N/0/1/0/all/0/1">Ning Miao</a>, <a href="http://arxiv.org/find/cs/1/au:+Teh_Y/0/1/0/all/0/1">Yee Whye Teh</a>, <a href="http://arxiv.org/find/cs/1/au:+Rainforth_T/0/1/0/all/0/1">Tom Rainforth</a></p>
+<p>The recent progress in large language models (LLMs), especially the invention
+of chain-of-thought prompting, has made it possible to automatically answer
+questions by stepwise reasoning. However, when faced with more complicated
+problems that require non-linear thinking, even the strongest LLMs make
+mistakes. To address this, we explore whether LLMs are able to recognize errors
+in their own step-by-step reasoning, without resorting to external resources.
+To this end, we propose SelfCheck, a general-purpose zero-shot verification
+schema for recognizing such errors. We then use the results of these checks to
+improve question-answering performance by conducting weighted voting on
+multiple solutions to the question. We test SelfCheck on three datasets (GSM8K,
+MathQA, and MATH) and find that it successfully recognizes errors and, in turn,
+increases final answer accuracies.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2309.02092">Bridging Emotion Role Labeling and Appraisal-based Emotion Analysis. (arXiv:2309.02092v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Klinger_R/0/1/0/all/0/1">Roman Klinger</a></p>
+<p>The term emotion analysis in text subsumes various natural language
+processing tasks which have in common the goal to enable computers to
+understand emotions. Most popular is emotion classification in which one or
+multiple emotions are assigned to a predefined textual unit. While such setting
+is appropriate to identify the reader's or author's emotion, emotion role
+labeling adds the perspective of mentioned entities and extracts text spans
+that correspond to the emotion cause. The underlying emotion theories agree on
+one important point; that an emotion is caused by some internal or external
+event and comprises several subcomponents, including the subjective feeling and
+a cognitive evaluation. We therefore argue that emotions and events are related
+in two ways. (1) Emotions are events; and this perspective is the fundament in
+NLP for emotion role labeling. (2) Emotions are caused by events; a perspective
+that is made explicit with research how to incorporate psychological appraisal
+theories in NLP models to interpret events. These two research directions, role
+labeling and (event-focused) emotion classification, have by and large been
+tackled separately. We contributed to both directions with the projects SEAT
+(Structured Multi-Domain Emotion Analysis from Text) and CEAT (Computational
+Event Evaluation based on Appraisal Theories for Emotion Analysis), both funded
+by the German Research Foundation. In this paper, we consolidate the findings
+and discuss open research directions.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2309.11981">Rethinking the Evaluating Framework for Natural Language Understanding in AI Systems: Language Acquisition as a Core for Future Metrics. (arXiv:2309.11981v3 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Vera_P/0/1/0/all/0/1">Patricio Vera</a>, <a href="http://arxiv.org/find/cs/1/au:+Moya_P/0/1/0/all/0/1">Pedro Moya</a>, <a href="http://arxiv.org/find/cs/1/au:+Barraza_L/0/1/0/all/0/1">Lisa Barraza</a></p>
+<p>In the burgeoning field of artificial intelligence (AI), the unprecedented
+progress of large language models (LLMs) in natural language processing (NLP)
+offers an opportunity to revisit the entire approach of traditional metrics of
+machine intelligence, both in form and content. As the realm of machine
+cognitive evaluation has already reached Imitation, the next step is an
+efficient Language Acquisition and Understanding. Our paper proposes a paradigm
+shift from the established Turing Test towards an all-embracing framework that
+hinges on language acquisition, taking inspiration from the recent advancements
+in LLMs. The present contribution is deeply tributary of the excellent work
+from various disciplines, point out the need to keep interdisciplinary bridges
+open, and delineates a more robust and sustainable approach.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2309.12871">AnglE-optimized Text Embeddings. (arXiv:2309.12871v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Li_X/0/1/0/all/0/1">Xianming Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_J/0/1/0/all/0/1">Jing Li</a></p>
+<p>High-quality text embedding is pivotal in improving semantic textual
+similarity (STS) tasks, which are crucial components in Large Language Model
+(LLM) applications. However, a common challenge existing text embedding models
+face is the problem of vanishing gradients, primarily due to their reliance on
+the cosine function in the optimization objective, which has saturation zones.
+To address this issue, this paper proposes a novel angle-optimized text
+embedding model called AnglE. The core idea of AnglE is to introduce angle
+optimization in a complex space. This novel approach effectively mitigates the
+adverse effects of the saturation zone in the cosine function, which can impede
+gradient and hinder optimization processes. To set up a comprehensive STS
+evaluation, we experimented on existing short-text STS datasets and a newly
+collected long-text STS dataset from GitHub Issues. Furthermore, we examine
+domain-specific STS scenarios with limited labeled data and explore how AnglE
+works with LLM-annotated data. Extensive experiments were conducted on various
+tasks including short-text STS, long-text STS, and domain-specific STS tasks.
+The results show that AnglE outperforms the state-of-the-art (SOTA) STS models
+that ignore the cosine saturation zone. These findings demonstrate the ability
+of AnglE to generate high-quality text embeddings and the usefulness of angle
+optimization in STS.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2309.15630">NLPBench: Evaluating Large Language Models on Solving NLP Problems. (arXiv:2309.15630v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Song_L/0/1/0/all/0/1">Linxin Song</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhang_J/0/1/0/all/0/1">Jieyu Zhang</a>, <a href="http://arxiv.org/find/cs/1/au:+Cheng_L/0/1/0/all/0/1">Lechao Cheng</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhou_P/0/1/0/all/0/1">Pengyuan Zhou</a>, <a href="http://arxiv.org/find/cs/1/au:+Zhou_T/0/1/0/all/0/1">Tianyi Zhou</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_I/0/1/0/all/0/1">Irene Li</a></p>
+<p>Recent developments in large language models (LLMs) have shown promise in
+enhancing the capabilities of natural language processing (NLP). Despite these
+successes, there remains a dearth of research dedicated to the NLP
+problem-solving abilities of LLMs. To fill the gap in this area, we present a
+unique benchmarking dataset, NLPBench, comprising 378 college-level NLP
+questions spanning various NLP topics sourced from Yale University's prior
+final exams. NLPBench includes questions with context, in which multiple
+sub-questions share the same public information, and diverse question types,
+including multiple choice, short answer, and math. Our evaluation, centered on
+LLMs such as GPT-3.5/4, PaLM-2, and LLAMA-2, incorporates advanced prompting
+strategies like the chain-of-thought (CoT) and tree-of-thought (ToT). Our study
+reveals that the effectiveness of the advanced prompting strategies can be
+inconsistent, occasionally damaging LLM performance, especially in smaller
+models like the LLAMA-2 (13b). Furthermore, our manual assessment illuminated
+specific shortcomings in LLMs' scientific problem-solving skills, with
+weaknesses in logical decomposition and reasoning notably affecting results.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2309.17147">Using Large Language Models for Qualitative Analysis can Introduce Serious Bias. (arXiv:2309.17147v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Ashwin_J/0/1/0/all/0/1">Julian Ashwin</a>, <a href="http://arxiv.org/find/cs/1/au:+Chhabra_A/0/1/0/all/0/1">Aditya Chhabra</a>, <a href="http://arxiv.org/find/cs/1/au:+Rao_V/0/1/0/all/0/1">Vijayendra Rao</a></p>
+<p>Large Language Models (LLMs) are quickly becoming ubiquitous, but the
+implications for social science research are not yet well understood. This
+paper asks whether LLMs can help us analyse large-N qualitative data from
+open-ended interviews, with an application to transcripts of interviews with
+Rohingya refugees in Cox's Bazaar, Bangladesh. We find that a great deal of
+caution is needed in using LLMs to annotate text as there is a risk of
+introducing biases that can lead to misleading inferences. We here mean bias in
+the technical sense, that the errors that LLMs make in annotating interview
+transcripts are not random with respect to the characteristics of the interview
+subjects. Training simpler supervised models on high-quality human annotations
+with flexible coding leads to less measurement error and bias than LLM
+annotations. Therefore, given that some high quality annotations are necessary
+in order to asses whether an LLM introduces bias, we argue that it is probably
+preferable to train a bespoke model on these annotations than it is to use an
+LLM for annotation.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2309.17167">DyVal: Graph-informed Dynamic Evaluation of Large Language Models. (arXiv:2309.17167v2 [cs.AI] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Zhu_K/0/1/0/all/0/1">Kaijie Zhu</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_J/0/1/0/all/0/1">Jiaao Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_J/0/1/0/all/0/1">Jindong Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Gong_N/0/1/0/all/0/1">Neil Zhenqiang Gong</a>, <a href="http://arxiv.org/find/cs/1/au:+Yang_D/0/1/0/all/0/1">Diyi Yang</a>, <a href="http://arxiv.org/find/cs/1/au:+Xie_X/0/1/0/all/0/1">Xing Xie</a></p>
+<p>Large language models (LLMs) have achieved remarkable performance in various
+evaluation benchmarks. However, concerns about their performance are raised on
+potential data contamination in their considerable volume of training corpus.
+Moreover, the static nature and fixed complexity of current benchmarks may
+inadequately gauge the advancing capabilities of LLMs. In this paper, we
+introduce DyVal, a novel, general, and flexible evaluation protocol for dynamic
+evaluation of LLMs. Based on our proposed dynamic evaluation framework, we
+build graph-informed DyVal by leveraging the structural advantage of directed
+acyclic graphs to dynamically generate evaluation samples with controllable
+complexities. DyVal generates challenging evaluation sets on reasoning tasks
+including mathematics, logical reasoning, and algorithm problems. We evaluate
+various LLMs ranging from Flan-T5-large to ChatGPT and GPT4. Experiments
+demonstrate that LLMs perform worse in DyVal-generated evaluation samples with
+different complexities, emphasizing the significance of dynamic evaluation. We
+also analyze the failure cases and results of different prompting methods.
+Moreover, DyVal-generated samples are not only evaluation sets, but also
+helpful data for fine-tuning to improve the performance of LLMs on existing
+benchmarks. We hope that DyVal can shed light on the future evaluation research
+of LLMs.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.00901">TADIS: Steering Models for Deep-Thinking about Demonstration Examples. (arXiv:2310.00901v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Xue_T/0/1/0/all/0/1">Tianci Xue</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_Z/0/1/0/all/0/1">Ziqi Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_Y/0/1/0/all/0/1">Yixia Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_Y/0/1/0/all/0/1">Yun Chen</a>, <a href="http://arxiv.org/find/cs/1/au:+Chen_G/0/1/0/all/0/1">Guanhua Chen</a></p>
+<p>Instruction tuning has been demonstrated that could significantly improve the
+zero-shot generalization capability to unseen tasks by an apparent margin. By
+incorporating additional context (e.g., task definition, examples) during the
+fine-tuning process, Large Language Models (LLMs) achieved much higher
+performance than before. However, recent work reported that delusive task
+examples can achieve almost the same performance as correct task examples,
+indicating the input-label correspondence is less important than previously
+thought. Intrigued by this counter-intuitive observation, we suspect models
+have the same illusion of competence as humans. Therefore, we propose a novel
+method called TADIS that steers LLMs for "Deep-Thinking'' about demonstration
+examples instead of merely seeing. To alleviate the illusion of competence of
+models, we first ask the model to verify the correctness of shown examples.
+Then, using the verification results as conditions to elicit models for a
+better answer. Our experimental results show that TADIS consistently
+outperforms competitive baselines on in-domain and out-domain tasks (improving
+2.79 and 4.03 average ROUGLE-L on out-domain and in-domain datasets,
+respectively). Despite the presence of generated examples (not all of the
+thinking labels are accurate), TADIS can notably enhance performance in
+zero-shot and few-shot settings. This also suggests that our approach can be
+adopted on a large scale to improve the instruction following capabilities of
+models without any manual labor. Moreover, we construct three types of thinking
+labels with different model sizes and find that small models learn from the
+format of TADIS but larger models can be steered for "Deep-Thinking''.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.01425">Borges and AI. (arXiv:2310.01425v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Bottou_L/0/1/0/all/0/1">L&#xe9;on Bottou</a>, <a href="http://arxiv.org/find/cs/1/au:+Scholkopf_B/0/1/0/all/0/1">Bernhard Sch&#xf6;lkopf</a></p>
+<p>Many believe that Large Language Models (LLMs) open the era of Artificial
+Intelligence (AI). Some see opportunities while others see dangers. Yet both
+proponents and opponents grasp AI through the imagery popularised by science
+fiction. Will the machine become sentient and rebel against its creators? Will
+we experience a paperclip apocalypse? Before answering such questions, we
+should first ask whether this mental imagery provides a good description of the
+phenomenon at hand. Understanding weather patterns through the moods of the
+gods only goes so far. The present paper instead advocates understanding LLMs
+and their connection to AI through the imagery of Jorge Luis Borges, a master
+of 20th century literature, forerunner of magical realism, and precursor to
+postmodern literature. This exercise leads to a new perspective that
+illuminates the relation between language modelling and artificial
+intelligence.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.01889">Ring Attention with Blockwise Transformers for Near-Infinite Context. (arXiv:2310.01889v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Liu_H/0/1/0/all/0/1">Hao Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Zaharia_M/0/1/0/all/0/1">Matei Zaharia</a>, <a href="http://arxiv.org/find/cs/1/au:+Abbeel_P/0/1/0/all/0/1">Pieter Abbeel</a></p>
+<p>Transformers have emerged as the architecture of choice for many
+state-of-the-art AI models, showcasing exceptional performance across a wide
+range of AI applications. However, the memory demands imposed by Transformers
+limit their ability to handle long sequences, thereby creating challenges for
+tasks involving extended sequences or long-term dependencies. We present a
+distinct approach, Ring Attention, which leverages blockwise computation of
+self-attention to distribute long sequences across multiple devices while
+concurrently overlapping the communication of key-value blocks with the
+computation of blockwise attention. By processing longer input sequences while
+maintaining memory efficiency, Ring Attention enables training and inference of
+sequences that are device count times longer than those of prior
+memory-efficient Transformers, effectively eliminating the memory constraints
+imposed by individual devices. Extensive experiments on language modeling tasks
+demonstrate the effectiveness of Ring Attention in allowing large sequence
+input size and improving performance.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.02357">On the definition of toxicity in NLP. (arXiv:2310.02357v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Berezin_S/0/1/0/all/0/1">Sergey Berezin</a>, <a href="http://arxiv.org/find/cs/1/au:+Farahbakhsh_R/0/1/0/all/0/1">Reza Farahbakhsh</a>, <a href="http://arxiv.org/find/cs/1/au:+Crespi_N/0/1/0/all/0/1">Noel Crespi</a></p>
+<p>The fundamental problem in toxicity detection task lies in the fact that the
+toxicity is ill-defined. This causes us to rely on subjective and vague data in
+models' training, which results in non-robust and non-accurate results: garbage
+in - garbage out.
+</p>
+<p>This work suggests a new, stress-level-based definition of toxicity designed
+to be objective and context-aware. On par with it, we also describe possible
+ways of applying this new definition to dataset creation and model training.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.02754">LC-Score: Reference-less estimation of Text Comprehension Difficulty. (arXiv:2310.02754v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Tardy_P/0/1/0/all/0/1">Paul Tardy</a>, <a href="http://arxiv.org/find/cs/1/au:+Roze_C/0/1/0/all/0/1">Charlotte Roze</a>, <a href="http://arxiv.org/find/cs/1/au:+Poupet_P/0/1/0/all/0/1">Paul Poupet</a></p>
+<p>Being able to read and understand written text is critical in a digital era.
+However, studies shows that a large fraction of the population experiences
+comprehension issues. In this context, further initiatives in accessibility are
+required to improve the audience text comprehension. However, writers are
+hardly assisted nor encouraged to produce easy-to-understand content. Moreover,
+Automatic Text Simplification (ATS) model development suffers from the lack of
+metric to accurately estimate comprehension difficulty We present
+\textsc{LC-Score}, a simple approach for training text comprehension metric for
+any French text without reference \ie predicting how easy to understand a given
+text is on a $[0, 100]$ scale. Our objective with this scale is to
+quantitatively capture the extend to which a text suits to the \textit{Langage
+Clair} (LC, \textit{Clear Language}) guidelines, a French initiative closely
+related to English Plain Language. We explore two approaches: (i) using
+linguistically motivated indicators used to train statistical models, and (ii)
+neural learning directly from text leveraging pre-trained language models. We
+introduce a simple proxy task for comprehension difficulty training as a
+classification task. To evaluate our models, we run two distinct human
+annotation experiments, and find that both approaches (indicator based and
+neural) outperforms commonly used readability and comprehension metrics such as
+FKGL.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.02954">DQ-LoRe: Dual Queries with Low Rank Approximation Re-ranking for In-Context Learning. (arXiv:2310.02954v2 [cs.CL] UPDATED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Xiong_J/0/1/0/all/0/1">Jiong Xiong</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_Z/0/1/0/all/0/1">Zixuan Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Zheng_C/0/1/0/all/0/1">Chuanyang Zheng</a>, <a href="http://arxiv.org/find/cs/1/au:+Guo_Z/0/1/0/all/0/1">Zhijiang Guo</a>, <a href="http://arxiv.org/find/cs/1/au:+Yin_Y/0/1/0/all/0/1">Yichun Yin</a>, <a href="http://arxiv.org/find/cs/1/au:+Xie_E/0/1/0/all/0/1">Enze Xie</a>, <a href="http://arxiv.org/find/cs/1/au:+Yang_Z/0/1/0/all/0/1">Zhicheng Yang</a>, <a href="http://arxiv.org/find/cs/1/au:+Cao_Q/0/1/0/all/0/1">Qingxing Cao</a>, <a href="http://arxiv.org/find/cs/1/au:+Wang_H/0/1/0/all/0/1">Haiming Wang</a>, <a href="http://arxiv.org/find/cs/1/au:+Han_X/0/1/0/all/0/1">Xiongwei Han</a>, <a href="http://arxiv.org/find/cs/1/au:+Tang_J/0/1/0/all/0/1">Jing Tang</a>, <a href="http://arxiv.org/find/cs/1/au:+Li_C/0/1/0/all/0/1">Chengming Li</a>, <a href="http://arxiv.org/find/cs/1/au:+Liang_X/0/1/0/all/0/1">Xiaodan Liang</a></p>
+<p>Recent advances in natural language processing, primarily propelled by Large
+Language Models (LLMs), have showcased their remarkable capabilities grounded
+in in-context learning. A promising avenue for guiding LLMs in intricate
+reasoning tasks involves the utilization of intermediate reasoning steps within
+the Chain-of-Thought (CoT) paradigm. Nevertheless, the central challenge lies
+in the effective selection of exemplars for facilitating in-context learning.
+In this study, we introduce a framework that leverages Dual Queries and
+Low-rank approximation Re-ranking (DQ-LoRe) to automatically select exemplars
+for in-context learning. Dual Queries first query LLM to obtain LLM-generated
+knowledge such as CoT, then query the retriever to obtain the final exemplars
+via both question and the knowledge. Moreover, for the second query, LoRe
+employs dimensionality reduction techniques to refine exemplar selection,
+ensuring close alignment with the input question's knowledge. Through extensive
+experiments, we demonstrate that DQ-LoRe significantly outperforms prior
+state-of-the-art methods in the automatic selection of exemplars for GPT-4,
+enhancing performance from 92.5\% to 94.2\%. Our comprehensive analysis further
+reveals that DQ-LoRe consistently outperforms retrieval-based approaches in
+terms of both performance and adaptability, especially in scenarios
+characterized by distribution shifts. DQ-LoRe pushes the boundaries of
+in-context learning and opens up new avenues for addressing complex reasoning
+challenges. We will release the code soon.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2306.15724">REFLECT: Summarizing Robot Experiences for Failure Explanation and Correction. (arXiv:2306.15724v3 [cs.RO] CROSS LISTED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Liu_Z/0/1/0/all/0/1">Zeyi Liu</a>, <a href="http://arxiv.org/find/cs/1/au:+Bahety_A/0/1/0/all/0/1">Arpit Bahety</a>, <a href="http://arxiv.org/find/cs/1/au:+Song_S/0/1/0/all/0/1">Shuran Song</a></p>
+<p>The ability to detect and analyze failed executions automatically is crucial
+for an explainable and robust robotic system. Recently, Large Language Models
+(LLMs) have demonstrated strong reasoning abilities on textual inputs. To
+leverage the power of LLMs for robot failure explanation, we introduce REFLECT,
+a framework which queries LLM for failure reasoning based on a hierarchical
+summary of robot past experiences generated from multisensory observations. The
+failure explanation can further guide a language-based planner to correct the
+failure and complete the task. To systematically evaluate the framework, we
+create the RoboFail dataset with a variety of tasks and failure scenarios. We
+demonstrate that the LLM-based framework is able to generate informative
+failure explanations that assist successful correction planning.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2307.10025">An Empirical Study on Fertility Proposals Using Multi-Grained Topic Analysis Methods. (arXiv:2307.10025v2 [cs.HC] CROSS LISTED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Zhou_Y/0/1/0/all/0/1">Yulin Zhou</a></p>
+<p>Fertility issues are closely related to population security, in 60 years
+China's population for the first time in a negative growth trend, the change of
+fertility policy is of great concern to the community. 2023 "two sessions"
+proposal "suggests that the country in the form of legislation, the birth of
+the registration of the cancellation of the marriage restriction" This topic
+was once a hot topic on the Internet, and "unbundling" the relationship between
+birth registration and marriage has become the focus of social debate. In this
+paper, we adopt co-occurrence semantic analysis, topic analysis and sentiment
+analysis to conduct multi-granularity semantic analysis of microblog comments.
+It is found that the discussion on the proposal of "removing marriage
+restrictions from birth registration" involves the individual, society and the
+state at three dimensions, and is detailed into social issues such as personal
+behaviour, social ethics and law, and national policy, with people's sentiment
+inclined to be negative in most of the topics. Based on this, eight proposals
+were made to provide a reference for governmental decision making and to form a
+reference method for researching public opinion on political issues.
+</p>
+</p>
+</div>
+<div class="article">
+<h1><a href="http://arxiv.org/abs/2310.01423">An Empirical Study of AI Generated Text Detection Tools. (arXiv:2310.01423v1 [cs.CL] CROSS LISTED)</a></h1>
+<p><b>Authors:</b>  <a href="http://arxiv.org/find/cs/1/au:+Akram_A/0/1/0/all/0/1">Arslan Akram</a></p>
+<p>Since ChatGPT has emerged as a major AIGC model, providing high-quality
+responses across a wide range of applications (including software development
+and maintenance), it has attracted much interest from many individuals. ChatGPT
+has great promise, but there are serious problems that might arise from its
+misuse, especially in the realms of education and public safety. Several AIGC
+detectors are available, and they have all been tested on genuine text.
+However, more study is needed to see how effective they are for multi-domain
+ChatGPT material. This study aims to fill this need by creating a multi-domain
+dataset for testing the state-of-the-art APIs and tools for detecting
+artificially generated information used by universities and other research
+institutions. A large dataset consisting of articles, abstracts, stories, news,
+and product reviews was created for this study. The second step is to use the
+newly created dataset to put six tools through their paces. Six different
+artificial intelligence (AI) text identification systems, including "GPTkit,"
+"GPTZero," "Originality," "Sapling," "Writer," and "Zylalab," have accuracy
+rates between 55.29 and 97.0%. Although all the tools fared well in the
+evaluations, originality was particularly effective across the board.
+</p>
+</p>
+</div>
+
+    </div>
+    </body>
+    
