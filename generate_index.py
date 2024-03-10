@@ -4,7 +4,7 @@ from collections import defaultdict
 
 def generate_html():
     path = 'pages'
-    files = sorted(os.listdir(path))
+    files = sorted(os.listdir(path), reverse=True)
 
     # Define the CSS style
     style = """
