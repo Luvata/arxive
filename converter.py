@@ -39,6 +39,14 @@ def xml_to_html(xml_file, output_dir):
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
         font-size: 0.9em;
     }
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            font-size: 0.8em;
+        }
+        h1 {
+            font-size: 1.4em;
+        }
     h1 {
         color: #333;
         font-size: 1.6em;
