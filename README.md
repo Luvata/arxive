@@ -1,6 +1,6 @@
 # Arxive
 
-An Arxiv viewer [https://luvata.github.io/aixiv2-new/](https://luvata.github.io/aixiv2-new/) on cs.LG, cs.CV, cs.CL, cs.AI
+An Arxiv viewer [https://luvata.github.io/arxive](https://luvata.github.io/arxive) on cs.LG, cs.CV, cs.CL, cs.AI
 
 # Updates
 - Mar 10: Added copy buttons, reorganize folder structure, correct date time.
