@@ -47,6 +47,7 @@ def xml_to_html(xml_file, output_dir):
         h1 {
             font-size: 1.4em;
         }
+    }
     h1 {
         color: #333;
         font-size: 1.6em;
