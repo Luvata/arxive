@@ -123,13 +123,14 @@ def xml_to_html(xml_file, output_dir):
             info = abstract.split("\n")[0]
             abstract = "\n".join(abstract.split("\n")[1:])
             link = item.find('link').text
+            announcement_type = item.find('{*}announce_type').text
 
             # Extract URLs from the abstract
             urls = re.findall(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', abstract)
             url_links = ', '.join(f'<a href="{url}">{url}</a>' for url in urls)
 
             html += '<div class="article">\n'
-            html += '<h1><a href="{}">{}</a></h1>\n'.format(escape(link), escape(title))
+            html += '<h1> {} <a href="{}">{}</a></h1>\n'.format(escape(announcement_type), escape(link), escape(title))
             html += '<p><b>Authors:</b> {}</p>\n'.format(authors)
             html += '<p>{}</p>\n'.format(abstract)
             if url_links:
