@@ -28,7 +28,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
-    <!-- Styles (Paper Gram + toolbar additions) -->
+    <!-- Original Paper Gram Dark Theme Styles -->
     <style>
       :root {
         --bg-color: #0c0e17;
@@ -37,22 +37,19 @@
         --accent-color: #64ffda;
         --secondary-text: #94a3b8;
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "Space Grotesk", monospace;
       }
-
       body {
         background-color: var(--bg-color);
         color: var(--text-color);
         height: 100vh;
         overflow: hidden;
       }
-
-      /* Toolbar styles */
+      /* Toolbar Styles */
       .toolbar {
         position: fixed;
         top: 0;
@@ -67,11 +64,9 @@
         padding: 0.5rem 1rem;
         z-index: 1100;
       }
-
       .toolbar > div {
         margin: 0.25rem;
       }
-
       .categories button,
       #prevDay,
       #nextDay,
@@ -85,7 +80,6 @@
         transition: background 0.2s ease;
         font-size: 0.875rem;
       }
-
       .categories button.active,
       #exportLikes:hover,
       #prevDay:hover,
@@ -93,7 +87,6 @@
         background: var(--accent-color);
         color: var(--bg-color);
       }
-
       #selectedDate {
         background: var(--card-bg);
         border: 1px solid var(--accent-color);
@@ -102,12 +95,10 @@
         border-radius: 6px;
         font-size: 0.875rem;
       }
-
       /* Hide scrollbar */
       ::-webkit-scrollbar {
         display: none;
       }
-
       /* Favorites panel button (top-right) */
       .favorites-btn {
         position: fixed;
@@ -123,13 +114,11 @@
         font-size: 0.875rem;
         transition: background 0.2s ease;
       }
-
       .favorites-btn:hover {
         background: var(--accent-color);
         color: var(--bg-color);
       }
-
-      /* Favorites panel */
+      /* Favorites Panel */
       .favorites-panel {
         position: fixed;
         top: 60px;
@@ -145,11 +134,9 @@
         transform: translateX(120%);
         transition: transform 0.3s ease;
       }
-
       .favorites-panel.show {
         transform: translateX(0);
       }
-
       .favorite-item {
         padding: 0.75rem;
         border-radius: 6px;
@@ -158,19 +145,16 @@
         cursor: pointer;
         transition: background 0.2s ease;
       }
-
       .favorite-item:hover {
         background: rgba(100, 255, 218, 0.1);
       }
-
-      /* Main container for paper cards */
+      /* Main Container for Paper Cards */
       .container {
         height: 100vh;
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
         padding: 80px 1rem 1rem; /* leave room for toolbar */
       }
-
       .paper-card {
         margin: auto;
         content-visibility: auto;
@@ -184,7 +168,6 @@
         padding: 1rem;
         position: relative;
       }
-
       .paper-content {
         margin: auto;
         margin-top: 2rem;
@@ -195,18 +178,15 @@
         width: calc(100% - 2rem);
         max-width: 600px;
         backdrop-filter: blur(10px);
-        /* FIX: Ensure paper content is visible */
         opacity: 1;
         transition: opacity 0.3s ease;
         position: relative;
         overflow: hidden;
       }
-
       .paper-header {
         margin-bottom: 1rem;
         padding-right: 120px; /* space for share buttons */
       }
-
       .title {
         font-size: 1rem;
         font-family: "Playfair Display", serif;
@@ -214,14 +194,12 @@
         margin-bottom: 0.75rem;
         line-height: 1.4;
       }
-
       .authors {
         font-size: 0.875rem;
         color: var(--secondary-text);
         margin-bottom: 1rem;
         font-family: "Space Mono", monospace;
       }
-
       .abstract {
         font-size: 0.875rem;
         line-height: 1.6;
@@ -229,7 +207,6 @@
         margin-bottom: 1.5rem;
         word-wrap: break-word;
       }
-
       .metadata {
         display: flex;
         justify-content: space-between;
@@ -239,7 +216,6 @@
         font-size: 0.75rem;
         color: var(--secondary-text);
       }
-
       .like-button {
         color: var(--secondary-text);
         border: none;
@@ -248,11 +224,9 @@
         transition: color 0.2s ease;
         font-size: 1.25rem;
       }
-
       .like-button.liked {
         color: var(--accent-color);
       }
-
       .share-container {
         position: absolute;
         top: 0.75rem;
@@ -261,7 +235,6 @@
         gap: 0.5rem;
         z-index: 10;
       }
-
       .share-btn {
         background: var(--card-bg);
         border: 1px solid var(--accent-color);
@@ -276,21 +249,17 @@
         transition: background 0.2s ease;
         backdrop-filter: blur(5px);
       }
-
       .share-btn:hover {
         background: var(--accent-color);
         color: var(--bg-color);
       }
-
       .read-more {
         color: var(--accent-color);
         text-decoration: none;
       }
-
       .read-more:hover {
         text-decoration: underline;
       }
-
       .footer {
         position: fixed;
         bottom: 1rem;
@@ -306,18 +275,15 @@
         z-index: 1100;
         white-space: nowrap;
       }
-
       .footer a {
         color: var(--accent-color);
         text-decoration: none;
         transition: color 0.2s ease;
       }
-
       .footer a:hover {
         text-decoration: underline;
         opacity: 0.8;
       }
-
       .toast {
         position: fixed;
         bottom: 2rem;
@@ -331,7 +297,6 @@
         opacity: 0;
         transition: all 0.3s ease;
       }
-
       .toast.show {
         transform: translateX(-50%) translateY(0);
         opacity: 1;
@@ -373,8 +338,7 @@
     <!-- JavaScript -->
     <script>
       /* ====== Global State & Config ====== */
-      const baseURL =
-        "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // adjust if needed
+      const baseURL = "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // adjust if needed
       let selectedCategory = "cs.AI";
       let papers = [];
       let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -385,27 +349,25 @@
       document.getElementById("selectedDate").value = selectedDate;
       document.getElementById("selectedDate").setAttribute("max", today);
 
-      /* ====== Event Listeners for Toolbar ====== */
+      /* ====== Toolbar Event Listeners ====== */
       // Category button clicks
       document.querySelectorAll(".category-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
-          document
-            .querySelectorAll(".category-btn")
-            .forEach((b) => b.classList.remove("active"));
+          document.querySelectorAll(".category-btn").forEach((b) =>
+            b.classList.remove("active")
+          );
           btn.classList.add("active");
           selectedCategory = btn.getAttribute("data-category");
           fetchPapersFromXML(selectedDate, selectedCategory);
         });
       });
-
-      // Date change (via input)
+      // Date change via input
       document
         .getElementById("selectedDate")
         .addEventListener("change", (e) => {
           selectedDate = e.target.value;
           fetchPapersFromXML(selectedDate, selectedCategory);
         });
-
       // Prev/Next day buttons
       document.getElementById("prevDay").addEventListener("click", () => {
         selectedDate = changeDate(selectedDate, -1);
@@ -420,7 +382,6 @@
           fetchPapersFromXML(selectedDate, selectedCategory);
         }
       });
-
       // Favorites panel toggle
       document
         .getElementById("favoritesToggle")
@@ -429,7 +390,6 @@
             .getElementById("favoritesPanel")
             .classList.toggle("show");
         });
-
       // Export Likes button
       document
         .getElementById("exportLikes")
@@ -442,7 +402,6 @@
         date.setDate(date.getDate() + n);
         return date.toISOString().split("T")[0];
       }
-
       // Show a toast message
       function showToast(message) {
         const toast = document.createElement("div");
@@ -474,30 +433,35 @@
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(text, "application/xml");
 
-          // Debug: log number of items found
-          const items = xmlDoc.querySelectorAll("item");
-          console.log("Found <item> elements:", items.length);
+          // Try selecting items from <channel>
+          let items = xmlDoc.querySelectorAll("channel > item");
           if (items.length === 0) {
-            console.warn(
-              "No <item> elements found. Your XML file may use a different structure (e.g. <entry> elements)."
-            );
+            items = xmlDoc.querySelectorAll("item");
           }
-
+          console.log("Found <item> elements:", items.length);
           papers = [];
           items.forEach((item) => {
+            // Title
             const title = item.querySelector("title")
               ? item.querySelector("title").textContent
               : "";
-            // Some feeds use the "dc:creator" element for authors
-            const authors = item.querySelector("dc\\:creator")
-              ? item.querySelector("dc\\:creator").textContent
-              : "";
-            const description = item.querySelector("description")
+            // Authors: try dc:creator then author
+            const authorsEl = item.querySelector("dc\\:creator, author");
+            const authors = authorsEl ? authorsEl.textContent : "";
+            // Description/Abstract
+            let description = item.querySelector("description")
               ? item.querySelector("description").textContent
               : "";
+            // If the description contains newlines, remove the first line (info)
+            if (description.includes("\n")) {
+              const parts = description.split("\n");
+              description = parts.slice(1).join("\n");
+            }
+            // Link
             const link = item.querySelector("link")
               ? item.querySelector("link").textContent
               : "";
+            // Publication Date
             let published = "";
             if (item.querySelector("pubDate")) {
               published = new Date(
@@ -514,6 +478,12 @@
             } else {
               arxivId = link;
             }
+            // Optional: announcement type (if available)
+            let announceType = "";
+            const announceEl = item.getElementsByTagName("announce_type");
+            if (announceEl.length > 0) {
+              announceType = announceEl[0].textContent;
+            }
             papers.push({
               title,
               authors,
@@ -521,6 +491,7 @@
               link,
               published,
               arxivId,
+              announceType,
             });
           });
           renderPapers();
@@ -544,15 +515,16 @@
         papers.forEach((paper) => {
           const paperCard = document.createElement("div");
           paperCard.className = "paper-card";
-          // FIX: Add active class so that paper-content becomes visible
-          paperCard.classList.add("active");
+          paperCard.classList.add("active"); // ensure content is visible
 
-          // Extract key results (up to 3 sentences with key phrases)
+          // Extract key results from abstract
           const keyResults = extractKeyResults(paper.abstract);
-
           // Check if already liked (by arXiv ID)
           const isLiked = favorites.some((f) => f.arxivId === paper.arxivId);
-
+          // If announceType exists, prepend it to the title (like in your Python code)
+          const displayTitle = paper.announceType
+            ? `${paper.announceType}: ${paper.title}`
+            : paper.title;
           paperCard.innerHTML = `
             <div class="paper-content">
               <div class="share-container">
@@ -567,12 +539,9 @@
                 </button>
               </div>
               <div class="paper-header">
-                <h2 class="title">${paper.title}</h2>
+                <h2 class="title">${displayTitle}</h2>
                 <div class="authors">${
-                  paper.authors.split(", ").length > 4
-                    ? paper.authors.split(", ").slice(0, 4).join(", ") +
-                      ", et al."
-                    : paper.authors
+                  authorsShort(paper.authors)
                 }</div>
               </div>
               <div class="key-results">
@@ -604,19 +573,13 @@
 
           paperCard
             .querySelector(".twitter-share")
-            .addEventListener("click", () =>
-              sharePaper("twitter", paper)
-            );
+            .addEventListener("click", () => sharePaper("twitter", paper));
           paperCard
             .querySelector(".linkedin-share")
-            .addEventListener("click", () =>
-              sharePaper("linkedin", paper)
-            );
+            .addEventListener("click", () => sharePaper("linkedin", paper));
           paperCard
             .querySelector(".copy-link")
-            .addEventListener("click", () =>
-              sharePaper("copy", paper)
-            );
+            .addEventListener("click", () => sharePaper("copy", paper));
           const likeButton = paperCard.querySelector(".like-button");
           likeButton.addEventListener("click", () =>
             toggleFavorite(paper, likeButton)
@@ -669,6 +632,12 @@
         return results;
       }
 
+      /* ====== Helper to Shorten Authors List ====== */
+      function authorsShort(authorsText) {
+        const parts = authorsText.split(", ");
+        return parts.length > 4 ? parts.slice(0, 4).join(", ") + ", et al." : authorsText;
+      }
+
       /* ====== Like / Favorites Handling ====== */
       function toggleFavorite(paper, button) {
         const index = favorites.findIndex((f) => f.arxivId === paper.arxivId);
@@ -685,7 +654,6 @@
         localStorage.setItem("favorites", JSON.stringify(favorites));
         updateFavoritesList();
       }
-
       function updateFavoritesList() {
         const list = document.getElementById("favoritesList");
         list.innerHTML = "";
