@@ -245,6 +245,7 @@
         height: calc(100vh - 60px);
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
+        scroll-padding-top: calc(30px + env(safe-area-inset-top));
       }
       .fixed-progress {
         position: fixed;
@@ -470,6 +471,14 @@
           border-radius: 6px;
         }
       }
+      mark {
+        background-color: rgba(22, 160, 133, 0.4); /* Emerald green */
+        color: #b4f5e1; /* Soft pastel green */
+        padding: 0.2em 0.3em;
+        border-radius: 0.2em;
+        font-style: italic;
+      }
+
     </style>
   </head>
 
@@ -668,7 +677,7 @@
       function getDisplayAuthors(authorsStr, expanded) {
         const authorsArr = authorsStr.split(", ");
         if (window.innerWidth <= 600 && authorsArr.length > 4 && !expanded) {
-          return authorsArr[0] + " ... " + authorsArr[authorsArr.length - 1];
+          return authorsArr[0] + " et al., " + authorsArr[authorsArr.length - 1];
         }
         return authorsStr;
       }
@@ -845,12 +854,7 @@
           );
           const keyResults = extractKeyResults(paper.abstract);
 
-          const abstractHTML = isMobile
-            ? `<p class="abstract">${highlightAbstract(
-                paper.abstract,
-                keyResults
-              )}</p>`
-            : `<p class="abstract">${paper.abstract}</p>`;
+          const abstractHTML = `<p class="abstract">${highlightAbstract(paper.abstract, keyResults)}</p>`;
 
           const paperCard = document.createElement("div");
           paperCard.className = "paper-card";
