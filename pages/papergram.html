@@ -49,7 +49,7 @@
         height: 100vh;
         overflow: hidden;
       }
-      /* Toolbar Styles */
+      /* Toolbar Styles (Always a single row with horizontal scroll if needed) */
       .toolbar {
         position: fixed;
         top: 0;
@@ -58,19 +58,23 @@
         background: var(--card-bg);
         border-bottom: 1px solid var(--accent-color);
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         padding: 0.5rem 1rem;
         z-index: 1100;
+        flex-wrap: nowrap; /* Force single row */
+        overflow-x: auto; /* Allow horizontal scroll if needed */
       }
-      .toolbar > div {
-        margin: 0.25rem;
+      .toolbar .left,
+      .toolbar .center,
+      .toolbar .right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
       }
-      .categories button,
-      #prevDay,
-      #nextDay,
-      #exportLikes {
+      /* Left: Category buttons, dropdown & Filter toggle */
+      .category-buttons button {
         background: var(--card-bg);
         border: 1px solid var(--accent-color);
         color: var(--accent-color);
@@ -80,10 +84,63 @@
         transition: background 0.2s ease;
         font-size: 0.875rem;
       }
-      .categories button.active,
-      #exportLikes:hover,
-      #prevDay:hover,
-      #nextDay:hover {
+      .category-buttons button.active,
+      .category-buttons button:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      .category-select {
+        display: none;
+      }
+      .category-select select {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--text-color);
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.875rem;
+      }
+      /* Filter toggle moved into left section */
+      .left .actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .left .actions button {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        font-size: 1rem;
+      }
+      .left .actions button:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      .left .actions button.active {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      /* Center: Date selector */
+      .date-selector {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .date-selector button {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        font-size: 0.875rem;
+      }
+      .date-selector button:hover {
         background: var(--accent-color);
         color: var(--bg-color);
       }
@@ -94,95 +151,37 @@
         padding: 6px;
         border-radius: 6px;
         font-size: 0.875rem;
+        text-align: center;
       }
-      /* Responsive adjustments for toolbar */
+      /* Right: Favorites and Export */
+      .actions button {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        font-size: 1rem;
+      }
+      .actions button:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      .actions button.active {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      /* Show dropdown on narrow screens */
       @media (max-width: 600px) {
-        .toolbar {
-          flex-direction: column;
-          align-items: stretch;
-          text-align: center;
+        .category-buttons {
+          display: none;
         }
-        .toolbar > div {
-          margin: 0.5rem 0;
-        }
-        .categories {
-          flex-wrap: wrap;
-          justify-content: center;
+        .category-select {
+          display: block;
         }
       }
-      /* Hide scrollbar */
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      /* Favorites panel button (top-right) */
-      .favorites-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--card-bg);
-        border: 1px solid var(--accent-color);
-        color: var(--accent-color);
-        padding: 8px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        z-index: 1100;
-        font-size: 0.875rem;
-        transition: background 0.2s ease;
-      }
-      .favorites-btn:hover {
-        background: var(--accent-color);
-        color: var(--bg-color);
-      }
-      /* Filter panel button (top-left) */
-      .filter-btn {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        background: var(--card-bg);
-        border: 1px solid var(--accent-color);
-        color: var(--accent-color);
-        padding: 8px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        z-index: 1100;
-        font-size: 0.875rem;
-        transition: background 0.2s ease;
-      }
-      .filter-btn:hover {
-        background: var(--accent-color);
-        color: var(--bg-color);
-      }
-      /* Favorites Panel */
-      .favorites-panel {
-        position: fixed;
-        top: 60px;
-        right: 20px;
-        background: var(--card-bg);
-        border: 1px solid var(--accent-color);
-        border-radius: 12px;
-        padding: 1rem;
-        width: 300px;
-        max-height: 70vh;
-        overflow-y: auto;
-        z-index: 1050;
-        transform: translateX(120%);
-        transition: transform 0.3s ease;
-      }
-      .favorites-panel.show {
-        transform: translateX(0);
-      }
-      .favorite-item {
-        padding: 0.75rem;
-        border-radius: 6px;
-        background: rgba(100, 255, 218, 0.05);
-        margin-bottom: 0.5rem;
-        cursor: pointer;
-        transition: background 0.2s ease;
-      }
-      .favorite-item:hover {
-        background: rgba(100, 255, 218, 0.1);
-      }
-      /* Filter Panel (left side) */
+      /* Filter Panel (smaller size) */
       .filter-panel {
         position: fixed;
         top: 60px;
@@ -191,8 +190,8 @@
         border: 1px solid var(--accent-color);
         border-radius: 12px;
         padding: 1rem;
-        width: 300px;
-        max-height: 70vh;
+        width: 250px;
+        max-height: 60vh;
         overflow-y: auto;
         z-index: 1050;
         transform: translateX(-120%);
@@ -254,7 +253,6 @@
         scroll-snap-type: y mandatory;
         padding: 80px 1rem 1rem;
       }
-      /* Fixed Paper Progress Indicator */
       .fixed-progress {
         position: fixed;
         bottom: 10px;
@@ -310,10 +308,11 @@
         display: inline-block;
         background: var(--accent-color);
         color: var(--bg-color);
-        padding: 0.25rem 0.5rem;
+        padding: 0.15rem 0.4rem;
         border-radius: 4px;
         font-size: 0.75rem;
-        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
+        vertical-align: middle;
       }
       .authors {
         font-size: 0.875rem;
@@ -375,7 +374,6 @@
         gap: 0.5rem;
         z-index: 10;
       }
-      /* Only one share button (copy-link) remains */
       .share-btn {
         background: var(--card-bg);
         border: 1px solid var(--accent-color);
@@ -442,36 +440,64 @@
         transform: translateX(-50%) translateY(0);
         opacity: 1;
       }
+      ::-webkit-scrollbar {
+        display: none;
+      }
     </style>
   </head>
 
   <body>
     <!-- Toolbar -->
     <div class="toolbar">
-      <div class="categories">
-        <button class="category-btn" data-category="cs.AI">cs.AI</button>
-        <button class="category-btn active" data-category="cs.CV">cs.CV</button>
-        <button class="category-btn" data-category="cs.CL">cs.CL</button>
-        <button class="category-btn" data-category="cs.LG">cs.LG</button>
+      <!-- Left: Category Selection and Filter Toggle -->
+      <div class="left">
+        <!-- Full Category Buttons (visible on wider screens) -->
+        <div class="category-buttons">
+          <button class="category-btn" data-category="cs.AI">AI</button>
+          <button class="category-btn active" data-category="cs.CV">CV</button>
+          <button class="category-btn" data-category="cs.CL">CL</button>
+          <button class="category-btn" data-category="cs.LG">LG</button>
+        </div>
+        <!-- Dropdown for narrow screens -->
+        <div class="category-select">
+          <select id="categoryDropdown">
+            <option value="cs.AI">AI</option>
+            <option value="cs.CV" selected>CV</option>
+            <option value="cs.CL">CL</option>
+            <option value="cs.LG">LG</option>
+          </select>
+        </div>
+        <!-- Filter Toggle Button -->
+        <div class="actions">
+          <button id="filterToggle" title="Filter">
+            <i class="fas fa-filter"></i>
+          </button>
+        </div>
       </div>
-      <div class="date-selector">
-        <button id="prevDay">Prev Day</button>
+
+      <!-- Center: Date Selector -->
+      <div class="center date-selector">
+        <button id="prevDay" title="Previous Day">
+          <i class="fas fa-chevron-left"></i>
+        </button>
         <input type="date" id="selectedDate" />
-        <button id="nextDay">Next Day</button>
+        <button id="nextDay" title="Next Day">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
-      <div class="export-likes">
-        <button id="exportLikes">Export Likes</button>
+
+      <!-- Right: Favorites and Export -->
+      <div class="right actions">
+        <button id="favoritesToggle" title="Favorites">
+          <i class="fas fa-star"></i>
+        </button>
+        <button id="exportLikes" title="Export Likes">
+          <i class="fas fa-download"></i>
+        </button>
       </div>
     </div>
 
-    <!-- Favorites Panel Toggle (top-right) -->
-    <button class="favorites-btn" id="favoritesToggle">Favorites</button>
-    <div class="favorites-panel" id="favoritesPanel">
-      <div id="favoritesList"></div>
-    </div>
-
-    <!-- Filter Panel Toggle (top-left) -->
-    <button class="filter-btn" id="filterToggle">Filter</button>
+    <!-- Filter Panel -->
     <div class="filter-panel" id="filterPanel">
       <div id="filterList"></div>
       <button class="filter-item" id="clearFilter">Clear Filter</button>
@@ -485,35 +511,36 @@
       </div>
     </div>
 
+    <!-- Favorites Panel -->
+    <div class="favorites-panel" id="favoritesPanel">
+      <div id="favoritesList"></div>
+    </div>
+
     <!-- Main Container for Paper Cards -->
     <div class="container" id="container"></div>
 
     <!-- Fixed Paper Progress Indicator -->
-    <div id="fixedProgress" class="fixed-progress">Paper 0 of 0</div>
+    <div id="fixedProgress" class="fixed-progress">0/0</div>
 
     <!-- JavaScript -->
     <script>
       /* ====== Global State & Config ====== */
-      // Default to cs.CV
-      const baseURL = "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // or your own XML path
+      const baseURL = "https://raw.githubusercontent.com/Luvata/arxive/main/xml/";
       let selectedCategory = "cs.CV";
       let papers = [];
       let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
-      // Filter config and state
       let filterKeywords = JSON.parse(localStorage.getItem("filterKeywords") ||
         '["diffusion", "gan", "llm", "flow", "adversarial attack"]'
       );
       let activeFilter = "";
 
-      // Set selected date to today (YYYY-MM-DD)
       const today = new Date().toISOString().split("T")[0];
       let selectedDate = today;
       document.getElementById("selectedDate").value = selectedDate;
       document.getElementById("selectedDate").setAttribute("max", today);
 
       /* ====== Toolbar Event Listeners ====== */
-      // Category button clicks
       document.querySelectorAll(".category-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           document.querySelectorAll(".category-btn").forEach((b) =>
@@ -521,17 +548,21 @@
           );
           btn.classList.add("active");
           selectedCategory = btn.getAttribute("data-category");
+          document.getElementById("categoryDropdown").value = selectedCategory;
           fetchPapersFromXML(selectedDate, selectedCategory);
         });
       });
-      // Date change via input
-      document
-        .getElementById("selectedDate")
-        .addEventListener("change", (e) => {
-          selectedDate = e.target.value;
-          fetchPapersFromXML(selectedDate, selectedCategory);
+      document.getElementById("categoryDropdown").addEventListener("change", (e) => {
+        selectedCategory = e.target.value;
+        document.querySelectorAll(".category-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn.getAttribute("data-category") === selectedCategory);
         });
-      // Prev/Next day buttons
+        fetchPapersFromXML(selectedDate, selectedCategory);
+      });
+      document.getElementById("selectedDate").addEventListener("change", (e) => {
+        selectedDate = e.target.value;
+        fetchPapersFromXML(selectedDate, selectedCategory);
+      });
       document.getElementById("prevDay").addEventListener("click", () => {
         selectedDate = changeDate(selectedDate, -1);
         document.getElementById("selectedDate").value = selectedDate;
@@ -545,19 +576,14 @@
           fetchPapersFromXML(selectedDate, selectedCategory);
         }
       });
-      // Favorites panel toggle
-      document
-        .getElementById("favoritesToggle")
-        .addEventListener("click", () => {
-          document.getElementById("favoritesPanel").classList.toggle("show");
-        });
-      // Filter panel toggle
-      document.getElementById("filterToggle").addEventListener("click", () => {
+      document.getElementById("filterToggle").addEventListener("click", function() {
         document.getElementById("filterPanel").classList.toggle("show");
+        this.classList.toggle("active");
       });
-      // Export Likes button
+      document.getElementById("favoritesToggle").addEventListener("click", () => {
+        document.getElementById("favoritesPanel").classList.toggle("show");
+      });
       document.getElementById("exportLikes").addEventListener("click", exportLikes);
-      // Filter configuration: Save keywords from input
       document.getElementById("saveFilterKeywords").addEventListener("click", () => {
         const input = document.getElementById("filterKeywordsInput").value;
         filterKeywords = input.split(",").map(s => s.trim()).filter(Boolean);
@@ -565,7 +591,6 @@
         updateFilterPanel();
         renderPapers();
       });
-      // Clear filter button
       document.getElementById("clearFilter").addEventListener("click", () => {
         activeFilter = "";
         updateFilterPanel();
@@ -573,13 +598,11 @@
       });
 
       /* ====== Utility Functions ====== */
-      // Change date by n days; returns YYYY-MM-DD
       function changeDate(dateStr, n) {
         const date = new Date(dateStr);
         date.setDate(date.getDate() + n);
         return date.toISOString().split("T")[0];
       }
-      // Show a toast message
       function showToast(message) {
         const toast = document.createElement("div");
         toast.className = "toast";
@@ -592,7 +615,6 @@
         }, 2000);
       }
 
-      /* ====== Extract Key Results from Abstract ====== */
       function extractKeyResults(abstract) {
         const results = [];
         const sentences = abstract.split(/[.!?]+/);
@@ -614,7 +636,6 @@
         return results;
       }
 
-      /* ====== Fetch & Parse XML ====== */
       async function fetchPapersFromXML(date, category) {
         const catMapping = {
           "cs.AI": "cs-ai",
@@ -631,7 +652,6 @@
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(text, "application/xml");
 
-          // Locate <item> elements
           let items = xmlDoc.querySelectorAll("channel > item");
           if (items.length === 0) {
             items = xmlDoc.querySelectorAll("item");
@@ -639,11 +659,9 @@
           papers = [];
 
           items.forEach((item) => {
-            // Title
             const titleEl = item.querySelector("title");
             const title = titleEl ? titleEl.textContent : "";
 
-            // --- Updated Author Extraction ---
             let authors = "";
             const authorEls = item.querySelectorAll("author > name");
             if (authorEls.length > 0) {
@@ -655,7 +673,6 @@
               }
             }
 
-            // Description/Abstract (remove redundant prefix if exists)
             let description = "";
             const descEl = item.querySelector("description");
             if (descEl) {
@@ -665,11 +682,9 @@
               }
             }
 
-            // Link
             const linkEl = item.querySelector("link");
             const link = linkEl ? linkEl.textContent : "";
 
-            // Published Date
             let published = "";
             const pubEl = item.querySelector("pubDate");
             if (pubEl) {
@@ -678,7 +693,6 @@
               published = date;
             }
 
-            // arXiv ID extraction with updated regex:
             let arxivId = "";
             const match = link.match(/abs\/(.+?)(?:\/|\?|$)/);
             if (match) {
@@ -687,7 +701,6 @@
               arxivId = link;
             }
 
-            // Extract announce type (if available)
             let announceType = "";
             const announceTypeEl = item.querySelector("arxiv\\:announce_type") || item.querySelector("announce_type");
             if (announceTypeEl) {
@@ -715,12 +728,11 @@
         }
       }
 
-      /* ====== Render Papers ====== */
       function renderPapers() {
         const container = document.getElementById("container");
         container.innerHTML = "";
 
-        // Filter papers if an active filter is set
+        // Case-insensitive filter matching:
         const filteredPapers = activeFilter
           ? papers.filter(p =>
               p.title.toLowerCase().includes(activeFilter.toLowerCase()) ||
@@ -736,7 +748,6 @@
           return;
         }
 
-        // Render each paper
         filteredPapers.forEach((paper) => {
           const paperCard = document.createElement("div");
           paperCard.className = "paper-card";
@@ -745,21 +756,18 @@
 
           paperCard.innerHTML = `
             <div class="paper-content">
-              <!-- Share Icons: Only the Copy Link button -->
               <div class="share-container">
                 <button class="share-btn copy-link" title="Copy Link">
                   <i class="fas fa-link"></i>
                 </button>
               </div>
-
-              <!-- Title, Announce Type & Authors -->
               <div class="paper-header">
-                <h2 class="title">${paper.title}</h2>
-                ${paper.announceType ? `<div class="announce-type">${paper.announceType}</div>` : ""}
+                <h2 class="title">
+                  ${paper.title}
+                  ${paper.announceType ? `<span class="announce-type">${paper.announceType}</span>` : ""}
+                </h2>
                 <div class="authors">${paper.authors}</div>
               </div>
-
-              <!-- Key Results / Findings -->
               <div class="key-results">
                 ${keyResults
                   .map(
@@ -772,22 +780,19 @@
                   )
                   .join("")}
               </div>
-
-              <!-- Full Abstract -->
               <p class="abstract">${paper.abstract}</p>
-
-              <!-- Bottom Metadata: Date, Like Button, Read More -->
               <div class="metadata">
                 <span>${paper.published}</span>
                 <button class="like-button ${isLiked ? "liked" : ""}">${
             isLiked ? "❤️" : "🤍"
           }</button>
-                <a href="${paper.link}" target="_blank" class="read-more">Read More</a>
+                <a href="${paper.link}" target="_blank" class="read-more" title="View on arXiv">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
               </div>
             </div>
           `;
 
-          // Only the copy-link share button remains
           paperCard
             .querySelector(".copy-link")
             .addEventListener("click", () =>
@@ -801,17 +806,14 @@
           container.appendChild(paperCard);
         });
 
-        // After rendering, set up the progress observer
         setupProgressObserver();
       }
 
-      /* ====== Update Fixed Progress Indicator ====== */
       function updateFixedProgress(current, total) {
         document.getElementById("fixedProgress").innerText =
-          total === 0 ? "No papers" : `Paper ${current} of ${total}`;
+          total === 0 ? "0/0" : `${current}/${total}`;
       }
 
-      /* ====== Setup IntersectionObserver for Paper Progress ====== */
       function setupProgressObserver() {
         const container = document.getElementById("container");
         const paperCards = container.querySelectorAll(".paper-card");
@@ -835,12 +837,10 @@
         paperCards.forEach(card => observer.observe(card));
       }
 
-      /* ====== Update Filter Panel ====== */
       function updateFilterPanel() {
         const filterList = document.getElementById("filterList");
         filterList.innerHTML = "";
         filterKeywords.forEach(keyword => {
-          // Count how many papers match this keyword in title/abstract
           const count = papers.filter(p =>
             p.title.toLowerCase().includes(keyword.toLowerCase()) ||
             p.abstract.toLowerCase().includes(keyword.toLowerCase())
@@ -852,12 +852,21 @@
             activeFilter = keyword;
             updateFilterPanel();
             renderPapers();
+            if(activeFilter) {
+              document.getElementById("filterToggle").classList.add("active");
+            } else {
+              document.getElementById("filterToggle").classList.remove("active");
+            }
           });
           filterList.appendChild(btn);
         });
+        if(activeFilter) {
+          document.getElementById("filterToggle").classList.add("active");
+        } else {
+          document.getElementById("filterToggle").classList.remove("active");
+        }
       }
 
-      /* ====== Like / Favorites Handling ====== */
       function toggleFavorite(paper, button) {
         const index = favorites.findIndex((f) => f.arxivId === paper.arxivId);
         if (index === -1) {
@@ -894,7 +903,6 @@
         });
       }
 
-      /* ====== Share Paper (Copy Only) ====== */
       function sharePaper(platform, paper) {
         const title = paper.title;
         const url = paper.link;
@@ -904,7 +912,6 @@
         }
       }
 
-      /* ====== Export Likes ====== */
       function exportLikes() {
         const data = JSON.stringify(favorites, null, 2);
         const blob = new Blob([data], { type: "application/json" });
@@ -917,7 +924,6 @@
         document.body.removeChild(a);
       }
 
-      /* ====== Initial Load ====== */
       fetchPapersFromXML(selectedDate, selectedCategory);
     </script>
   </body>
