@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
 
-    <!-- KaTeX -->
+    <!-- KaTeX (remove if you don’t need LaTeX) -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
@@ -28,7 +28,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
-    <!-- Styles (Paper Gram + toolbar additions) -->
+    <!-- Styles -->
     <style>
       :root {
         --bg-color: #0c0e17;
@@ -52,7 +52,7 @@
         overflow: hidden;
       }
 
-      /* Toolbar styles */
+      /* Toolbar */
       .toolbar {
         position: fixed;
         top: 0;
@@ -67,11 +67,9 @@
         padding: 0.5rem 1rem;
         z-index: 1100;
       }
-
       .toolbar > div {
         margin: 0.25rem;
       }
-
       .categories button,
       #prevDay,
       #nextDay,
@@ -85,7 +83,6 @@
         transition: background 0.2s ease;
         font-size: 0.875rem;
       }
-
       .categories button.active,
       #exportLikes:hover,
       #prevDay:hover,
@@ -93,7 +90,6 @@
         background: var(--accent-color);
         color: var(--bg-color);
       }
-
       #selectedDate {
         background: var(--card-bg);
         border: 1px solid var(--accent-color);
@@ -103,12 +99,7 @@
         font-size: 0.875rem;
       }
 
-      /* Hide scrollbar */
-      ::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* Favorites panel button (top-right) */
+      /* Favorites button & panel */
       .favorites-btn {
         position: fixed;
         top: 20px;
@@ -123,13 +114,10 @@
         font-size: 0.875rem;
         transition: background 0.2s ease;
       }
-
       .favorites-btn:hover {
         background: var(--accent-color);
         color: var(--bg-color);
       }
-
-      /* Favorites panel */
       .favorites-panel {
         position: fixed;
         top: 60px;
@@ -145,11 +133,9 @@
         transform: translateX(120%);
         transition: transform 0.3s ease;
       }
-
       .favorites-panel.show {
         transform: translateX(0);
       }
-
       .favorite-item {
         padding: 0.75rem;
         border-radius: 6px;
@@ -158,19 +144,17 @@
         cursor: pointer;
         transition: background 0.2s ease;
       }
-
       .favorite-item:hover {
         background: rgba(100, 255, 218, 0.1);
       }
 
-      /* Main container for paper cards */
+      /* Container for papers */
       .container {
         height: 100vh;
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
-        padding: 80px 1rem 1rem; /* leave room for toolbar */
+        padding: 80px 1rem 1rem;
       }
-
       .paper-card {
         margin: auto;
         content-visibility: auto;
@@ -184,7 +168,6 @@
         padding: 1rem;
         position: relative;
       }
-
       .paper-content {
         margin: auto;
         margin-top: 2rem;
@@ -200,7 +183,6 @@
         position: relative;
         overflow: hidden;
       }
-
       .paper-card.active .paper-content {
         opacity: 1;
       }
@@ -209,7 +191,6 @@
         margin-bottom: 1rem;
         padding-right: 120px; /* space for share buttons */
       }
-
       .title {
         font-size: 1rem;
         font-family: "Playfair Display", serif;
@@ -217,14 +198,12 @@
         margin-bottom: 0.75rem;
         line-height: 1.4;
       }
-
       .authors {
         font-size: 0.875rem;
         color: var(--secondary-text);
         margin-bottom: 1rem;
         font-family: "Space Mono", monospace;
       }
-
       .abstract {
         font-size: 0.875rem;
         line-height: 1.6;
@@ -232,7 +211,6 @@
         margin-bottom: 1.5rem;
         word-wrap: break-word;
       }
-
       .metadata {
         display: flex;
         justify-content: space-between;
@@ -242,7 +220,6 @@
         font-size: 0.75rem;
         color: var(--secondary-text);
       }
-
       .like-button {
         color: var(--secondary-text);
         border: none;
@@ -251,11 +228,11 @@
         transition: color 0.2s ease;
         font-size: 1.25rem;
       }
-
       .like-button.liked {
         color: var(--accent-color);
       }
 
+      /* Share buttons */
       .share-container {
         position: absolute;
         top: 0.75rem;
@@ -264,7 +241,6 @@
         gap: 0.5rem;
         z-index: 10;
       }
-
       .share-btn {
         background: var(--card-bg);
         border: 1px solid var(--accent-color);
@@ -279,21 +255,19 @@
         transition: background 0.2s ease;
         backdrop-filter: blur(5px);
       }
-
       .share-btn:hover {
         background: var(--accent-color);
         color: var(--bg-color);
       }
-
       .read-more {
         color: var(--accent-color);
         text-decoration: none;
       }
-
       .read-more:hover {
         text-decoration: underline;
       }
 
+      /* Footer */
       .footer {
         position: fixed;
         bottom: 1rem;
@@ -309,18 +283,17 @@
         z-index: 1100;
         white-space: nowrap;
       }
-
       .footer a {
         color: var(--accent-color);
         text-decoration: none;
         transition: color 0.2s ease;
       }
-
       .footer a:hover {
         text-decoration: underline;
         opacity: 0.8;
       }
 
+      /* Toast (copy link) */
       .toast {
         position: fixed;
         bottom: 2rem;
@@ -334,7 +307,6 @@
         opacity: 0;
         transition: all 0.3s ease;
       }
-
       .toast.show {
         transform: translateX(-50%) translateY(0);
         opacity: 1;
@@ -370,14 +342,14 @@
     <div class="container" id="container"></div>
 
     <div class="footer">
-      made by <a href="https://github.com/Luvata" target="_blank">Luvata</a> – inspired by Paper Gram from <a href="https://github.com/cneuralnetwork" target="_blank">cneuralnetwork</a>
+      made by <a href="https://github.com/Luvata" target="_blank">Luvata</a> – inspired by Paper Gram from
+      <a href="https://github.com/cneuralnetwork" target="_blank">cneuralnetwork</a>
     </div>
 
-    <!-- JavaScript -->
+    <!-- Main Script -->
     <script>
       /* ====== Global State & Config ====== */
-      const baseURL =
-        "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // adjust if needed
+      const baseURL = "https://raw.githubusercontent.com/Luvata/arxive/main/xml/";
       let selectedCategory = "cs.AI";
       let papers = [];
       let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -385,11 +357,12 @@
       // Set selected date to today (YYYY-MM-DD)
       const today = new Date().toISOString().split("T")[0];
       let selectedDate = today;
-      document.getElementById("selectedDate").value = selectedDate;
-      document.getElementById("selectedDate").setAttribute("max", today);
+      const dateInput = document.getElementById("selectedDate");
+      dateInput.value = selectedDate;
+      dateInput.setAttribute("max", today);
 
-      /* ====== Event Listeners for Toolbar ====== */
-      // Category button clicks
+      /* ====== Toolbar Listeners ====== */
+      // Category buttons
       document.querySelectorAll(".category-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           document.querySelectorAll(".category-btn").forEach((b) => b.classList.remove("active"));
@@ -399,44 +372,41 @@
         });
       });
 
-      // Date change (via input)
-      document.getElementById("selectedDate").addEventListener("change", (e) => {
+      // Date change
+      dateInput.addEventListener("change", (e) => {
         selectedDate = e.target.value;
         fetchPapersFromXML(selectedDate, selectedCategory);
       });
 
-      // Prev/Next day buttons
+      // Prev/Next day
       document.getElementById("prevDay").addEventListener("click", () => {
         selectedDate = changeDate(selectedDate, -1);
-        document.getElementById("selectedDate").value = selectedDate;
+        dateInput.value = selectedDate;
         fetchPapersFromXML(selectedDate, selectedCategory);
       });
       document.getElementById("nextDay").addEventListener("click", () => {
         const next = changeDate(selectedDate, 1);
         if (next <= today) {
           selectedDate = next;
-          document.getElementById("selectedDate").value = selectedDate;
+          dateInput.value = selectedDate;
           fetchPapersFromXML(selectedDate, selectedCategory);
         }
       });
 
-      // Favorites panel toggle
+      // Favorites panel
       document.getElementById("favoritesToggle").addEventListener("click", () => {
         document.getElementById("favoritesPanel").classList.toggle("show");
       });
 
-      // Export Likes button
+      // Export Likes
       document.getElementById("exportLikes").addEventListener("click", exportLikes);
 
-      /* ====== Utility Functions ====== */
-      // Change date by n days; returns YYYY-MM-DD
+      /* ====== Utility ====== */
       function changeDate(dateStr, n) {
         const date = new Date(dateStr);
         date.setDate(date.getDate() + n);
         return date.toISOString().split("T")[0];
       }
-
-      // Show a toast message
       function showToast(message) {
         const toast = document.createElement("div");
         toast.className = "toast";
@@ -451,7 +421,6 @@
 
       /* ====== Fetch & Parse XML ====== */
       async function fetchPapersFromXML(date, category) {
-        // Map category to file part (e.g. cs.AI => cs-ai)
         const catMapping = {
           "cs.AI": "cs-ai",
           "cs.CV": "cs-cv",
@@ -460,49 +429,42 @@
         };
         const fileName = `${date}-${catMapping[category]}.xml`;
         const url = baseURL + fileName;
+        console.log("Fetching:", url);
+
         try {
           const response = await fetch(url);
-          if (!response.ok) throw new Error("Network error");
+          if (!response.ok) throw new Error("Network error: " + response.status);
+
           const text = await response.text();
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(text, "application/xml");
 
-          // Debug: log number of items found
+          // If your feed uses <entry> instead of <item>, change this:
           const items = xmlDoc.querySelectorAll("item");
           console.log("Found <item> elements:", items.length);
-          if (items.length === 0) {
-            console.warn("No <item> elements found. Your XML file may use a different structure (e.g. <entry> elements).");
-          }
 
           papers = [];
           items.forEach((item) => {
-            const title = item.querySelector("title") ? item.querySelector("title").textContent : "";
-            // Some feeds use the "dc:creator" element for authors
-            const authors = item.querySelector("dc\\:creator")
-              ? item.querySelector("dc\\:creator").textContent
-              : "";
-            const description = item.querySelector("description") ? item.querySelector("description").textContent : "";
-            const link = item.querySelector("link") ? item.querySelector("link").textContent : "";
-            let published = "";
+            const title = item.querySelector("title")?.textContent || "";
+            const authors = item.querySelector("dc\\:creator")?.textContent || "";
+            const description = item.querySelector("description")?.textContent || "";
+            const link = item.querySelector("link")?.textContent || "";
+            let published = date;
             if (item.querySelector("pubDate")) {
               published = new Date(item.querySelector("pubDate").textContent).toLocaleDateString();
-            } else {
-              published = date;
             }
-            // Extract arXiv ID from link if possible (assumes URL contains "/abs/")
+            // Extract arXiv ID if present in link
             let arxivId = "";
-            const match = link.match(/abs\/([\w.\-/]+)/);
-            if (match) {
-              arxivId = match[1];
-            } else {
-              arxivId = link;
-            }
+            const match = link.match(/abs\\/([\\w.\\-/]+)/);
+            arxivId = match ? match[1] : link;
+
             papers.push({ title, authors, abstract: description, link, published, arxivId });
           });
+
           renderPapers();
           updateFavoritesList();
-        } catch (error) {
-          console.error("Error fetching papers:", error);
+        } catch (err) {
+          console.error("Error fetching papers:", err);
           document.getElementById("container").innerHTML =
             "<p>Error loading papers. Please try a different date or category.</p>";
         }
@@ -512,18 +474,20 @@
       function renderPapers() {
         const container = document.getElementById("container");
         container.innerHTML = "";
+
         if (papers.length === 0) {
           container.innerHTML = "<p>No papers found for this date/category.</p>";
           return;
         }
+
         papers.forEach((paper) => {
           const paperCard = document.createElement("div");
           paperCard.className = "paper-card";
 
-          // Extract key results (up to 3 sentences with key phrases)
+          // Extract key results
           const keyResults = extractKeyResults(paper.abstract);
 
-          // Check if already liked (by arXiv ID)
+          // Check if liked
           const isLiked = favorites.some((f) => f.arxivId === paper.arxivId);
 
           paperCard.innerHTML = `
@@ -559,19 +523,24 @@
                   )
                   .join("")}
               </div>
-              <p class="abstract">${
-                paper.abstract.length > 400
-                  ? paper.abstract.substring(0, 400) + "..."
-                  : paper.abstract
-              }</p>
+              <p class="abstract">
+                ${
+                  paper.abstract.length > 400
+                    ? paper.abstract.substring(0, 400) + "..."
+                    : paper.abstract
+                }
+              </p>
               <div class="metadata">
                 <span>${paper.published}</span>
-                <button class="like-button ${isLiked ? "liked" : ""}">${isLiked ? "❤️" : "🤍"}</button>
+                <button class="like-button ${isLiked ? "liked" : ""}">
+                  ${isLiked ? "❤️" : "🤍"}
+                </button>
                 <a href="${paper.link}" target="_blank" class="read-more">Read More</a>
               </div>
             </div>
           `;
-          // Share button event listeners
+
+          // Share
           paperCard.querySelector(".twitter-share").addEventListener("click", () =>
             sharePaper("twitter", paper)
           );
@@ -581,24 +550,33 @@
           paperCard.querySelector(".copy-link").addEventListener("click", () =>
             sharePaper("copy", paper)
           );
-          // Like button event listener
+
+          // Like
           const likeButton = paperCard.querySelector(".like-button");
           likeButton.addEventListener("click", () => toggleFavorite(paper, likeButton));
 
+          // Attempt KaTeX rendering
+          try {
+            if (typeof renderMathInElement === "function") {
+              renderMathInElement(paperCard, {
+                delimiters: [
+                  { left: "$$", right: "$$", display: true },
+                  { left: "$", right: "$", display: false },
+                  { left: "\\(", right: "\\)", display: false },
+                  { left: "\\[", right: "\\]", display: true },
+                ],
+                throwOnError: false,
+              });
+            }
+          } catch (katexErr) {
+            console.error("KaTeX rendering error:", katexErr);
+          }
+
           container.appendChild(paperCard);
-          renderMathInElement(paperCard, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true },
-            ],
-            throwOnError: false,
-          });
         });
       }
 
-      /* ====== Extract Key Results ====== */
+      /* ====== Key Results Extraction ====== */
       function extractKeyResults(abstract) {
         const results = [];
         const sentences = abstract.split(/[.!?]+/);
@@ -630,7 +608,7 @@
         return results;
       }
 
-      /* ====== Like / Favorites Handling ====== */
+      /* ====== Favorites Handling ====== */
       function toggleFavorite(paper, button) {
         const index = favorites.findIndex((f) => f.arxivId === paper.arxivId);
         if (index === -1) {
@@ -646,7 +624,6 @@
         localStorage.setItem("favorites", JSON.stringify(favorites));
         updateFavoritesList();
       }
-
       function updateFavoritesList() {
         const list = document.getElementById("favoritesList");
         list.innerHTML = "";
@@ -674,9 +651,7 @@
         switch (platform) {
           case "twitter":
             window.open(
-              `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                title
-              )}&url=${encodeURIComponent(url)}`,
+              `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
               "_blank"
             );
             break;
