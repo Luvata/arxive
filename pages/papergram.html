@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Paper Gram – Arxive</title>
 
     <!-- Google Fonts -->
@@ -209,8 +209,8 @@
       }
       .metadata {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
         padding-top: 1rem;
         border-top: 1px solid rgba(100, 255, 218, 0.1);
         font-size: 0.75rem;
@@ -303,6 +303,7 @@
       }
     </style>
   </head>
+
   <body>
     <!-- Toolbar -->
     <div class="toolbar">
@@ -338,7 +339,7 @@
     <!-- JavaScript -->
     <script>
       /* ====== Global State & Config ====== */
-      const baseURL = "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // adjust if needed
+      const baseURL = "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // or your own XML path
       let selectedCategory = "cs.AI";
       let papers = [];
       let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -417,7 +418,6 @@
 
       /* ====== Fetch & Parse XML ====== */
       async function fetchPapersFromXML(date, category) {
-        // Map category to file part (e.g. cs.AI => cs-ai)
         const catMapping = {
           "cs.AI": "cs-ai",
           "cs.CV": "cs-cv",
@@ -433,44 +433,43 @@
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(text, "application/xml");
 
-          // Try selecting items from <channel>
+          // Attempt to locate <item> elements
           let items = xmlDoc.querySelectorAll("channel > item");
           if (items.length === 0) {
             items = xmlDoc.querySelectorAll("item");
           }
-          console.log("Found <item> elements:", items.length);
           papers = [];
+
           items.forEach((item) => {
             // Title
-            const title = item.querySelector("title")
-              ? item.querySelector("title").textContent
-              : "";
-            // Authors: try dc:creator then author
+            const titleEl = item.querySelector("title");
+            const title = titleEl ? titleEl.textContent : "";
+
+            // Authors
             const authorsEl = item.querySelector("dc\\:creator, author");
             const authors = authorsEl ? authorsEl.textContent : "";
-            // Description/Abstract
-            let description = item.querySelector("description")
-              ? item.querySelector("description").textContent
-              : "";
-            // If the description contains newlines, remove the first line (info)
-            if (description.includes("\n")) {
-              const parts = description.split("\n");
-              description = parts.slice(1).join("\n");
+
+            // Abstract (full text, no truncation)
+            let description = "";
+            const descEl = item.querySelector("description");
+            if (descEl) {
+              description = descEl.textContent;
             }
+
             // Link
-            const link = item.querySelector("link")
-              ? item.querySelector("link").textContent
-              : "";
-            // Publication Date
+            const linkEl = item.querySelector("link");
+            const link = linkEl ? linkEl.textContent : "";
+
+            // Published date
             let published = "";
-            if (item.querySelector("pubDate")) {
-              published = new Date(
-                item.querySelector("pubDate").textContent
-              ).toLocaleDateString();
+            const pubEl = item.querySelector("pubDate");
+            if (pubEl) {
+              published = new Date(pubEl.textContent).toLocaleDateString();
             } else {
               published = date;
             }
-            // Extract arXiv ID from link if possible (assumes URL contains "/abs/")
+
+            // arXiv ID if found in link
             let arxivId = "";
             const match = link.match(/abs\/([\w.\-/]+)/);
             if (match) {
@@ -478,12 +477,7 @@
             } else {
               arxivId = link;
             }
-            // Optional: announcement type (if available)
-            let announceType = "";
-            const announceEl = item.getElementsByTagName("announce_type");
-            if (announceEl.length > 0) {
-              announceType = announceEl[0].textContent;
-            }
+
             papers.push({
               title,
               authors,
@@ -491,9 +485,9 @@
               link,
               published,
               arxivId,
-              announceType,
             });
           });
+
           renderPapers();
           updateFavoritesList();
         } catch (error) {
@@ -507,26 +501,22 @@
       function renderPapers() {
         const container = document.getElementById("container");
         container.innerHTML = "";
+
         if (papers.length === 0) {
-          container.innerHTML =
-            "<p>No papers found for this date/category.</p>";
+          container.innerHTML = "<p>No papers found for this date/category.</p>";
           return;
         }
+
         papers.forEach((paper) => {
           const paperCard = document.createElement("div");
-          paperCard.className = "paper-card";
-          paperCard.classList.add("active"); // ensure content is visible
+          paperCard.className = "paper-card active";
 
-          // Extract key results from abstract
-          const keyResults = extractKeyResults(paper.abstract);
-          // Check if already liked (by arXiv ID)
+          // Check if already liked
           const isLiked = favorites.some((f) => f.arxivId === paper.arxivId);
-          // If announceType exists, prepend it to the title (like in your Python code)
-          const displayTitle = paper.announceType
-            ? `${paper.announceType}: ${paper.title}`
-            : paper.title;
+
           paperCard.innerHTML = `
             <div class="paper-content">
+              <!-- Share Icons -->
               <div class="share-container">
                 <button class="share-btn twitter-share" title="Share on Twitter">
                   <i class="fab fa-twitter"></i>
@@ -538,39 +528,28 @@
                   <i class="fas fa-link"></i>
                 </button>
               </div>
+
+              <!-- Title & Authors -->
               <div class="paper-header">
-                <h2 class="title">${displayTitle}</h2>
-                <div class="authors">${
-                  authorsShort(paper.authors)
-                }</div>
+                <h2 class="title">${paper.title}</h2>
+                <div class="authors">${paper.authors}</div>
               </div>
-              <div class="key-results">
-                ${keyResults
-                  .map(
-                    (result) => `
-                  <div class="result-item">
-                    <span class="result-icon">🔍</span>
-                    <span>${result}</span>
-                  </div>
-                `
-                  )
-                  .join("")}
-              </div>
-              <p class="abstract">${
-                paper.abstract.length > 400
-                  ? paper.abstract.substring(0, 400) + "..."
-                  : paper.abstract
-              }</p>
+
+              <!-- Full Abstract -->
+              <p class="abstract">${paper.abstract}</p>
+
+              <!-- Bottom Metadata: Date, Like Button, Read More -->
               <div class="metadata">
                 <span>${paper.published}</span>
-                <button class="like-button ${
-                  isLiked ? "liked" : ""
-                }">${isLiked ? "❤️" : "🤍"}</button>
+                <button class="like-button ${isLiked ? "liked" : ""}">
+                  ${isLiked ? "❤️" : "🤍"}
+                </button>
                 <a href="${paper.link}" target="_blank" class="read-more">Read More</a>
               </div>
             </div>
           `;
 
+          // Event listeners for share buttons
           paperCard
             .querySelector(".twitter-share")
             .addEventListener("click", () => sharePaper("twitter", paper));
@@ -580,12 +559,15 @@
           paperCard
             .querySelector(".copy-link")
             .addEventListener("click", () => sharePaper("copy", paper));
-          const likeButton = paperCard.querySelector(".like-button");
-          likeButton.addEventListener("click", () =>
-            toggleFavorite(paper, likeButton)
-          );
 
+          // Like button
+          const likeButton = paperCard.querySelector(".like-button");
+          likeButton.addEventListener("click", () => toggleFavorite(paper, likeButton));
+
+          // Append to container
           container.appendChild(paperCard);
+
+          // Render math (KaTeX)
           renderMathInElement(paperCard, {
             delimiters: [
               { left: "$$", right: "$$", display: true },
@@ -596,46 +578,6 @@
             throwOnError: false,
           });
         });
-      }
-
-      /* ====== Extract Key Results ====== */
-      function extractKeyResults(abstract) {
-        const results = [];
-        const sentences = abstract.split(/[.!?]+/);
-        const keyPhrases = [
-          "propose",
-          "present",
-          "introduce",
-          "achieve",
-          "show",
-          "demonstrate",
-          "improve",
-          "outperform",
-          "better",
-          "novel",
-          "new",
-          "first",
-        ];
-        sentences.forEach((sentence) => {
-          if (
-            results.length < 3 &&
-            keyPhrases.some((phrase) =>
-              sentence.toLowerCase().includes(phrase)
-            )
-          ) {
-            results.push(sentence.trim());
-          }
-        });
-        if (results.length === 0 && sentences[0]) {
-          results.push(sentences[0].trim());
-        }
-        return results;
-      }
-
-      /* ====== Helper to Shorten Authors List ====== */
-      function authorsShort(authorsText) {
-        const parts = authorsText.split(", ");
-        return parts.length > 4 ? parts.slice(0, 4).join(", ") + ", et al." : authorsText;
       }
 
       /* ====== Like / Favorites Handling ====== */
@@ -654,6 +596,7 @@
         localStorage.setItem("favorites", JSON.stringify(favorites));
         updateFavoritesList();
       }
+
       function updateFavoritesList() {
         const list = document.getElementById("favoritesList");
         list.innerHTML = "";
