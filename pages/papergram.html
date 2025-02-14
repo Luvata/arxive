@@ -443,6 +443,19 @@
       ::-webkit-scrollbar {
         display: none;
       }
+      @media (max-width: 600px) {
+        .paper-card {
+          padding: 0;
+        }
+        .paper-content {
+          margin: 0;
+          margin-top: 1rem; /* Optional: keep a little vertical space */
+          padding: 1rem;    /* Adjust the inner padding as needed */
+          width: 100%;
+          max-width: 100%;
+          border-radius: 0; /* Remove rounded corners if desired */
+        }
+      }
     </style>
   </head>
 
