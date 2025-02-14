@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paper Gram – Arxive</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- KaTeX -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    ></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Styles (Paper Gram + toolbar additions) -->
+    <style>
+      :root {
+        --bg-color: #0c0e17;
+        --card-bg: rgba(22, 24, 37, 0.9);
+        --text-color: #e2e8f0;
+        --accent-color: #64ffda;
+        --secondary-text: #94a3b8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Space Grotesk", monospace;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Toolbar styles */
+      .toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--accent-color);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0.5rem 1rem;
+        z-index: 1100;
+      }
+
+      .toolbar > div {
+        margin: 0.25rem;
+      }
+
+      .categories button,
+      #prevDay,
+      #nextDay,
+      #exportLikes {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        font-size: 0.875rem;
+      }
+
+      .categories button.active,
+      #exportLikes:hover,
+      #prevDay:hover,
+      #nextDay:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+
+      #selectedDate {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--text-color);
+        padding: 6px;
+        border-radius: 6px;
+        font-size: 0.875rem;
+      }
+
+      /* Hide scrollbar */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Favorites panel button (top-right) */
+      .favorites-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        z-index: 1100;
+        font-size: 0.875rem;
+        transition: background 0.2s ease;
+      }
+
+      .favorites-btn:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+
+      /* Favorites panel */
+      .favorites-panel {
+        position: fixed;
+        top: 60px;
+        right: 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        border-radius: 12px;
+        padding: 1rem;
+        width: 300px;
+        max-height: 70vh;
+        overflow-y: auto;
+        z-index: 1050;
+        transform: translateX(120%);
+        transition: transform 0.3s ease;
+      }
+
+      .favorites-panel.show {
+        transform: translateX(0);
+      }
+
+      .favorite-item {
+        padding: 0.75rem;
+        border-radius: 6px;
+        background: rgba(100, 255, 218, 0.05);
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+
+      .favorite-item:hover {
+        background: rgba(100, 255, 218, 0.1);
+      }
+
+      /* Main container for paper cards */
+      .container {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        padding: 80px 1rem 1rem; /* leave room for toolbar */
+      }
+
+      .paper-card {
+        margin: auto;
+        content-visibility: auto;
+        contain-intrinsic-size: 1000px;
+        min-height: calc(100vh - 100px);
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        position: relative;
+      }
+
+      .paper-content {
+        margin: auto;
+        margin-top: 2rem;
+        background: var(--card-bg);
+        padding: 1.25rem;
+        border-radius: 12px;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        width: calc(100% - 2rem);
+        max-width: 600px;
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .paper-card.active .paper-content {
+        opacity: 1;
+      }
+
+      .paper-header {
+        margin-bottom: 1rem;
+        padding-right: 120px; /* space for share buttons */
+      }
+
+      .title {
+        font-size: 1rem;
+        font-family: "Playfair Display", serif;
+        color: var(--accent-color);
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+      }
+
+      .authors {
+        font-size: 0.875rem;
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+        font-family: "Space Mono", monospace;
+      }
+
+      .abstract {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        word-wrap: break-word;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(100, 255, 218, 0.1);
+        font-size: 0.75rem;
+        color: var(--secondary-text);
+      }
+
+      .like-button {
+        color: var(--secondary-text);
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        font-size: 1.25rem;
+      }
+
+      .like-button.liked {
+        color: var(--accent-color);
+      }
+
+      .share-container {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        display: flex;
+        gap: 0.5rem;
+        z-index: 10;
+      }
+
+      .share-btn {
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .share-btn:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+
+      .read-more {
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      .read-more:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: var(--secondary-text);
+        background: var(--card-bg);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        z-index: 1100;
+        white-space: nowrap;
+      }
+
+      .footer a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+        opacity: 0.8;
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: var(--accent-color);
+        color: var(--bg-color);
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="categories">
+        <button class="category-btn active" data-category="cs.AI">cs.AI</button>
+        <button class="category-btn" data-category="cs.CV">cs.CV</button>
+        <button class="category-btn" data-category="cs.CL">cs.CL</button>
+        <button class="category-btn" data-category="cs.LG">cs.LG</button>
+      </div>
+      <div class="date-selector">
+        <button id="prevDay">Prev Day</button>
+        <input type="date" id="selectedDate" />
+        <button id="nextDay">Next Day</button>
+      </div>
+      <div class="export-likes">
+        <button id="exportLikes">Export Likes</button>
+      </div>
+    </div>
+
+    <!-- Favorites Panel Toggle -->
+    <button class="favorites-btn" id="favoritesToggle">Favorites</button>
+    <div class="favorites-panel" id="favoritesPanel">
+      <div id="favoritesList"></div>
+    </div>
+
+    <!-- Main container for paper cards -->
+    <div class="container" id="container"></div>
+
+    <div class="footer">
+      made by
+      <a href="https://cneuralnets.netlify.app" target="_blank">cneuralnetwork</a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      /* ====== Global State & Config ====== */
+      const baseURL =
+        "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // adjust if needed
+      let selectedCategory = "cs.AI";
+      let papers = [];
+      let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+      // Set selected date to today (YYYY-MM-DD)
+      const today = new Date().toISOString().split("T")[0];
+      let selectedDate = today;
+      document.getElementById("selectedDate").value = selectedDate;
+      document
+        .getElementById("selectedDate")
+        .setAttribute("max", today);
+
+      /* ====== Event Listeners for Toolbar ====== */
+      // Category button clicks
+      document.querySelectorAll(".category-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".category-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedCategory = btn.getAttribute("data-category");
+          fetchPapersFromXML(selectedDate, selectedCategory);
+        });
+      });
+
+      // Date change (via input)
+      document
+        .getElementById("selectedDate")
+        .addEventListener("change", (e) => {
+          selectedDate = e.target.value;
+          fetchPapersFromXML(selectedDate, selectedCategory);
+        });
+
+      // Prev/Next day buttons
+      document.getElementById("prevDay").addEventListener("click", () => {
+        selectedDate = changeDate(selectedDate, -1);
+        document.getElementById("selectedDate").value = selectedDate;
+        fetchPapersFromXML(selectedDate, selectedCategory);
+      });
+      document.getElementById("nextDay").addEventListener("click", () => {
+        const next = changeDate(selectedDate, 1);
+        if (next <= today) {
+          selectedDate = next;
+          document.getElementById("selectedDate").value = selectedDate;
+          fetchPapersFromXML(selectedDate, selectedCategory);
+        }
+      });
+
+      // Favorites panel toggle
+      document
+        .getElementById("favoritesToggle")
+        .addEventListener("click", () => {
+          document
+            .getElementById("favoritesPanel")
+            .classList.toggle("show");
+        });
+
+      // Export Likes button
+      document
+        .getElementById("exportLikes")
+        .addEventListener("click", exportLikes);
+
+      /* ====== Utility Functions ====== */
+      // Change date by n days; returns YYYY-MM-DD
+      function changeDate(dateStr, n) {
+        const date = new Date(dateStr);
+        date.setDate(date.getDate() + n);
+        return date.toISOString().split("T")[0];
+      }
+
+      // Show a toast message
+      function showToast(message) {
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.classList.add("show"), 100);
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => toast.remove(), 300);
+        }, 2000);
+      }
+
+      /* ====== Fetch & Parse XML ====== */
+      async function fetchPapersFromXML(date, category) {
+        // Map category to file part (e.g. cs.AI => cs-ai)
+        const catMapping = {
+          "cs.AI": "cs-ai",
+          "cs.CV": "cs-cv",
+          "cs.CL": "cs-cl",
+          "cs.LG": "cs-lg",
+        };
+        const fileName = `${date}-${catMapping[category]}.xml`;
+        const url = baseURL + fileName;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error("Network error");
+          const text = await response.text();
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(text, "application/xml");
+          const items = xmlDoc.querySelectorAll("item");
+          papers = [];
+          items.forEach((item) => {
+            const title = item.querySelector("title")
+              ? item.querySelector("title").textContent
+              : "";
+            // Some feeds use the "dc:creator" element for authors
+            const authors = item.querySelector("dc\\:creator")
+              ? item.querySelector("dc\\:creator").textContent
+              : "";
+            const description = item.querySelector("description")
+              ? item.querySelector("description").textContent
+              : "";
+            const link = item.querySelector("link")
+              ? item.querySelector("link").textContent
+              : "";
+            let published = "";
+            if (item.querySelector("pubDate")) {
+              published = new Date(
+                item.querySelector("pubDate").textContent
+              ).toLocaleDateString();
+            } else {
+              published = date;
+            }
+            // Extract arXiv ID from link if possible (assumes URL contains "/abs/")
+            let arxivId = "";
+            const match = link.match(/abs\/([\w.\-/]+)/);
+            if (match) {
+              arxivId = match[1];
+            } else {
+              arxivId = link;
+            }
+            papers.push({
+              title,
+              authors,
+              abstract: description,
+              link,
+              published,
+              arxivId,
+            });
+          });
+          renderPapers();
+          updateFavoritesList();
+        } catch (error) {
+          console.error("Error fetching papers:", error);
+          document.getElementById("container").innerHTML =
+            "<p>Error loading papers. Please try a different date or category.</p>";
+        }
+      }
+
+      /* ====== Render Papers ====== */
+      function renderPapers() {
+        const container = document.getElementById("container");
+        container.innerHTML = "";
+        papers.forEach((paper) => {
+          const paperCard = document.createElement("div");
+          paperCard.className = "paper-card";
+
+          // Extract key results (up to 3 sentences with key phrases)
+          const keyResults = extractKeyResults(paper.abstract);
+
+          // Check if already liked (by arXiv ID)
+          const isLiked = favorites.some(
+            (f) => f.arxivId === paper.arxivId
+          );
+
+          paperCard.innerHTML = `
+            <div class="paper-content">
+              <div class="share-container">
+                <button class="share-btn twitter-share" title="Share on Twitter">
+                  <i class="fab fa-twitter"></i>
+                </button>
+                <button class="share-btn linkedin-share" title="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </button>
+                <button class="share-btn copy-link" title="Copy Link">
+                  <i class="fas fa-link"></i>
+                </button>
+              </div>
+              <div class="paper-header">
+                <h2 class="title">${paper.title}</h2>
+                <div class="authors">${
+                  paper.authors.split(", ").length > 4
+                    ? paper.authors.split(", ").slice(0, 4).join(", ") +
+                      ", et al."
+                    : paper.authors
+                }</div>
+              </div>
+              <div class="key-results">
+                ${keyResults
+                  .map(
+                    (result) => `
+                  <div class="result-item">
+                    <span class="result-icon">🔍</span>
+                    <span>${result}</span>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+              <p class="abstract">${
+                paper.abstract.length > 400
+                  ? paper.abstract.substring(0, 400) + "..."
+                  : paper.abstract
+              }</p>
+              <div class="metadata">
+                <span>${paper.published}</span>
+                <button class="like-button ${
+                  isLiked ? "liked" : ""
+                }"> ${isLiked ? "❤️" : "🤍"}</button>
+                <a href="${paper.link}" target="_blank" class="read-more">Read More</a>
+              </div>
+            </div>
+          `;
+          // Add share button event listeners
+          paperCard
+            .querySelector(".twitter-share")
+            .addEventListener("click", () => sharePaper("twitter", paper));
+          paperCard
+            .querySelector(".linkedin-share")
+            .addEventListener("click", () =>
+              sharePaper("linkedin", paper)
+            );
+          paperCard
+            .querySelector(".copy-link")
+            .addEventListener("click", () => sharePaper("copy", paper));
+          // Like button event
+          const likeButton = paperCard.querySelector(".like-button");
+          likeButton.addEventListener("click", () =>
+            toggleFavorite(paper, likeButton)
+          );
+
+          container.appendChild(paperCard);
+          renderMathInElement(paperCard, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false },
+              { left: "\\(", right: "\\)", display: false },
+              { left: "\\[", right: "\\]", display: true },
+            ],
+            throwOnError: false,
+          });
+        });
+      }
+
+      /* ====== Extract Key Results ====== */
+      function extractKeyResults(abstract) {
+        const results = [];
+        const sentences = abstract.split(/[.!?]+/);
+        const keyPhrases = [
+          "propose",
+          "present",
+          "introduce",
+          "achieve",
+          "show",
+          "demonstrate",
+          "improve",
+          "outperform",
+          "better",
+          "novel",
+          "new",
+          "first",
+        ];
+        sentences.forEach((sentence) => {
+          if (
+            results.length < 3 &&
+            keyPhrases.some((phrase) =>
+              sentence.toLowerCase().includes(phrase)
+            )
+          ) {
+            results.push(sentence.trim());
+          }
+        });
+        if (results.length === 0 && sentences[0]) {
+          results.push(sentences[0].trim());
+        }
+        return results;
+      }
+
+      /* ====== Like / Favorites Handling ====== */
+      function toggleFavorite(paper, button) {
+        const index = favorites.findIndex(
+          (f) => f.arxivId === paper.arxivId
+        );
+        if (index === -1) {
+          // Add additional fields: published (from XML) and likedAt (now)
+          paper.likedAt = new Date().toISOString();
+          favorites.push(paper);
+          button.classList.add("liked");
+          button.textContent = "❤️";
+        } else {
+          favorites.splice(index, 1);
+          button.classList.remove("liked");
+          button.textContent = "🤍";
+        }
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        updateFavoritesList();
+      }
+
+      function updateFavoritesList() {
+        const list = document.getElementById("favoritesList");
+        list.innerHTML = "";
+        favorites.forEach((paper) => {
+          const item = document.createElement("div");
+          item.className = "favorite-item";
+          item.innerHTML = `
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">${paper.arxivId}</div>
+            <div style="font-size: 0.8rem; color: var(--secondary-text);">
+              Added: ${paper.published} <br/>
+              Liked: ${new Date(paper.likedAt).toLocaleString()}
+            </div>
+          `;
+          item.addEventListener("click", () => {
+            window.open(paper.link, "_blank");
+          });
+          list.appendChild(item);
+        });
+      }
+
+      /* ====== Share Paper ====== */
+      function sharePaper(platform, paper) {
+        const title = paper.title;
+        const url = paper.link;
+        switch (platform) {
+          case "twitter":
+            window.open(
+              `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                title
+              )}&url=${encodeURIComponent(url)}`,
+              "_blank"
+            );
+            break;
+          case "linkedin":
+            window.open(
+              `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                url
+              )}`,
+              "_blank"
+            );
+            break;
+          case "copy":
+            navigator.clipboard.writeText(`${title}\n${url}`);
+            showToast("Link copied to clipboard!");
+            break;
+        }
+      }
+
+      /* ====== Export Likes ====== */
+      function exportLikes() {
+        const data = JSON.stringify(favorites, null, 2);
+        const blob = new Blob([data], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "favorites.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      /* ====== Initial Load ====== */
+      // Fetch papers for today in default category
+      fetchPapersFromXML(selectedDate, selectedCategory);
+    </script>
+  </body>
+</html>
