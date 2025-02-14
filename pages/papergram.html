@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paper Gram – Arxive</title>
 
     <!-- Google Fonts -->
@@ -28,7 +28,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
-    <!-- Original Paper Gram Dark Theme Styles -->
+    <!-- Extended Styles -->
     <style>
       :root {
         --bg-color: #0c0e17;
@@ -95,6 +95,21 @@
         border-radius: 6px;
         font-size: 0.875rem;
       }
+      /* Responsive adjustments for toolbar */
+      @media (max-width: 600px) {
+        .toolbar {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: center;
+        }
+        .toolbar > div {
+          margin: 0.5rem 0;
+        }
+        .categories {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
       /* Hide scrollbar */
       ::-webkit-scrollbar {
         display: none;
@@ -115,6 +130,25 @@
         transition: background 0.2s ease;
       }
       .favorites-btn:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      /* Filter panel button (top-left) */
+      .filter-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        z-index: 1100;
+        font-size: 0.875rem;
+        transition: background 0.2s ease;
+      }
+      .filter-btn:hover {
         background: var(--accent-color);
         color: var(--bg-color);
       }
@@ -148,13 +182,92 @@
       .favorite-item:hover {
         background: rgba(100, 255, 218, 0.1);
       }
+      /* Filter Panel (left side) */
+      .filter-panel {
+        position: fixed;
+        top: 60px;
+        left: 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        border-radius: 12px;
+        padding: 1rem;
+        width: 300px;
+        max-height: 70vh;
+        overflow-y: auto;
+        z-index: 1050;
+        transform: translateX(-120%);
+        transition: transform 0.3s ease;
+      }
+      .filter-panel.show {
+        transform: translateX(0);
+      }
+      .filter-item {
+        display: block;
+        width: 100%;
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        text-align: left;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+      }
+      .filter-item.active,
+      .filter-item:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      .filter-config {
+        margin-top: 1rem;
+      }
+      .filter-config input {
+        width: calc(100% - 12px);
+        padding: 4px 6px;
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--text-color);
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
+      .filter-config button {
+        width: 100%;
+        background: var(--card-bg);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        font-size: 0.875rem;
+      }
+      .filter-config button:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
       /* Main Container for Paper Cards */
       .container {
         height: 100vh;
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
-        padding: 80px 1rem 1rem; /* leave room for toolbar */
+        padding: 80px 1rem 1rem;
       }
+      /* Fixed Paper Progress Indicator */
+      .fixed-progress {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card-bg);
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 6px;
+        z-index: 1200;
+        font-size: 0.875rem;
+      }
+      /* Paper Card Styles */
       .paper-card {
         margin: auto;
         content-visibility: auto;
@@ -176,16 +289,15 @@
         border-radius: 12px;
         border: 1px solid rgba(100, 255, 218, 0.1);
         width: calc(100% - 2rem);
-        max-width: 600px;
+        max-width: 800px;
         backdrop-filter: blur(10px);
-        opacity: 1;
         transition: opacity 0.3s ease;
         position: relative;
         overflow: hidden;
       }
       .paper-header {
         margin-bottom: 1rem;
-        padding-right: 120px; /* space for share buttons */
+        padding-right: 120px;
       }
       .title {
         font-size: 1rem;
@@ -194,11 +306,39 @@
         margin-bottom: 0.75rem;
         line-height: 1.4;
       }
+      .announce-type {
+        display: inline-block;
+        background: var(--accent-color);
+        color: var(--bg-color);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
       .authors {
         font-size: 0.875rem;
         color: var(--secondary-text);
         margin-bottom: 1rem;
         font-family: "Space Mono", monospace;
+      }
+      .key-results {
+        margin: 1rem 0;
+        padding: 0.75rem;
+        background: rgba(100, 255, 218, 0.05);
+        border-radius: 8px;
+        font-family: "Space Mono", monospace;
+        border-left: 3px solid var(--accent-color);
+      }
+      .result-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+      .result-icon {
+        flex-shrink: 0;
       }
       .abstract {
         font-size: 0.875rem;
@@ -235,6 +375,7 @@
         gap: 0.5rem;
         z-index: 10;
       }
+      /* Only one share button (copy-link) remains */
       .share-btn {
         background: var(--card-bg);
         border: 1px solid var(--accent-color);
@@ -308,8 +449,8 @@
     <!-- Toolbar -->
     <div class="toolbar">
       <div class="categories">
-        <button class="category-btn active" data-category="cs.AI">cs.AI</button>
-        <button class="category-btn" data-category="cs.CV">cs.CV</button>
+        <button class="category-btn" data-category="cs.AI">cs.AI</button>
+        <button class="category-btn active" data-category="cs.CV">cs.CV</button>
         <button class="category-btn" data-category="cs.CL">cs.CL</button>
         <button class="category-btn" data-category="cs.LG">cs.LG</button>
       </div>
@@ -323,26 +464,47 @@
       </div>
     </div>
 
-    <!-- Favorites Panel Toggle -->
+    <!-- Favorites Panel Toggle (top-right) -->
     <button class="favorites-btn" id="favoritesToggle">Favorites</button>
     <div class="favorites-panel" id="favoritesPanel">
       <div id="favoritesList"></div>
     </div>
 
-    <!-- Main container for paper cards -->
+    <!-- Filter Panel Toggle (top-left) -->
+    <button class="filter-btn" id="filterToggle">Filter</button>
+    <div class="filter-panel" id="filterPanel">
+      <div id="filterList"></div>
+      <button class="filter-item" id="clearFilter">Clear Filter</button>
+      <div class="filter-config">
+        <input
+          type="text"
+          id="filterKeywordsInput"
+          placeholder="Enter keywords, comma-separated"
+        />
+        <button id="saveFilterKeywords">Save Keywords</button>
+      </div>
+    </div>
+
+    <!-- Main Container for Paper Cards -->
     <div class="container" id="container"></div>
 
-    <div class="footer">
-      made by <a href="https://github.com/Luvata" target="_blank">Luvata</a> – inspired by Paper Gram from <a href="https://github.com/cneuralnetwork" target="_blank">cneuralnetwork</a>
-    </div>
+    <!-- Fixed Paper Progress Indicator -->
+    <div id="fixedProgress" class="fixed-progress">Paper 0 of 0</div>
 
     <!-- JavaScript -->
     <script>
       /* ====== Global State & Config ====== */
+      // Default to cs.CV
       const baseURL = "https://raw.githubusercontent.com/Luvata/arxive/main/xml/"; // or your own XML path
-      let selectedCategory = "cs.AI";
+      let selectedCategory = "cs.CV";
       let papers = [];
       let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+      // Filter config and state
+      let filterKeywords = JSON.parse(localStorage.getItem("filterKeywords") ||
+        '["diffusion", "gan", "llm", "flow", "adversarial attack"]'
+      );
+      let activeFilter = "";
 
       // Set selected date to today (YYYY-MM-DD)
       const today = new Date().toISOString().split("T")[0];
@@ -387,14 +549,28 @@
       document
         .getElementById("favoritesToggle")
         .addEventListener("click", () => {
-          document
-            .getElementById("favoritesPanel")
-            .classList.toggle("show");
+          document.getElementById("favoritesPanel").classList.toggle("show");
         });
+      // Filter panel toggle
+      document.getElementById("filterToggle").addEventListener("click", () => {
+        document.getElementById("filterPanel").classList.toggle("show");
+      });
       // Export Likes button
-      document
-        .getElementById("exportLikes")
-        .addEventListener("click", exportLikes);
+      document.getElementById("exportLikes").addEventListener("click", exportLikes);
+      // Filter configuration: Save keywords from input
+      document.getElementById("saveFilterKeywords").addEventListener("click", () => {
+        const input = document.getElementById("filterKeywordsInput").value;
+        filterKeywords = input.split(",").map(s => s.trim()).filter(Boolean);
+        localStorage.setItem("filterKeywords", JSON.stringify(filterKeywords));
+        updateFilterPanel();
+        renderPapers();
+      });
+      // Clear filter button
+      document.getElementById("clearFilter").addEventListener("click", () => {
+        activeFilter = "";
+        updateFilterPanel();
+        renderPapers();
+      });
 
       /* ====== Utility Functions ====== */
       // Change date by n days; returns YYYY-MM-DD
@@ -416,6 +592,28 @@
         }, 2000);
       }
 
+      /* ====== Extract Key Results from Abstract ====== */
+      function extractKeyResults(abstract) {
+        const results = [];
+        const sentences = abstract.split(/[.!?]+/);
+        const keyPhrases = [
+          "propose", "present", "introduce",
+          "achieve", "show", "demonstrate",
+          "improve", "outperform", "better",
+          "novel", "new", "first"
+        ];
+        sentences.forEach(sentence => {
+          if (results.length < 3 &&
+              keyPhrases.some(phrase => sentence.toLowerCase().includes(phrase))) {
+            results.push(sentence.trim());
+          }
+        });
+        if (results.length === 0 && sentences.length > 0) {
+          results.push(sentences[0].trim());
+        }
+        return results;
+      }
+
       /* ====== Fetch & Parse XML ====== */
       async function fetchPapersFromXML(date, category) {
         const catMapping = {
@@ -433,7 +631,7 @@
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(text, "application/xml");
 
-          // Attempt to locate <item> elements
+          // Locate <item> elements
           let items = xmlDoc.querySelectorAll("channel > item");
           if (items.length === 0) {
             items = xmlDoc.querySelectorAll("item");
@@ -445,22 +643,33 @@
             const titleEl = item.querySelector("title");
             const title = titleEl ? titleEl.textContent : "";
 
-            // Authors
-            const authorsEl = item.querySelector("dc\\:creator, author");
-            const authors = authorsEl ? authorsEl.textContent : "";
+            // --- Updated Author Extraction ---
+            let authors = "";
+            const authorEls = item.querySelectorAll("author > name");
+            if (authorEls.length > 0) {
+              authors = Array.from(authorEls).map(a => a.textContent).join(", ");
+            } else {
+              const creators = item.getElementsByTagNameNS("http://purl.org/dc/elements/1.1/", "creator");
+              if (creators.length > 0) {
+                authors = Array.from(creators).map(c => c.textContent).join(", ");
+              }
+            }
 
-            // Abstract (full text, no truncation)
+            // Description/Abstract (remove redundant prefix if exists)
             let description = "";
             const descEl = item.querySelector("description");
             if (descEl) {
               description = descEl.textContent;
+              if (description.includes("Abstract:")) {
+                description = description.substring(description.indexOf("Abstract:") + "Abstract:".length).trim();
+              }
             }
 
             // Link
             const linkEl = item.querySelector("link");
             const link = linkEl ? linkEl.textContent : "";
 
-            // Published date
+            // Published Date
             let published = "";
             const pubEl = item.querySelector("pubDate");
             if (pubEl) {
@@ -469,13 +678,20 @@
               published = date;
             }
 
-            // arXiv ID if found in link
+            // arXiv ID extraction with updated regex:
             let arxivId = "";
-            const match = link.match(/abs\/([\w.\-/]+)/);
+            const match = link.match(/abs\/(.+?)(?:\/|\?|$)/);
             if (match) {
               arxivId = match[1];
             } else {
               arxivId = link;
+            }
+
+            // Extract announce type (if available)
+            let announceType = "";
+            const announceTypeEl = item.querySelector("arxiv\\:announce_type") || item.querySelector("announce_type");
+            if (announceTypeEl) {
+              announceType = announceTypeEl.textContent;
             }
 
             papers.push({
@@ -485,11 +701,13 @@
               link,
               published,
               arxivId,
+              announceType,
             });
           });
 
           renderPapers();
           updateFavoritesList();
+          updateFilterPanel();
         } catch (error) {
           console.error("Error fetching papers:", error);
           document.getElementById("container").innerHTML =
@@ -502,37 +720,57 @@
         const container = document.getElementById("container");
         container.innerHTML = "";
 
-        if (papers.length === 0) {
-          container.innerHTML = "<p>No papers found for this date/category.</p>";
+        // Filter papers if an active filter is set
+        const filteredPapers = activeFilter
+          ? papers.filter(p =>
+              p.title.toLowerCase().includes(activeFilter.toLowerCase()) ||
+              p.abstract.toLowerCase().includes(activeFilter.toLowerCase())
+            )
+          : papers;
+
+        if (filteredPapers.length === 0) {
+          const msg = document.createElement("p");
+          msg.textContent = "No papers found for this date/category/filter.";
+          container.appendChild(msg);
+          updateFixedProgress(0, 0);
           return;
         }
 
-        papers.forEach((paper) => {
+        // Render each paper
+        filteredPapers.forEach((paper) => {
           const paperCard = document.createElement("div");
-          paperCard.className = "paper-card active";
-
-          // Check if already liked
+          paperCard.className = "paper-card";
           const isLiked = favorites.some((f) => f.arxivId === paper.arxivId);
+          const keyResults = extractKeyResults(paper.abstract);
 
           paperCard.innerHTML = `
             <div class="paper-content">
-              <!-- Share Icons -->
+              <!-- Share Icons: Only the Copy Link button -->
               <div class="share-container">
-                <button class="share-btn twitter-share" title="Share on Twitter">
-                  <i class="fab fa-twitter"></i>
-                </button>
-                <button class="share-btn linkedin-share" title="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i>
-                </button>
                 <button class="share-btn copy-link" title="Copy Link">
                   <i class="fas fa-link"></i>
                 </button>
               </div>
 
-              <!-- Title & Authors -->
+              <!-- Title, Announce Type & Authors -->
               <div class="paper-header">
                 <h2 class="title">${paper.title}</h2>
+                ${paper.announceType ? `<div class="announce-type">${paper.announceType}</div>` : ""}
                 <div class="authors">${paper.authors}</div>
+              </div>
+
+              <!-- Key Results / Findings -->
+              <div class="key-results">
+                ${keyResults
+                  .map(
+                    (result) => `
+                  <div class="result-item">
+                    <span class="result-icon">🔍</span>
+                    <span>${result}</span>
+                  </div>
+                `
+                  )
+                  .join("")}
               </div>
 
               <!-- Full Abstract -->
@@ -541,42 +779,81 @@
               <!-- Bottom Metadata: Date, Like Button, Read More -->
               <div class="metadata">
                 <span>${paper.published}</span>
-                <button class="like-button ${isLiked ? "liked" : ""}">
-                  ${isLiked ? "❤️" : "🤍"}
-                </button>
+                <button class="like-button ${isLiked ? "liked" : ""}">${
+            isLiked ? "❤️" : "🤍"
+          }</button>
                 <a href="${paper.link}" target="_blank" class="read-more">Read More</a>
               </div>
             </div>
           `;
 
-          // Event listeners for share buttons
-          paperCard
-            .querySelector(".twitter-share")
-            .addEventListener("click", () => sharePaper("twitter", paper));
-          paperCard
-            .querySelector(".linkedin-share")
-            .addEventListener("click", () => sharePaper("linkedin", paper));
+          // Only the copy-link share button remains
           paperCard
             .querySelector(".copy-link")
-            .addEventListener("click", () => sharePaper("copy", paper));
-
-          // Like button
+            .addEventListener("click", () =>
+              sharePaper("copy", paper)
+            );
           const likeButton = paperCard.querySelector(".like-button");
-          likeButton.addEventListener("click", () => toggleFavorite(paper, likeButton));
+          likeButton.addEventListener("click", () =>
+            toggleFavorite(paper, likeButton)
+          );
 
-          // Append to container
           container.appendChild(paperCard);
+        });
 
-          // Render math (KaTeX)
-          renderMathInElement(paperCard, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true },
-            ],
-            throwOnError: false,
+        // After rendering, set up the progress observer
+        setupProgressObserver();
+      }
+
+      /* ====== Update Fixed Progress Indicator ====== */
+      function updateFixedProgress(current, total) {
+        document.getElementById("fixedProgress").innerText =
+          total === 0 ? "No papers" : `Paper ${current} of ${total}`;
+      }
+
+      /* ====== Setup IntersectionObserver for Paper Progress ====== */
+      function setupProgressObserver() {
+        const container = document.getElementById("container");
+        const paperCards = container.querySelectorAll(".paper-card");
+        const total = paperCards.length;
+        if (total === 0) {
+          updateFixedProgress(0, 0);
+          return;
+        }
+        const observerOptions = {
+          root: container,
+          threshold: 0.5,
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const index = Array.from(paperCards).indexOf(entry.target) + 1;
+              updateFixedProgress(index, total);
+            }
           });
+        }, observerOptions);
+        paperCards.forEach(card => observer.observe(card));
+      }
+
+      /* ====== Update Filter Panel ====== */
+      function updateFilterPanel() {
+        const filterList = document.getElementById("filterList");
+        filterList.innerHTML = "";
+        filterKeywords.forEach(keyword => {
+          // Count how many papers match this keyword in title/abstract
+          const count = papers.filter(p =>
+            p.title.toLowerCase().includes(keyword.toLowerCase()) ||
+            p.abstract.toLowerCase().includes(keyword.toLowerCase())
+          ).length;
+          const btn = document.createElement("button");
+          btn.className = "filter-item" + (activeFilter.toLowerCase() === keyword.toLowerCase() ? " active" : "");
+          btn.textContent = `${keyword} (${count})`;
+          btn.addEventListener("click", () => {
+            activeFilter = keyword;
+            updateFilterPanel();
+            renderPapers();
+          });
+          filterList.appendChild(btn);
         });
       }
 
@@ -617,31 +894,13 @@
         });
       }
 
-      /* ====== Share Paper ====== */
+      /* ====== Share Paper (Copy Only) ====== */
       function sharePaper(platform, paper) {
         const title = paper.title;
         const url = paper.link;
-        switch (platform) {
-          case "twitter":
-            window.open(
-              `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                title
-              )}&url=${encodeURIComponent(url)}`,
-              "_blank"
-            );
-            break;
-          case "linkedin":
-            window.open(
-              `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                url
-              )}`,
-              "_blank"
-            );
-            break;
-          case "copy":
-            navigator.clipboard.writeText(`${title}\n${url}`);
-            showToast("Link copied to clipboard!");
-            break;
+        if (platform === "copy") {
+          navigator.clipboard.writeText(`${title}\n${url}`);
+          showToast("Link copied to clipboard!");
         }
       }
 
