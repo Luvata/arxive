@@ -105,6 +105,8 @@ def generate_html():
 
     for file in files:
         if file.endswith('.html') and "index" not in file:
+            if "papergram" in file:
+                continue
             # Extract date and category from filename
             filename_parts = file.split('.')[0].split('-')
             date = '-'.join(filename_parts[:3])
