@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2025-10-18-cs-cl</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        background-color: #f2f2f2;
+    }
+    .container {
+        width: 60%;
+        max-width: 900px;
+        min-width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+        font-size: 0.9em;
+    }
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            font-size: 0.8em;
+        }
+        h1 {
+            font-size: 1.4em;
+        }
+    }
+    h1 {
+        color: #333;
+        font-size: 1.6em;
+    }
+    .article {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+    .article a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    .article a:hover {
+        color: #0056b3;
+    }
+    .copy-button {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .copy-button:active {
+        background-color: #0056b3;
+    }
+    .copy-message {
+        display: none;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 5px;
+        margin-top: 10px;
+        border-radius: 3px;
+    }
+    </style>
+    <script>
+    function copyToClipboard(text, buttonId) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        
+        const messageElement = document.getElementById('copy-message-' + buttonId);
+        messageElement.innerHTML = 'Copied "' + text + '" to clipboard';
+        messageElement.style.display = 'block';
+        setTimeout(function() {
+            messageElement.style.display = 'none';
+        }, 3000);
+    }
+    </script>
+    </head>
+    <body>
+    <div class="container">
+    <p>No articles found for this date.</p>
+
+    </div>
+    </body>
+    
