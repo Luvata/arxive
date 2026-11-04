@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2026-11-04-cs-lg</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        background-color: #f2f2f2;
+    }
+    .container {
+        width: 60%;
+        max-width: 900px;
+        min-width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+        font-size: 0.9em;
+    }
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            font-size: 0.8em;
+        }
+        h1 {
+            font-size: 1.4em;
+        }
+    }
+    h1 {
+        color: #333;
+        font-size: 1.6em;
+    }
+    .article {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+    .article a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    .article a:hover {
+        color: #0056b3;
+    }
+    .copy-button {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .copy-button:active {
+        background-color: #0056b3;
+    }
+    .copy-message {
+        display: none;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 5px;
+        margin-top: 10px;
+        border-radius: 3px;
+    }
+    </style>
+    <script>
+    function copyToClipboard(text, buttonId) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        
+        const messageElement = document.getElementById('copy-message-' + buttonId);
+        messageElement.innerHTML = 'Copied "' + text + '" to clipboard';
+        messageElement.style.display = 'block';
+        setTimeout(function() {
+            messageElement.style.display = 'none';
+        }, 3000);
+    }
+    </script>
+    </head>
+    <body>
+    <div class="container">
+    <div class="article">
+<h1> replace <a href="https://arxiv.org/abs/2405.17506">Subspace Node Pruning</a></h1>
+<p><b>Authors:</b> Joshua Offergeld, John Chidiac, Marcel van Gerven, Nasir Ahmad</p>
+<p>Abstract: Node pruning is the art of removing computational units such as neurons, filters, attention heads, or even entire layers to significantly reduce inference time while retaining network performance. In this work, we show that a broad family of importance measures, from activation-based to Fisher-based, share a common quadratic form. Through a lower-triangular change of basis, this form yields a pruning subspace in which entire nodes can be removed while the impact of the lost units is simultaneously recovered via linear least squares. Furthermore, the importance measures within our subspace are decoupled and additive through an orthogonalization of the layer activations, allowing multi-node pruning within layers without interference between importance scores. Our method, Subspace Node Pruning (SNP), outperforms the compared baselines on VGG-16 and ResNet-50 on ImageNet. On OPT-125M and LLaMA-2 7B, SNP matches the state-of-the-art LLM Surgeon at a 40-shot schedule and outperforms it whenever fewer shots are used, all without any retraining after pruning.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2405.17506', 0)">Copy Link</button>
+<div id="copy-message-0" class="copy-message"></div>
+</div>
+<div class="article">
+<h1> replace <a href="https://arxiv.org/abs/2406.14936">On the growth of the parameters of approximating ReLU neural networks</a></h1>
+<p><b>Authors:</b> Erion Morina, Martin Holler</p>
+<p>Abstract: This work focuses on the analysis of fully connected feed forward ReLU neural networks as they approximate a given, smooth function. In contrast to conventionally studied universal approximation properties under increasing architectures, e.g., in terms of width or depth of the networks, we are concerned with the asymptotic growth of the parameters of approximating networks. Such results are of interest, e.g., for error analysis or consistency results for neural network training. The main result of our work is that, for a ReLU architecture with state of the art approximation error, the realizing parameters grow at most polynomially. The obtained rate with respect to a normalized network size is compared to existing results and is shown to be superior in most cases, in particular for high dimensional input.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2406.14936', 1)">Copy Link</button>
+<div id="copy-message-1" class="copy-message"></div>
+</div>
+<div class="article">
+<h1> replace <a href="https://arxiv.org/abs/2407.10780">Correlations Are Ruining Your Gradient Descent</a></h1>
+<p><b>Authors:</b> Joshua Offergeld, Nasir Ahmad</p>
+<p>Abstract: Natural gradient descent, and the preconditioned optimizers which have followed from it, correct gradient descent by estimating curvature and applying its inverse to the gradient. For any single layer of a deep neural network, this correction can be shown to approximately separate into two factors: one which accounts for correlations in the gradient signal, and one which accounts for correlations in the data arriving at that layer. Herein we show that this second factor can be expressed as a change of basis rather than of curvature and, considered thus, it can be removed from the optimizer entirely and placed within the network itself. Specifically, we show that, once forward weights are corrected, right-sided natural gradient descent can be implemented in a form which has three exactly equivalent forms: a gradient preconditioner, a decorrelating linear transform in the forward pass, or a set of recurrent dynamics in which all updates are Hebbian and rely only upon locally available signals. The (recurrent) decorrelation method we discover aligns closely with proposed methods for inhibitory learning and homeostatic plasticity in the brain. Notably, our transform requires no matrix inverse, no matrix decomposition, and no information beyond that which is available at an individual synapse. It can therefore be applied in distributed and physically constrained systems, including neuromorphic hardware and nervous systems, where existing preconditioners cannot. We demonstrate its effectiveness empirically in convolutional and residual network models while significantly improving a range of approximate biologically plausible methods for credit assignment.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2407.10780', 2)">Copy Link</button>
+<div id="copy-message-2" class="copy-message"></div>
+</div>
+<div class="article">
+<h1> replace <a href="https://arxiv.org/abs/2408.02845">Heterogeneous Graph Attention Network With Multimodal Feature Selection for Cancer Multiomics Integration</a></h1>
+<p><b>Authors:</b> Sina Tabakhi, Charlotte Vandermeulen, Ian Sudbery, Haiping Lu</p>
+<p>Abstract: The increase in high-dimensional multiomics data demands advanced integration models to capture the complexity of human diseases. Graph-based deep learning integration models, despite their promise, struggle with small patient cohorts and high-dimensional features, often applying independent feature selection without modeling relationships among omics. Furthermore, conventional graph-based omics models focus on homogeneous graphs, lacking multiple types of nodes and edges to capture diverse structures. We introduce a Heterogeneous Graph ATtention network for omics integration (HeteroGATomics) to improve cancer diagnosis. HeteroGATomics performs multimodal feature selection through a multi-agent system, creating dedicated networks of feature and patient similarity for each omics modality. These networks are then combined into one heterogeneous graph for learning holistic omics-specific representations and integrating predictions across modalities. Experiments on three cancer multiomics datasets show that HeteroGATomics outperforms baseline methods across most evaluation metrics in cancer diagnosis. External validation on an independent breast cancer cohort further demonstrates its generalizability, where HeteroGATomics outperforms graph-based multiomics integration methods across evaluation metrics. Moreover, HeteroGATomics enhances interpretability by identifying important biomarkers contributing to the diagnosis outcomes.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2408.02845', 3)">Copy Link</button>
+<div id="copy-message-3" class="copy-message"></div>
+</div>
+<div class="article">
+<h1> replace-cross <a href="https://arxiv.org/abs/2303.12212">Community detection in complex networks via node similarity, graph representation learning, and hierarchical clustering</a></h1>
+<p><b>Authors:</b> {\L}ukasz Brzozowski, Grzegorz Siudem, Marek Gagolewski</p>
+<p>Abstract: Community detection is a significant challenge in analysing real graphs, including social, citation, biological, and many other networks. This article proposes three new, general, hierarchical frameworks to deal with this task. The introduced approach supports various linkage-based clustering algorithms, vertex proximity matrices, and graph representation learning models. We compare 364 module combinations on Stochastic Block Model graphs and real-life datasets. We observe that our best pipelines (Wasserman-Faust and the mutual information-based PPMI proximity, as well as the deep learning-based DNGR representations) perform competitively with the state-of-the-art Leiden and Louvain algorithms. At the same time, unlike the latter, they remain hierarchical. Thus, they output a series of nested partitions of all possible cardinalities which are compatible with each other. This feature is crucial when the number of correct partitions is unknown in advance, and we show that it is obtained at near-zero practical cost in terms of partition quality. On graphs composed of many small communities, our pipelines are more accurate than the reference solutions. Nevertheless, the downside of our approach is its time complexity, which confines the framework to networks of some 10000 vertices on personal machines.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2303.12212', 4)">Copy Link</button>
+<div id="copy-message-4" class="copy-message"></div>
+</div>
+<div class="article">
+<h1> replace-cross <a href="https://arxiv.org/abs/2404.15352">TransfoRhythm: A Transformer Architecture Conductive to Blood Pressure Estimation via Solo PPG Signal Capturing</a></h1>
+<p><b>Authors:</b> Amir Arjomand, Amin Boudesh, Farnoush Bayatmakou, Kenneth B. Kent, Arash Mohammadi</p>
+<p>Abstract: Recent statistics indicate that approximately 1.3 billion individuals worldwide suffer from hypertension, a leading cause of premature death globally. Blood Pressure (BP) serves as a critical health indicator for accurate and timely diagnosis and/or treatment of hypertension. Traditional BP measurement methods rely on cuff-based approaches, which lack real-time, continuous, and reliable BP estimates, crucial for the timely diagnosis/treatment of hypertension. Driven by recent advancements in Artificial Intelligence (AI) and Deep Neural Networks (DNNs), there has been a surge of interest in developing data-driven and cuff-less BP estimation solutions. In this context, current literature predominantly focuses on coupling Electrocardiography (ECG) and Photoplethysmography (PPG) sensors, though this approach is constrained by reliance on multiple sensor types. An alternative, utilizing standalone PPG signals, presents challenges due to the absence of auxiliary sensors (ECG), requiring the use of morphological features while addressing motion artifacts and high-frequency noise. To address these issues, the paper introduces the TransfoRhythm framework, a Transformer-based DNN architecture built upon the recently released physiological database, MIMIC-IV. Leveraging the Multi-Head Attention (MHA) mechanism, TransfoRhythm identifies dependencies and similarities across data segments, forming a robust framework for cuff-less BP estimation solely using PPG signals. To our knowledge, this paper represents the first study to apply the MIMIC IV dataset for cuff-less BP estimation. TransfoRhythm achieves highly accurate results with a Root Mean Square Error (RMSE) of [2.21, 1.84] and a Mean Absolute Error (MAE) of [1.37, 1.06] for systolic and diastolic blood pressures, respectively.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2404.15352', 5)">Copy Link</button>
+<div id="copy-message-5" class="copy-message"></div>
+</div>
+<div class="article">
+<h1> replace-cross <a href="https://arxiv.org/abs/2502.10353">Matching with Choice: Menu Design for Patient--Provider Assignment</a></h1>
+<p><b>Authors:</b> Naveen Raman, Holly Wiberg</p>
+<p>Abstract: High-quality matches between patients and primary care providers improve downstream health outcomes, yet provider turnover breaks these matches and forces patients to be reassigned. Health systems facing this problem must decide not only which providers to recommend, but how much choice to offer. Direct assignment avoids competition for scarce provider capacity but relies on noisy estimates of patient preferences; broader choice allows patients to correct these estimates using private information but can create costly coordination failures. We study this tradeoff through the design of fixed, personalized menus from which patients choose providers. We show that constructing the optimal menu is NP-hard and establish an information-theoretic lower bound. We find that offering each patient a single provider matches this bound up to a constant factor, while unrestricted choice can perform arbitrarily poorly. However, we show that additional choice improves on single-provider assignment when the system cannot reliably distinguish among a patient's alternatives. We formalize this tradeoff through two forms of loss: menu loss, which arises when menus offer too few options, and coordination loss, which arises when scarce capacity is exposed to too much choice. Motivated by this decomposition, we develop the Scenario-Averaged Marginals (SAM) algorithm, which tailors menus based on provider shadow prices so choice is offered only when utility exceeds the capacity cost. We identify sufficient conditions which SAM's regret matches the lower bound, namely when patients have valuable alternatives and offered menus don't create competition for scarce capacity. In a semi-synthetic environment calibrated to a provider network using Medicare data, SAM improves total utility by up to 19% over single-provider assignment as preference uncertainty grows, while improving utility for the least-served ZIP codes.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2502.10353', 6)">Copy Link</button>
+<div id="copy-message-6" class="copy-message"></div>
+</div>
+<div class="article">
+<h1> replace-cross <a href="https://arxiv.org/abs/2503.01036">Data-Efficient Kernel Methods for Learning Differential Equations and Their Solution Operators: Algorithms and Error Analysis</a></h1>
+<p><b>Authors:</b> Bamdad Hosseini, Alexander Hsu, Yasamin Jalalian, Juan Felipe Osorio Ramirez, Houman Owhadi</p>
+<p>Abstract: We introduce a novel kernel-based framework for learning differential equations and their solution maps. The framework is efficient in its data requirements in terms of the number of observed states and the amount of data available per state. Our formulation also allows us to employ efficient Gauss-Newton-type optimization algorithms in the training procedure to improve accuracy and speed of the training procedure. We also support our algorithm with rigorous theoretical guarantees in the form of quantitative worst-case error bounds for the learned equation that can be extended to the subsequent solution operators under smoothness assumptions. Numerical benchmarks demonstrate significant improvements in computational complexity and robustness while achieving one to two orders of magnitude improvements in terms of accuracy compared to certain state-of-the-art algorithms.</p>
+<button class="copy-button" onclick="copyToClipboard('https://arxiv.org/abs/2503.01036', 7)">Copy Link</button>
+<div id="copy-message-7" class="copy-message"></div>
+</div>
+
+    </div>
+    </body>
+    
